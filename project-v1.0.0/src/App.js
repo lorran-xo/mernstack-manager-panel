@@ -18,21 +18,20 @@ class AppShell extends Component {
   render() {
     return (
       <div>
-   
         <h1><MdLocalGroceryStore style={{width:'40px', height: '25px'}}/> 
-        <span style={{fontFamily:'Garamond'}}>MerceariaManager</span></h1>
-        
-        <Button.Group horizontal>
-          <Link style={{textDecoration:'none'}} to='/'> <Button>Início</Button> </Link>
-          <Link style={{textDecoration:'none'}} to='/produtos'><Button>Produtos</Button></Link>
-          <Link style={{textDecoration:'none'}} to='/caixa'><Button>Caixa</Button></Link>
-          <Link style={{textDecoration:'none'}} to='/vendas'><Button>Vendas</Button></Link>
-
-          <Link style={{textDecoration:'none'}} to='/estoque'><Button>Estoque</Button></Link>
-          <Link style={{textDecoration:'none'}} to='/financeiro'><Button>Financeiro</Button></Link>
-          <Link style={{textDecoration:'none'}} to='/sobre'><Button>Sobre</Button></Link>
-        </Button.Group>
-
+          <span style={{fontFamily:'Garamond'}}>MerceariaManager</span>
+        </h1>
+        <center style={{marginTop:'-3%', marginRight:"10%"}}>
+          <Button.Group horizontal style={{marginBottom:'4%'}}>
+            <Link to='/'> <Button>Início</Button> </Link>
+            <Link to='/produtos'><Button>Produtos</Button></Link>
+            <Link to='/caixa'><Button>Caixa</Button></Link>
+            <Link to='/vendas'><Button>Vendas</Button></Link>
+            <Link to='/estoque'><Button>Estoque</Button></Link>
+            <Link to='/financeiro'><Button>Financeiro</Button></Link>
+            <Link to='/sobre'><Button>Sobre</Button></Link>
+          </Button.Group>
+        </center>
 
         <Switch>
           <Route exact path='/' component={ Inicio } />
