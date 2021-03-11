@@ -22,7 +22,7 @@ function App() {
   return (
     <div>
       <Paper elevation="0" className={classes.paper}><br/>
-        <h3 style={{marginLeft:'48%'}}>Dashboard</h3>
+        <h3 style={{marginLeft:'43%'}}>Dashboard</h3>
         <Segment>
           <Statistic.Group style={{marginLeft:"35%"}} size='tiny'>
             <Statistic>
@@ -42,7 +42,7 @@ function App() {
               <Statistic.Label>Produtos</Statistic.Label>
             </Statistic>
           </Statistic.Group>
-          <h4 style={{marginLeft:'40%', fontSize:'14px'}}> Balanço atual de lucro de R$ 138 em 3 Produtos</h4>
+          <h4 style={{marginLeft:'40%', fontSize:'14px'}}> Balanço de R$ 138 em 3 Produtos</h4>
         </Segment>
       </Paper>
     </div>

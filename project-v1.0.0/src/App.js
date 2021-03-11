@@ -7,7 +7,7 @@ import Caixa from './pages/caixa/Caixa';
 import Estoque from './pages/estoque/Estoque';
 import Sobre from './pages/sobre/Sobre';
 //SemanticUI
-import { Button, Grid } from 'semantic-ui-react'
+import { Button, Grid, Icon } from 'semantic-ui-react'
 //icons
 import HortiFrutiLogo from './images/hortiFrutiLogo.png';
 
@@ -22,16 +22,15 @@ class AppShell extends Component {
             </Grid.Column>
             <Grid.Column>
               <Button.Group horizontal style={{margin:"5%"}}>
-                <Link to='/'> <Button>Início</Button> </Link>
-                <Link to='/compras'><Button>Compras</Button></Link>
-                <Link to='/caixa'><Button>Caixa</Button></Link>
-                <Link to='/estoque'><Button>Estoque</Button></Link>
-                <Link to='/sobre'><Button>Sobre</Button></Link>
+                <Link to='/'><Button labelPosition='right' icon>Início<Icon name='home'/></Button></Link>
+                <Link to='/compras'><Button labelPosition='right' icon>Compras<Icon name='cart'/></Button></Link>
+                <Link to='/caixa'><Button labelPosition='right' icon>Caixa<Icon name='archive'/></Button></Link>
+                <Link to='/estoque'><Button labelPosition='right' icon>Estoque<Icon name='dolly flatbed'/></Button></Link>
+                <Link to='/sobre'><Button labelPosition='right' icon>Sobre<Icon name='user'/></Button></Link>
               </Button.Group>
             </Grid.Column>
           </Grid.Row>
         </Grid>
-
         <Switch>
           <Route exact path='/' component={ Inicio } />
           <Route path='/compras' component={ Compras } />

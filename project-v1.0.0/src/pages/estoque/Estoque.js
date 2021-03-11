@@ -39,7 +39,7 @@ function App() {
       <Paper elevation="0" className={classes.paper}>
         <Table basic size='small' style={{margin:"2%"}}>
           <Table.Header>
-          <Button style={{margin:'3%'}} onClick={handleClick} icon={GrAdd}/>
+          {/*<Button style={{margin:'3%'}} onClick={handleClick} icon={GrAdd}/>*/}
             <Table.Row>
               <Table.HeaderCell>Id</Table.HeaderCell>
               <Table.HeaderCell>Produto</Table.HeaderCell>
