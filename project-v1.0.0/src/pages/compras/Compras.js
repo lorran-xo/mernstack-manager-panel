@@ -29,6 +29,7 @@ function App() {
   confirm dialog portals: https://react.semantic-ui.com/addons/confirm/
   */}
       <Paper elevation="0" className={classes.paper}>
+        COMPRAS
         <Table basic size='small' style={{margin:"2%"}}>
           <Table.Header>
             <Table.Row>
