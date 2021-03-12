@@ -1,5 +1,5 @@
 import './../../App.css';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import Paper from '@material-ui/core/Paper';
@@ -17,7 +17,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function App() {
-    const classes = useStyles();
+  const classes = useStyles();
+  const [apiResponse, setApiResponse] = useState('');
+
+  useEffect(() => {  
+    callApi();
+  },[]);
+
+  async function callApi(){         
+    await fetch('http://localhost:9000/testApi')
+    .then(res => res.text())
+    .then(res => setApiResponse(res));
+  }
 
   return (
     <div>
@@ -27,6 +38,7 @@ function App() {
             Início
           <Header.Subheader style={{fontSize:'14px'}}>
             Visualize as principais informações do seu Sistema
+            Retorno do backend: {apiResponse}
           </Header.Subheader>
         </Header>
         <Segment>
