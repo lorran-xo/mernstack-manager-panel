@@ -7,7 +7,7 @@ import Caixa from './pages/caixa/Caixa';
 import Estoque from './pages/estoque/Estoque';
 import Sobre from './pages/sobre/Sobre';
 //SemanticUI
-import { Button, Grid, Icon } from 'semantic-ui-react'
+import { Button, Grid, Icon, Header } from 'semantic-ui-react'
 //icons
 import HortiFrutiLogo from './images/hortiFrutiLogo.png';
 
@@ -26,8 +26,9 @@ class AppShell extends Component {
                 <Link to='/compras'><Button labelPosition='right' icon>Compras<Icon name='cart'/></Button></Link>
                 <Link to='/caixa'><Button labelPosition='right' icon>Caixa<Icon name='archive'/></Button></Link>
                 <Link to='/estoque'><Button labelPosition='right' icon>Estoque<Icon name='dolly flatbed'/></Button></Link>
-                <Link to='/sobre'><Button labelPosition='right' icon>Sobre<Icon name='user'/></Button></Link>
+                <Link to='/sobre'><Button labelPosition='right' icon>Sobre<Icon name='info circle'/></Button></Link>
               </Button.Group>
+              <Header style={{margin:'3%'}}>Saldo: R$ 1200 </Header>
             </Grid.Column>
           </Grid.Row>
         </Grid>

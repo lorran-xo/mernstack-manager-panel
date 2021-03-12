@@ -4,7 +4,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
-import { Icon, Image, Statistic, Segment } from 'semantic-ui-react'
+import { Header, Icon, Image, Statistic, Segment } from 'semantic-ui-react'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,7 +22,13 @@ function App() {
   return (
     <div>
       <Paper elevation="0" className={classes.paper}><br/>
-        <h3 style={{marginLeft:'43%'}}>Dashboard</h3>
+        <Header as='h2' icon style={{marginLeft:'37%'}}>
+          <Icon name='home' />
+            Início
+          <Header.Subheader style={{fontSize:'14px'}}>
+            Visualize as principais informações do seu Sistema
+          </Header.Subheader>
+        </Header>
         <Segment>
           <Statistic.Group style={{marginLeft:"35%"}} size='tiny'>
             <Statistic>
