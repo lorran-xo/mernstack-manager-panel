@@ -32,3 +32,6 @@ Adicional: Será avaliado o tempo de finalização do projeto para implementaç�
 
 
 Para rodar a aplicação no estado que está atualmente, basta baixar o NodeJS e instalar. Após isso, baixar o projeto, copiar o caminho da pasta do projeto baixado e abrir ela pelo CMD ou outro gerenciador de comandos. Digite o comando NPM INSTALL para instalar todas as dependências do projeto e logo em seguida NPM START para iniciar o projeto. Provavelmente ele abrirá no seu navegador padrão em http://localhost:3000/, mas será necessário criar uma versão do google chrome NoCors, Para isso, basta ir em 'Propriedades' no ícone do Chrome e colar no destino: "C:\Program Files\Google\Chrome\Application\chrome.exe" --disable-web-security --user-data-dir="C:/ChromeDevSession"
+
+Rodar com o backend:
+Abrir cd C:\Users\Lorran\Documents\store-manager\project-v1.0.0\api e dar npm start. Vai rodar o servidor do backend express na porta 9000 e o front continua na 3000

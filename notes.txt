@@ -1,0 +1,28 @@
+criando rota do back no front minuto 54
+
+https://www.youtube.com/watch?v=SQqSMDIzhaE
+
+api>
+npm run start
+
+Routes:
+
+Cria as rotas '/name'.
+  -Exporta o express e cria const pra ele;
+  -Importa um model (gets&setters) pra ser usado na resposta da rota;
+  -Passa pra cada variavel do model o resultado esperado;
+
+
+Models:
+  -Cria os schemas ('gets&setters') que vai ser importado e chamado nas rotas. Cria um nome com tipo e se é required ou nao.
+
+
+
+## CONEXÃO DO BACK COM O BANCO ##
+https://cloud.mongodb.com/v2/604c048576d85865464e040f#clusters/connect?clusterId=Cluster0
+
+Loga no MongoDB, cria um Cluster e um usuario pra acessar o banco, libera acesso IP;
+
+no arquivo server/app, faz os imports de conexoes com o mongoose e passa a conta que criou acesso ao banco pro mongoose.connect()
+
+usar o pacote dotenv pra criar um arquivo env com as credenciais de acessar o banco pra ser mais seguro.
