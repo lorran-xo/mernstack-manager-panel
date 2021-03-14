@@ -1,37 +1,100 @@
-Projeto em Desenvolvimento - Gerenciador de mercearias, padarias, hortifrutis e lojas em geral.
+<div align="center" id="top"> 
+  <img src="./.github/app.gif" alt="Store Manager" />
 
-	Tecnologias:
-Frontend: ReactJS, HTML5, CSS, Styled Components, SemanticUI
+  &#xa0;
 
-Backend: NodeJS
+  <!-- <a href="https://storemanager.netlify.app">Demo</a> -->
+</div>
 
-Banco: NoSql - MongoDB
+<h1 align="center">Store Manager</h1>
 
-	Organização:
-Estão sendo utilizadas as metodologias ágeis Scrum e Kanban nesse projeto. 
-Versionamento de código Git (Github).
+<p align="center">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/lorran-xo}/store-manager?color=56BEB8">
 
-Na aba 'Projects' do repositório é possível acessar o Kanban de todo o projeto e os passos que vão ser seguidos para a finalização do mesmo.
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/lorran-xo/store-manager?color=56BEB8">
 
-	O projeto:
-O intuito inicial desse projeto é para a matéria de PROJ. INT. DE ANÁLISE E DESENV. DE SISTEMAS do curso de Análise e Desenvolvimento de Sistemas administrada pelo professor Ronney Moreira de Castro e também para uma possível implementação real.
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/lorran-xo/store-manager?color=56BEB8">
 
-O gerenciador será dividido em abas: Início, Compras, Caixa, Estoque e Sobre.
+  <img alt="License" src="https://img.shields.io/github/license/lorran-xo/store-manager?color=56BEB8">
 
- -Início: Será uma tela com um simples Dashboard dinâmico que se altera de acordo com os dados inseridos no sistema, que mostra quanto ja foi gasto em Compras, quanto ja entrou nas Vendas e quantos produtos existem. 
+  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/lorran-xo/store-manager?color=56BEB8" /> -->
 
- -Compras: Será possível adicionar/comprar mais produtos e também retirar. Sempre que for adicionado um produto, será somado no valor de Compras para o cálculo de lucro da página Inicial(Dashboard) e na listagem do Estoque.
+  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/lorran-xo/store-manager?color=56BEB8" /> -->
 
- -Caixa: Aba onde as vendas acontecerão. Terá a listagem de todos os produtos do Estoque e ao vender um produto, será subtraído do estoque a quantidade vendida e somado no banco no valor de Vendas para o calculo do lucro que fica na página Inicial (Dashboard);
+  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/lorran-xo/store-manager?color=56BEB8" /> -->
+</p>
 
- -Estoque: Terá uma tabela que lista todos os produtos do estoque do estabelecimento. Será atualizado a cada compra e venda(quantidade); Cada produto terá: id, nome, quantidade (em kg), preço total que o produto foi comprado e o preço de revenda (cada kg);
+<!-- Status -->
 
- -Sobre: Aba informativa sobre o desenvolvimento do sistema
+<!-- <h4 align="center"> 
+	🚧  Store Manager 🚀 Under construction...  🚧
+</h4> 
 
-Adicional: Será avaliado o tempo de finalização do projeto para implementação de uma tela de login no painel
+<hr> -->
+
+<p align="center">
+  <a href="#dart-about">About</a> &#xa0; | &#xa0; 
+  <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
+  <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
+  <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
+  <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
+  <a href="#memo-license">License</a> &#xa0; | &#xa0;
+  <a href="https://github.com/lorran-xo" target="_blank">Author</a>
+</p>
+
+<br>
+
+## :dart: About ##
+
+Describe your project
+
+## :sparkles: Features ##
+
+:heavy_check_mark: Feature 1;\
+:heavy_check_mark: Feature 2;\
+:heavy_check_mark: Feature 3;
+
+## :rocket: Technologies ##
+
+The following tools were used in this project:
+
+- [Expo](https://expo.io/)
+- [Node.js](https://nodejs.org/en/)
+- [React](https://pt-br.reactjs.org/)
+- [React Native](https://reactnative.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+
+## :white_check_mark: Requirements ##
+
+Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
+
+## :checkered_flag: Starting ##
+
+```bash
+# Clone this project
+$ git clone https://github.com/lorran-xo/store-manager
+
+# Access
+$ cd store-manager
+
+# Install dependencies
+$ npm install
+
+# Run the project
+$ npm start
+
+# The front server will initialize in the <http://localhost:3000>
+
+# npm run start on 'cd backend' to run backend
+```
+
+## :memo: License ##
+
+This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
 
 
-Para rodar a aplicação no estado que está atualmente, basta baixar o NodeJS e instalar. Após isso, baixar o projeto, copiar o caminho da pasta do projeto baixado e abrir ela pelo CMD ou outro gerenciador de comandos. Digite o comando NPM INSTALL para instalar todas as dependências do projeto e logo em seguida NPM START para iniciar o projeto. Provavelmente ele abrirá no seu navegador padrão em http://localhost:3000/, mas será necessário criar uma versão do google chrome NoCors, Para isso, basta ir em 'Propriedades' no ícone do Chrome e colar no destino: "C:\Program Files\Google\Chrome\Application\chrome.exe" --disable-web-security --user-data-dir="C:/ChromeDevSession"
+Made with :heart: by <a href="https://github.com/lorran-xo" target="_blank">Lorran Oliveira</a>
 
-Rodar com o backend:
-Abrir cd C:\Users\Lorran\Documents\store-manager\project-v1.0.0\api e dar npm start. Vai rodar o servidor do backend express na porta 9000 e o front continua na 3000
+&#xa0;
+
+<a href="#top">Back to top</a>
