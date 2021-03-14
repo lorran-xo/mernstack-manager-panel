@@ -1,14 +1,8 @@
 import './../../App.css';
-import React, { useState } from 'react';
-import MenuItem from '@material-ui/core/MenuItem';
-import MenuList from '@material-ui/core/MenuList';
+import React /*, { useState }*/ from 'react';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
-import { GrAdd } from 'react-icons/gr';
-import { Table, Button,
-  Header,
-  Segment,
-  TransitionablePortal, Icon } from 'semantic-ui-react';
+import { Table, Header, Icon } from 'semantic-ui-react';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -23,12 +17,12 @@ const useStyles = makeStyles((theme) => ({
 function App() {
     const classes = useStyles();
 
-    const [count, setCount] = useState(0);
+    //const [count, setCount] = useState(0);
 
-    function handleClick(){
+    /*function handleClick(){
       setCount(count+1);
       console.log("Vezes que o botão foi clicado: ", count);
-    }
+    }*/
 
   return (
     <div>
@@ -36,8 +30,8 @@ function App() {
   portals: https://react.semantic-ui.com/addons/transitionable-portal/#types-portal
   confirm dialog portals: https://react.semantic-ui.com/addons/confirm/
   */}
-      <Paper elevation="0" className={classes.paper}>
-        <Header as='h2' icon style={{marginLeft:'37%'}}>
+      <Paper elevation="0" className={classes.paper}><br/>
+        <Header as='h2' icon style={{marginLeft:'40%'}}>
           <Icon name='cart' />
            Estoque
           <Header.Subheader style={{fontSize:'14px'}}>

@@ -1,10 +1,9 @@
 import './../../App.css';
 import React, { useState, useEffect } from 'react';
-import MenuItem from '@material-ui/core/MenuItem';
-import MenuList from '@material-ui/core/MenuList';
+
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
-import { Header, Icon, Image, Statistic, Segment } from 'semantic-ui-react'
+import { Header, Icon, Statistic, Segment } from 'semantic-ui-react'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,7 +41,7 @@ function App() {
           </Header.Subheader>
         </Header>
         <Segment>
-          <Statistic.Group style={{marginLeft:"35%"}} size='tiny'>
+          <Statistic.Group style={{marginLeft:"38%"}} size='tiny'>
             <Statistic>
               <Statistic.Value>R$ 520</Statistic.Value>
               <Statistic.Label>Em compras</Statistic.Label>
@@ -60,7 +59,7 @@ function App() {
               <Statistic.Label>Produtos</Statistic.Label>
             </Statistic>
           </Statistic.Group>
-          <h4 style={{marginLeft:'40%', fontSize:'14px'}}> Balanço de R$ 138 em 3 Produtos</h4>
+          <h4 style={{marginLeft:'43%', fontSize:'14px'}}> Balanço de R$ 138 em 3 Produtos</h4>
         </Segment>
       </Paper>
     </div>

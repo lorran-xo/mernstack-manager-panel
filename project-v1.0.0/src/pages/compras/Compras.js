@@ -1,14 +1,10 @@
 import './../../App.css';
 import React, { useState } from 'react';
-import MenuItem from '@material-ui/core/MenuItem';
-import MenuList from '@material-ui/core/MenuList';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import { GrCart } from 'react-icons/gr';
 import { Table, Button,
-  Header,
-  Segment,
-  TransitionablePortal, Modal, Input, Icon, Popup } from 'semantic-ui-react'
+  Header, Modal, Input, Icon, Popup } from 'semantic-ui-react'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,8 +22,6 @@ function App() {
     const [balance, setBalance] = useState(1200);
     const [quantity, setQuantity] = useState(0);
     const [productValue, setProductValue] = useState(0);
-
-
   {/*
     const [balance, setBalance] = useState(1200);
     const [quantity, setQuantity] = useState(0);
@@ -76,7 +70,7 @@ function App() {
 
   return (
     <div>
-      <Paper elevation="0" className={classes.paper}>
+      <Paper elevation="0" className={classes.paper}><br/>
         <Header as='h2' icon style={{marginLeft:'37%'}}>
           <Icon name='cart' />
            Compras
