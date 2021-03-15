@@ -1,17 +1,14 @@
 import './../../App.css';
 import React, { useState, useEffect } from 'react';
 import Footer from './../footer/footer.js';
-import './../style.css';
 import { Header, Icon, Container, Grid, Statistic, Segment, Card } from 'semantic-ui-react'
 import styled from 'styled-components'
 
 function App() {
 
- /* const Container = styled.div`
-    background-color: 'white';
-    width: 97%;
-  `
-*/
+  /*const styledContainer = styled.Container`
+    margin:'10%'
+  `;*/
 
   const [apiResponse, setApiResponse] = useState('');
 
@@ -36,39 +33,39 @@ function App() {
             Retorno do backend: {apiResponse}
           </Header.Subheader>
         </Header>
-        <Card>
-          <Card.Content>
-            <Statistic.Group size='tiny'>
-              <Grid>
-                <Grid.Row container columns={3}>
-                  <Grid.Column>
-                    <Statistic style={{marginLeft:"10%"}}>
-                      <Statistic.Value>R$ 520</Statistic.Value>
-                      <Statistic.Label>Em compras</Statistic.Label>
-                    </Statistic>
-                  </Grid.Column>
-                  <Grid.Column>
-                    <Statistic>
-                      <Statistic.Value>
-                        R$ 658
-                      </Statistic.Value>
-                      <Statistic.Label>Em vendas</Statistic.Label>
-                    </Statistic>
-                  </Grid.Column>
-                  <Grid.Column>
-                    <Statistic>
-                      <Statistic.Value>
-                        3
-                      </Statistic.Value>
-                      <Statistic.Label>Produtos</Statistic.Label>
-                    </Statistic>
-                  </Grid.Column>
-                  <h4 style={{marginLeft:'43%', fontSize:'14px'}}> Balanço de R$ 138 em 3 Produtos</h4>
-                </Grid.Row>
-              </Grid>
-            </Statistic.Group>
-          </Card.Content>
-        </Card>
+          <Card style={{marginLeft:'43%'}}>
+            <Card.Content style={{marginLeft:'10%'}}>
+              <Statistic.Group size='tiny' >
+                <Grid>
+                  <Grid.Row container columns={4}>
+                    <Grid.Column>
+                      <Statistic>
+                        <Statistic.Value>R$ 520</Statistic.Value>
+                        <Statistic.Label>Em compras</Statistic.Label>
+                      </Statistic>
+                    </Grid.Column>
+                    <Grid.Column>
+                      <Statistic>
+                        <Statistic.Value>
+                          R$ 658
+                        </Statistic.Value>
+                        <Statistic.Label>Em vendas</Statistic.Label>
+                      </Statistic>
+                    </Grid.Column>
+                    <Grid.Column>
+                      <Statistic>
+                        <Statistic.Value>
+                          3
+                        </Statistic.Value>
+                        <Statistic.Label>Produtos</Statistic.Label>
+                      </Statistic>
+                    </Grid.Column>
+                    <h4 style={{fontSize:'14px', marginLeft:'11%'}}> Balanço de R$ 138 em 3 Produtos</h4>
+                  </Grid.Row>
+                </Grid>
+              </Statistic.Group>
+            </Card.Content>
+          </Card><br/><br/><br/>
       </Container>
       <center style={{margin:'10%'}}><Footer/></center>
     </div>

@@ -66,10 +66,10 @@ function App() {
             Compre produtos para adicionar em seu Estoque sempre que precisar
           </Header.Subheader>
         </Header>
-        <Table basic size='small' style={{margin:"2%"}}>
+        <Table basic size='mini'>
           <Table.Header>
             <Popup content='Compre produtos pro Estoque' trigger={<Button style={{margin:'3%'}} onClick={handleOpenBuyPopup}>COMPRAR</Button>} />
-            <Header style={{margin:'3%'}}>Produtos com menos de 5kg no estoque:</Header>
+            <Header style={{margin:'3%', fontSize:'12px'}}>Descrição: Essa tabela mostra produtos com menos de 5kg no estoque</Header>
             <Table.Row>
               {/*<Table.HeaderCell>Id</Table.HeaderCell>*/}
               <Table.HeaderCell>Produto</Table.HeaderCell>
@@ -86,7 +86,7 @@ function App() {
               <Table.Cell>4,00</Table.Cell>
             </Table.Row>
           </Table.Body>
-        </Table>
+        </Table><br/>
         <div>
           <Modal
             onClose={handleCloseBuyPopup} 
@@ -127,7 +127,7 @@ function App() {
           </Modal>
         </div>
       </Container>
-      <center style={{margin:'10%'}}><Footer/></center>
+      <center style={{margin:'1%'}}><Footer/></center>
     </div>
   );
 }

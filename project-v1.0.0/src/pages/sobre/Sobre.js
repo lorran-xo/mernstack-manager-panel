@@ -46,9 +46,9 @@ function App() {
                 <a href='https://www.instagram.com/lorran_xo/' rel="noreferrer" style={{textDecoration:'none'}} target="_blank"><Button circular color='instagram' icon='instagram' /></a>
               </div>
             </Card.Content>
-          </Card>
+          </Card><br/>
       </Container>
-      <center style={{margin:'10%'}}><Footer/></center>
+      <center style={{margin:'1%'}}><Footer/></center>
     </div>
   );
 }

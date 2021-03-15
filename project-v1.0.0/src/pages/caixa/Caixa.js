@@ -33,10 +33,10 @@ function App() {
             Visualize e venda os produtos disponíveis no estoque
           </Header.Subheader>
         </Header>
-        <Table basic size='small' style={{margin:"2%"}}>
+        <Table basic size='mini'>
           <Table.Header>
             <Popup content='Venda produtos disponíveis no Estoque' trigger={<Button style={{margin:'3%'}} onClick={handleOpenSellPopup}>VENDER</Button>} />
-            <Header style={{margin:'3%'}}>Produtos disponíveis no Estoque</Header>
+            <Header style={{margin:'3%', fontSize:'12px'}}>Descrição: Essa tabela mostra os produtos disponíveis no Estoque para venda</Header>
             <Table.Row>
               <Table.HeaderCell>Id</Table.HeaderCell>
               <Table.HeaderCell>Produto</Table.HeaderCell>
@@ -75,7 +75,7 @@ function App() {
               <Table.Cell>6,00</Table.Cell>
             </Table.Row>
           </Table.Body>
-        </Table>
+        </Table><br/>
         <div>
           <Modal
             onClose={handleCloseSellPopup} 
@@ -110,7 +110,7 @@ function App() {
           </Modal>
         </div>
       </Container>
-      <center style={{margin:'10%'}}><Footer/></center>
+      <center style={{margin:'1%'}}><Footer/></center>
     </div>
   );
 }

@@ -13,10 +13,6 @@ function App() {
 
   return (
     <div>
-  {/*
-  portals: https://react.semantic-ui.com/addons/transitionable-portal/#types-portal
-  confirm dialog portals: https://react.semantic-ui.com/addons/confirm/
-  */}
       <Container style={{backgroundColor: "white", width:"97%"}}><br/>
         <Header as='h2' icon style={{marginLeft:'40%'}}>
           <Icon name='cart' />
@@ -25,7 +21,7 @@ function App() {
             Visualize os seus Produtos e suas informações
           </Header.Subheader>
         </Header>
-        <Table basic size='small' style={{margin:"2%"}}>
+        <Table basic size='mini'>
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell>Id</Table.HeaderCell>
@@ -65,9 +61,9 @@ function App() {
               <Table.Cell>6,00</Table.Cell>
             </Table.Row>
           </Table.Body>
-        </Table>
+        </Table><br/>
       </Container>
-      <center style={{margin:'10%'}}><Footer/></center>
+      <center style={{margin:'1%'}}><Footer/></center>
     </div>
   );
 }
