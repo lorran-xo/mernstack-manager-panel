@@ -14,7 +14,7 @@ import HortiFrutiLogo from './images/hortiFrutiLogo.png';
 class AppShell extends Component {
   render() {
     return (  //F3F3F3, DCE1E3, FDF8F5, a2c3a3, b2cdb2
-      <div style={{backgroundColor:'#b2cdb2', width: '98%', height: '98%', marginLeft:"2%"}}>
+      <div style={{backgroundColor:'#b2cdb2'}}>
         <Grid columns={4}>
           <Grid.Row>
             <Grid.Column>
@@ -23,9 +23,9 @@ class AppShell extends Component {
             <Grid.Column>
               <Button.Group horizontal style={{margin:"5%"}}>
                 <Link to='/'><Button labelPosition='right' icon>Início<Icon name='home'/></Button></Link>
-                <Link to='/compras'><Button labelPosition='right' icon>Compras<Icon name='cart'/></Button></Link>
-                <Link to='/caixa'><Button labelPosition='right' icon>Caixa<Icon name='archive'/></Button></Link>
                 <Link to='/estoque'><Button labelPosition='right' icon>Estoque<Icon name='dolly flatbed'/></Button></Link>
+                <Link to='/caixa'><Button labelPosition='right' icon>Caixa<Icon name='archive'/></Button></Link>
+                <Link to='/compras'><Button labelPosition='right' icon>Compras<Icon name='cart'/></Button></Link>
                 <Link to='/sobre'><Button labelPosition='right' icon>Sobre<Icon name='info circle'/></Button></Link>
                 <Label>
                   Saldo

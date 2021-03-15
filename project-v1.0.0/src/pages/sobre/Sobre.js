@@ -1,27 +1,16 @@
 import './../../App.css';
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
+import Footer from './../footer/footer.js';
 import LorranPic from './../../images/lorranxo.jpg';
-import { makeStyles } from '@material-ui/core/styles';
-import { Button, Card, Header, Icon, Image } from 'semantic-ui-react'
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
-  paper: {
-    marginRight: theme.spacing(2),
-  },
-}));
+import { Button, Card, Header, Icon, Image, Container } from 'semantic-ui-react'
 
 function App() {
-    const classes = useStyles();
 
   return (
     <div>
       {/*<header className="App-header">
       </header>*/}
-      <Paper elevation="0" className={classes.paper}><br/>
+      <Container style={{backgroundColor: "white", width:"97%"}}><br/>
         <Header as='h2' icon style={{marginLeft:'35%'}}>
           <Icon name='info circle' />
            Sobre
@@ -58,7 +47,8 @@ function App() {
               </div>
             </Card.Content>
           </Card>
-      </Paper>
+      </Container>
+      <center style={{margin:'10%'}}><Footer/></center>
     </div>
   );
 }

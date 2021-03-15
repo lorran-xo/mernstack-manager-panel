@@ -1,22 +1,9 @@
 import './../../App.css';
 import React /*, { useState }*/ from 'react';
-import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
-import { Table, Header, Icon } from 'semantic-ui-react';
-
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
-  paper: {
-    marginRight: theme.spacing(2),
-  },
-}));
-
+import Footer from './../footer/footer.js';
+import { Table, Header, Icon, Container } from 'semantic-ui-react';
 function App() {
-    const classes = useStyles();
-
+  
     //const [count, setCount] = useState(0);
 
     /*function handleClick(){
@@ -30,7 +17,7 @@ function App() {
   portals: https://react.semantic-ui.com/addons/transitionable-portal/#types-portal
   confirm dialog portals: https://react.semantic-ui.com/addons/confirm/
   */}
-      <Paper elevation="0" className={classes.paper}><br/>
+      <Container style={{backgroundColor: "white", width:"97%"}}><br/>
         <Header as='h2' icon style={{marginLeft:'40%'}}>
           <Icon name='cart' />
            Estoque
@@ -79,7 +66,8 @@ function App() {
             </Table.Row>
           </Table.Body>
         </Table>
-      </Paper>
+      </Container>
+      <center style={{margin:'10%'}}><Footer/></center>
     </div>
   );
 }

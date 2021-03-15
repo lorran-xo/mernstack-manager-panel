@@ -1,22 +1,11 @@
 import './../../App.css';
 import React, { useState } from 'react';
-import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
+import Footer from './../footer/footer.js';
 import { GrCart } from 'react-icons/gr';
 import { Table, Button,
-  Header, Modal, Input, Icon, Popup } from 'semantic-ui-react'
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
-  paper: {
-    marginRight: theme.spacing(2),
-  },
-}));
+  Header, Modal, Input, Icon, Popup, Container } from 'semantic-ui-react'
 
 function App() {
-    const classes = useStyles();
 
     const [openSellPopup, setOpenSellPopup] = useState(false);
 
@@ -36,7 +25,7 @@ function App() {
 
   return (
      <div>
-      <Paper elevation="0" className={classes.paper}><br/>
+      <Container style={{backgroundColor: "white", width:"97%"}}><br/>
         <Header as='h2' icon style={{marginLeft:'40%'}}>
           <Icon name='archive' />
            Caixa
@@ -120,7 +109,8 @@ function App() {
             </Modal.Actions>
           </Modal>
         </div>
-      </Paper>
+      </Container>
+      <center style={{margin:'10%'}}><Footer/></center>
     </div>
   );
 }
