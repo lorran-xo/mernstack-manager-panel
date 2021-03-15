@@ -24,7 +24,7 @@ function App() {
         <Table basic size='mini'>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell>Id</Table.HeaderCell>
+              <Table.HeaderCell>Código de barras</Table.HeaderCell>
               <Table.HeaderCell>Produto</Table.HeaderCell>
               <Table.HeaderCell>Quantidade disponível (kg)</Table.HeaderCell>
               <Table.HeaderCell>Preço compra (kg)</Table.HeaderCell>
@@ -33,28 +33,28 @@ function App() {
           </Table.Header>
           <Table.Body>
             <Table.Row>
-              <Table.Cell>1527</Table.Cell>
+              <Table.Cell>789.823426.51238</Table.Cell>
               <Table.Cell>Tomate</Table.Cell>
               <Table.Cell>25</Table.Cell>
               <Table.Cell>4,00</Table.Cell>
               <Table.Cell>5,20</Table.Cell>
             </Table.Row>
             <Table.Row>
-              <Table.Cell>2347</Table.Cell>
+              <Table.Cell>789.364726.55493</Table.Cell>
               <Table.Cell>Batata</Table.Cell>
               <Table.Cell>40</Table.Cell>
               <Table.Cell>3,00</Table.Cell>
               <Table.Cell>4,50</Table.Cell>
             </Table.Row>
             <Table.Row>
-              <Table.Cell>9252</Table.Cell>
+              <Table.Cell>789.824426.23738</Table.Cell>
               <Table.Cell>Cenoura</Table.Cell>
               <Table.Cell>5</Table.Cell>
               <Table.Cell>3,30</Table.Cell>
               <Table.Cell>4,00</Table.Cell>
             </Table.Row>
             <Table.Row>
-              <Table.Cell>9132</Table.Cell>
+              <Table.Cell>789.812346.74514</Table.Cell>
               <Table.Cell>Banana</Table.Cell>
               <Table.Cell>60</Table.Cell>
               <Table.Cell>3,00</Table.Cell>

@@ -1,6 +1,7 @@
 import './../../App.css';
 import React, { useState, useEffect } from 'react';
 import Footer from './../footer/footer.js';
+import { GrStatusGoodSmall } from 'react-icons/gr';
 import { Header, Icon, Container, Grid, Statistic, Segment, Card } from 'semantic-ui-react'
 import styled from 'styled-components'
 
@@ -10,7 +11,8 @@ function App() {
     margin:'10%'
   `;*/
 
-  const [apiResponse, setApiResponse] = useState('');
+  const [apiResponse, setApiResponse] = useState('offline');
+  const [statusColor, setStatusColor] = useState('red');
 
   useEffect(() => {  
     callApi();
@@ -19,7 +21,14 @@ function App() {
   async function callApi(){         
     await fetch('http://localhost:9000/testApi')
     .then(res => res.text())
-    .then(res => setApiResponse(res));
+    .then((res) => {
+      setApiResponse(res);
+      setStatusColor('green');
+      console.log("then");
+    }).catch((err) => {
+      setStatusColor('red');
+      console.log("catch");
+    })
   }
 
   return (
@@ -29,11 +38,10 @@ function App() {
           <Icon name='home' />
             Início
           <Header.Subheader style={{fontSize:'14px'}}>
-            Visualize as principais informações do seu Sistema
-            Retorno do backend: {apiResponse}
+            Visualize as principais informações do seu Sistema<br/>
           </Header.Subheader>
         </Header>
-          <Card style={{marginLeft:'43%'}}>
+          <Card style={{marginLeft:'38%'}}>
             <Card.Content style={{marginLeft:'10%'}}>
               <Statistic.Group size='tiny' >
                 <Grid>
@@ -61,6 +69,7 @@ function App() {
                       </Statistic>
                     </Grid.Column>
                     <h4 style={{fontSize:'14px', marginLeft:'11%'}}> Balanço de R$ 138 em 3 Produtos</h4>
+                    <p style={{fontSize:9, marginLeft:'33%'}}>Sistema {apiResponse} <GrStatusGoodSmall style={{color: statusColor }}/></p>
                   </Grid.Row>
                 </Grid>
               </Statistic.Group>

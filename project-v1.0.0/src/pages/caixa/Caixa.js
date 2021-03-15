@@ -38,7 +38,7 @@ function App() {
             <Popup content='Venda produtos disponíveis no Estoque' trigger={<Button style={{margin:'3%'}} onClick={handleOpenSellPopup}>VENDER</Button>} />
             <Header style={{margin:'3%', fontSize:'12px'}}>Descrição: Essa tabela mostra os produtos disponíveis no Estoque para venda</Header>
             <Table.Row>
-              <Table.HeaderCell>Id</Table.HeaderCell>
+              <Table.HeaderCell>Código de barras</Table.HeaderCell>
               <Table.HeaderCell>Produto</Table.HeaderCell>
               <Table.HeaderCell>Quantidade (kg)</Table.HeaderCell>
               <Table.HeaderCell>Preço compra (kg)</Table.HeaderCell>
@@ -46,29 +46,29 @@ function App() {
             </Table.Row>
           </Table.Header>
           <Table.Body>
-            <Table.Row>
-              <Table.Cell>1527</Table.Cell>
+          <Table.Row>
+              <Table.Cell>789.823426.51238</Table.Cell>
               <Table.Cell>Tomate</Table.Cell>
               <Table.Cell>25</Table.Cell>
               <Table.Cell>4,00</Table.Cell>
               <Table.Cell>5,20</Table.Cell>
             </Table.Row>
             <Table.Row>
-              <Table.Cell>2347</Table.Cell>
+              <Table.Cell>789.364726.55493</Table.Cell>
               <Table.Cell>Batata</Table.Cell>
               <Table.Cell>40</Table.Cell>
               <Table.Cell>3,00</Table.Cell>
               <Table.Cell>4,50</Table.Cell>
             </Table.Row>
             <Table.Row>
-              <Table.Cell>9252</Table.Cell>
+              <Table.Cell>789.824426.23738</Table.Cell>
               <Table.Cell>Cenoura</Table.Cell>
               <Table.Cell>5</Table.Cell>
               <Table.Cell>3,30</Table.Cell>
               <Table.Cell>4,00</Table.Cell>
             </Table.Row>
             <Table.Row>
-              <Table.Cell>9132</Table.Cell>
+              <Table.Cell>789.812346.74514</Table.Cell>
               <Table.Cell>Banana</Table.Cell>
               <Table.Cell>60</Table.Cell>
               <Table.Cell>3,00</Table.Cell>
@@ -89,8 +89,8 @@ function App() {
                 <p>
                   Preencha abaixo com as informações do produto disponível no estoque para vende-lo.
                 </p>
-                <Input focus placeholder='Id' style={{margin:'2%'}}/>
-                <Input focus labelPosition='right' placeholder='Quantidade' label={{ basic: true, content: 'kg' }}/><br/><br/>
+                <Input focus label="Código de Barras" placeholder='789.9999.99999' style={{margin:'2%'}}/><br/>
+                <Input focus label="Quantidade" placeholder='kg'/><br/><br/>
               </Modal.Description>
             </Modal.Content>
             <Modal.Actions>

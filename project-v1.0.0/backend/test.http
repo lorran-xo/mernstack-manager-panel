@@ -1,9 +1,12 @@
-POST http://localhost:9000/signup/
+POST http://localhost:9000/insertProduct/
 Content-Type: application/json
 
 {
-    "fullName":"Lorran",
-    "username":"lorranxo",
-    "email":"lorranxjf@gmail.com",
-    "password":"123123"
+    "code": "9823",
+    "productName":"Tomate",
+    "kgQuantity":"25",
+    "kgPurchasePrice":"4.00",
+    "totalKgPurchasePrice": "100.00",
+    "kgResalePrice":"5.20"
 }
+    

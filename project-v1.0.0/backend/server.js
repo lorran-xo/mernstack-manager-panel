@@ -12,9 +12,9 @@ var logger = require('morgan');
 
 //##### 1st FOLDER ROUTES IMPORTS #####
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var testApiRouter = require('./routes/testeApi')
 var signUpRoute = require('./routes/signUp')
+var insertProductRoute = require('./routes/insertProduct')
 //##### 1st ROUTES IMPORTS #####
 
 
@@ -37,9 +37,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 //##### 2nd ROUTES CREATIONS #####
 app.use(express.json());
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/testApi', testApiRouter);
-app.use('/signup', signUpRoute);
+app.use('/testApi', testApiRouter);//teste
+app.use('/signup', signUpRoute);//teste
+app.use('/insertProduct', insertProductRoute);
 app.listen(9000, () => console.log("server is up and running"))
 //##### 2nd ROUTES CREATIONS #####
 
