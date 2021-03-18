@@ -14,7 +14,7 @@ const Footer = () => {
           <AiFillGithub size="30"  color="#fff"/>
         </a>  
       </div>
-      <p className="footer__copyright">Feito por Lorran Oliveira</p>
+      <p className="footer__copyright">Desenvolvido por Lorran Oliveira</p>
     </footer>
   )
 }

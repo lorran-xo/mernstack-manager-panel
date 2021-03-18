@@ -29,6 +29,7 @@ function App() {
           <Card style={{marginLeft:'38%'}}>
             <Card.Content>
               <Image
+                alt="Author picture"
                 floated='right'
                 size='mini'
                 src={LorranPic}

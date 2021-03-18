@@ -9,7 +9,7 @@ import Sobre from './pages/sobre/Sobre';
 //SemanticUI
 import { Button, Grid, Icon, Label } from 'semantic-ui-react'
 //icons
-import HortiFrutiLogo from './images/hortiFrutiLogo.png';
+import GreenShopLogo from './images/Green-Shop-Logo.png';
 
 class AppShell extends Component {
   render() {
@@ -18,7 +18,7 @@ class AppShell extends Component {
         <Grid columns={4}>
           <Grid.Row>
             <Grid.Column>
-              <img src={HortiFrutiLogo} alt="Horti-Fruti-Logo" style={{}}/>
+              <img src={GreenShopLogo} alt="Green-Shop-Logo"/>
             </Grid.Column>
             <Grid.Column>
               <Button.Group horizontal style={{margin:"5%"}}>
