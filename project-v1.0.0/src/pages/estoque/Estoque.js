@@ -1,15 +1,24 @@
 import './../../App.css';
-import React /*, { useState }*/ from 'react';
+import React, { useState, useEffect } from 'react';
 import Footer from './../footer/footer.js';
 import { Table, Header, Icon, Container } from 'semantic-ui-react';
 function App() {
   
-    //const [count, setCount] = useState(0);
+    const [count, setCount] = useState(0);
 
-    /*function handleClick(){
-      setCount(count+1);
-      console.log("Vezes que o botão foi clicado: ", count);
-    }*/
+    useEffect(() => {  
+      listStock();
+    },[]);
+  
+    async function listStock(){         
+      await fetch('http://localhost:9000/listStock')
+      .then((response) => {
+        console.log(response.data);
+        console.log("then");
+      }).catch((err) => {
+        console.log("catch");
+      })
+    }
 
   return (
     <div>
@@ -21,7 +30,7 @@ function App() {
             Visualize os seus Produtos e suas informações
           </Header.Subheader>
         </Header>
-        <Table basic size='mini'>
+        <Table basic>
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell>Código de barras</Table.HeaderCell>

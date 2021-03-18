@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const productTemplate = new mongoose.Schema({
 	barCode:{
-		type:Number,
+		type:String,
 		required:true
 	},
 	productName:{

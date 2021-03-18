@@ -43,8 +43,6 @@ function App() {
       const min = 1;
       const max = 900;
 
-      //var calculatesBarCode = min + Math.random() * (max - min)
-
       var val1 = Math.floor(1000 + Math.random() * 9999);
       var val2 = Math.floor(100000 + Math.random() * 999999);
       var calculatesBarCode = "789."+val1+'.'+val2;
@@ -55,15 +53,15 @@ function App() {
       var kgResalePrice = resalePrice
       var calculatedTotalPurchasePrice = (pQuantity * purchasePrice)
 
-      /*const newProduct = {
+      const newProduct = {
         barCode: calculatesBarCode,
         productName: typedProductName,
         kgQuantity: pQuantity,
         kgPurchasePrice: purchasePrice,
         kgResalePrice: resalePrice,
         totalKgPurchasePrice: calculatedTotalPurchasePrice
-
       };
+      
       console.log(newProduct);
 
       axios.post('http://localhost:9000/insertProduct', newProduct)
