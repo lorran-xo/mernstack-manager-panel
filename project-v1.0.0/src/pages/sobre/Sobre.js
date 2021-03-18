@@ -15,7 +15,7 @@ function App() {
           <Icon name='info circle' />
            Sobre
           <Header.Subheader>
-            Saiba mais sobre o Sistema e todo seu desenvolvimento
+            Saiba mais sobre o Painel e todo seu desenvolvimento
           </Header.Subheader><br/>
           <Header.Subheader>
           <strong> Tecnologias Utilizadas </strong><br/><br/>
@@ -35,9 +35,11 @@ function App() {
                 src={LorranPic}
               />
               <Card.Header>Lorran Oliveira</Card.Header>
-              <Card.Meta>Desenvolvedor</Card.Meta>
+              <Card.Meta>Desenvolvedor Full-Stack</Card.Meta>
               <Card.Description>
-                Desenvolvedor ReactJS no Frontend e Node no backend. MongoDB no Banco de Dados.
+                 Frontend: ReactJS, JavaScript, HTML5, CSS3<br/>
+                 Backend:NodeJS<br/>
+                 Banco de Dados: MongoDB (NoSQL)
               </Card.Description>
             </Card.Content>
             <Card.Content extra>
