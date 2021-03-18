@@ -1,6 +1,6 @@
 const express = require("express");
 const router=express.Router();
-const productTemplateCopy = require('../models/insertProductModels')
+const productTemplateCopy = require('../models/ProductsModel')
 
 router.post("/", async(request, response) => {
 

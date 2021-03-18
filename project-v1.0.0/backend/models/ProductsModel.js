@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const productTemplate = new mongoose.Schema({
+let productSchema = new mongoose.Schema({
 	barCode:{
 		type:String,
 		required:true
@@ -30,5 +30,6 @@ const productTemplate = new mongoose.Schema({
 		default:Date.now
 	},
 })
-	
-module.exports = mongoose.model('productsdbs', productTemplate)
+
+
+module.exports = mongoose.model('productsdbs', productSchema)

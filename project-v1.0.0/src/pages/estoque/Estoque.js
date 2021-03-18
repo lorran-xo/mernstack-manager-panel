@@ -1,5 +1,6 @@
 import './../../App.css';
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Footer from './../footer/footer.js';
 import { Table, Header, Icon, Container } from 'semantic-ui-react';
 function App() {
@@ -10,14 +11,13 @@ function App() {
       listStock();
     },[]);
   
-    async function listStock(){         
-      await fetch('http://localhost:9000/listStock')
-      .then((response) => {
-        console.log(response.data);
-        console.log("then");
+    async function listStock(){     
+      fetch('http://localhost:9000/listStock').then(res => res.json().then(data =>({data: data}))
+      .then(res => {
+          console.log(res.data)
       }).catch((err) => {
         console.log("catch");
-      })
+      }));
     }
 
   return (
