@@ -3,7 +3,6 @@ const router=express.Router();
 const productTemplateCopy = require('../models/ProductsModel')
 
 router.post("/", async(request, response) => {
-
 	const newProduct = new productTemplateCopy({
 		barCode: request.body.barCode, //Busca dentro do schema criado a variavel fullName
 		productName: request.body.productName,

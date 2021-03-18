@@ -19,7 +19,7 @@ function App() {
   },[]);
 
   async function callApi(){         
-    await fetch('http://localhost:9000/testApi')
+    await fetch('http://localhost:9000/')
     .then(res => res.text())
     .then((res) => {
       setApiResponse(res);
