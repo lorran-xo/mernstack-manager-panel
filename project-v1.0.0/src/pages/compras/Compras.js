@@ -99,7 +99,7 @@ function App() {
 
   return (
     <div>
-      <Container style={{backgroundColor: "white", width:"97%"}}><br/>
+      <Container style={{backgroundColor: "white", width:"97%", padding:'3%'}}><br/>
         <Header as='h2' icon style={{marginLeft:'37%'}}>
           <Icon name='cart' />
            Compras
@@ -167,7 +167,7 @@ function App() {
           </Modal>
         </div>
       </Container>
-      <center style={{margin:'1%'}}><Footer/></center>
+      <center style={{margin:'6.4%'}}><Footer/></center>
     </div>
   );
 }

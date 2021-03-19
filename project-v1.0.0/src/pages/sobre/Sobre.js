@@ -11,7 +11,7 @@ function App() {
       {/*<header className="App-header">
       </header>*/}
       <Container style={{backgroundColor: "white", width:"97%"}}><br/>
-        <Header as='h2' icon style={{marginLeft:'35%'}}>
+        <Header as='h2' icon style={{marginLeft:'40%'}}>
           <Icon name='info circle' />
            Sobre
           <Header.Subheader>
@@ -26,7 +26,7 @@ function App() {
            <span style={{fontSize:'13px'}}>Foram utilizadas as metodologias ágeis Scrum e Kanban nesse projeto.<br/>Versionamento de código Git (Github).</span>
           </Header.Subheader><br/>
         </Header>
-          <Card style={{marginLeft:'38%'}}>
+          <Card style={{marginLeft:'43%'}}>
             <Card.Content>
               <Image
                 alt="Author picture"
@@ -51,7 +51,7 @@ function App() {
             </Card.Content>
           </Card><br/>
       </Container>
-      <center style={{margin:'1%'}}><Footer/></center>
+      <center style={{marginTop:'-3%'}}><Footer/></center>
     </div>
   );
 }

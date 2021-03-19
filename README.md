@@ -39,13 +39,12 @@ todos que tem a necessidade de gerenciar um negócio com Estoque, Compras, Venda
 
 This project is a Stock and Cash Flow Management Panel that can be adapted for different
 business areas that involve finances, such as bakeries, grocery stores, markets, restaurants, bars and
-everything that has to manage a business with Stock, Purchases, Sales and Cash flow.
+everything that needs to manage a business with Stock, Purchases, Sales and Cash flow.
 
 ## :rocket: Technologies ##
 
 The following tools were used in this project:
 
-MERN Stack -> 
 - [MongoDB](https://www.mongodb.com/)
 - [Express](https://expressjs.com/)
 - [React](https://reactjs.org/)
@@ -53,6 +52,7 @@ MERN Stack ->
 - [Mongoose](https://mongoosejs.com/)
 - [Nodemon](https://nodemon.io/)
 - [Semantic UI React](https://react.semantic-ui.com/)
+- [Styled Components](https://styled-components.com/)
 
 ## :white_check_mark: Requirements ##
 

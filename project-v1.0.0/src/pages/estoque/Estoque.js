@@ -22,12 +22,12 @@ function App() {
 
   return (
     <div>
-      <Container style={{backgroundColor: "white", width:"97%"}}><br/>
-        <Header as='h2' icon style={{marginLeft:'40%'}}>
+      <Container style={{backgroundColor: "white", width:"97%", padding:'3%'}}><br/>
+        <Header as='h2' icon style={{marginLeft:'41%'}}>
           <Icon name='cart' />
            Estoque
           <Header.Subheader style={{fontSize:'14px'}}>
-            Visualize os seus Produtos e suas informações
+            Visualize os produtos do seu estoque e suas informações
           </Header.Subheader>
         </Header>
         <Table basic>
@@ -72,7 +72,7 @@ function App() {
           </Table.Body>
         </Table><br/>
       </Container>
-      <center style={{margin:'1%'}}><Footer/></center>
+      <center style={{margin:'7.7%'}}><Footer/></center>
     </div>
   );
 }

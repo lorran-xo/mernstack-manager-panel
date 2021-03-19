@@ -14,14 +14,14 @@ import GreenShopLogo from './images/Green-Shop-Logo.png';
 class AppShell extends Component {
   render() {
     return (  //F3F3F3, DCE1E3, FDF8F5, a2c3a3, b2cdb2
-      <div style={{backgroundColor:'#b2cdb2'}}>
+      <div style={{backgroundColor:'#b2cdb2', paddingTop:'0.5%'}}>
         <Grid columns={4}>
           <Grid.Row>
-            <Grid.Column>
+            <Grid.Column style={{margin:'1%'}}>
               <img src={GreenShopLogo} alt="Green-Shop-Logo"/>
             </Grid.Column>
             <Grid.Column>
-              <Button.Group horizontal style={{margin:"5%"}}>
+              <Button.Group horizontal style={{margin:"10%"}}>
                 <Link to='/'><Button labelPosition='right' icon>Início<Icon name='home'/></Button></Link>
                 <Link to='/estoque'><Button labelPosition='right' icon>Estoque<Icon name='dolly flatbed'/></Button></Link>
                 <Link to='/caixa'><Button labelPosition='right' icon>Caixa<Icon name='archive'/></Button></Link>

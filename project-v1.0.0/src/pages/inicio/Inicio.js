@@ -33,50 +33,47 @@ function App() {
 
   return (
     <div>
-      <Container style={{backgroundColor: "white", width:"97%"}}><br/>
-        <Header as='h2' icon style={{marginLeft:'37%'}}>
+      <Container style={{backgroundColor: "white", width:"97%", padding:'3%'}}><br/>
+        <Header as='h2' icon style={{marginLeft:'42%'}}>
           <Icon name='home' />
             Início
           <Header.Subheader style={{fontSize:'14px'}}>
-            Visualize as principais informações do seu Sistema<br/>
-          </Header.Subheader>
+            Visualize as principais informações do seu Sistema
+          </Header.Subheader><br/>
         </Header>
-          <Card style={{marginLeft:'38%'}}>
-            <Card.Content style={{marginLeft:'10%'}}>
-              <Statistic.Group size='tiny' >
-                <Grid>
-                  <Grid.Row container columns={4}>
+          <Card style={{marginLeft:'42%'}}> 
+            <Card.Content style={{marginLeft:'10%', margin:"5%"}}>
+              <Statistic.Group size='tiny'>
+                <h2 style={{marginLeft:'25%'}}>DASHBOARD</h2>
+                <Grid class="ui grid">
+                  <Grid.Row container columns={3}>
                     <Grid.Column>
-                      <Statistic>
-                        <Statistic.Value>R$ 520</Statistic.Value>
-                        <Statistic.Label>Em compras</Statistic.Label>
+                      <Statistic><br/>
+                        <Statistic.Value>R$520</Statistic.Value>
+                        <Statistic.Label style={{fontSize:'12px'}}>em compras</Statistic.Label>
                       </Statistic>
                     </Grid.Column>
                     <Grid.Column>
-                      <Statistic>
-                        <Statistic.Value>
-                          R$ 658
-                        </Statistic.Value>
-                        <Statistic.Label>Em vendas</Statistic.Label>
+                      <Statistic><br/>
+                        <Statistic.Value>R$658</Statistic.Value>
+                        <Statistic.Label style={{fontSize:'12px'}}>em vendas</Statistic.Label>
                       </Statistic>
                     </Grid.Column>
                     <Grid.Column>
-                      <Statistic>
-                        <Statistic.Value>
-                          3
-                        </Statistic.Value>
-                        <Statistic.Label>Produtos</Statistic.Label>
-                      </Statistic>
+                        <Statistic><br/>
+                          <Statistic.Value>3</Statistic.Value>
+                          <Statistic.Label style={{fontSize:'12px'}}>Produtos</Statistic.Label>
+                        </Statistic>
                     </Grid.Column>
-                    <h4 style={{fontSize:'14px', marginLeft:'11%'}}> Balanço de R$ 138 em 3 Produtos</h4>
-                    <p style={{fontSize:9, marginLeft:'33%'}}>Sistema {apiResponse} <GrStatusGoodSmall style={{color: statusColor }}/></p>
                   </Grid.Row>
                 </Grid>
               </Statistic.Group>
-            </Card.Content>
-          </Card><br/><br/><br/>
+            </Card.Content><br/><br/>
+              <center><h3 style={{fontSize:'14px'}}> Balanço de R$ 138 em 3 Produtos</h3><br/><br/>
+              <p style={{fontSize:10}}><b>Status do sistema:</b> {apiResponse} <GrStatusGoodSmall style={{color: statusColor }}/></p></center>
+            </Card>
       </Container>
-      <center style={{margin:'10%'}}><Footer/></center>
+      <center style={{margin:'4.7%'}}><Footer/></center>
     </div>
   );
 }

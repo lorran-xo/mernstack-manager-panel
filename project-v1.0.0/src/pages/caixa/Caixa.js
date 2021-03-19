@@ -25,8 +25,8 @@ function App() {
 
   return (
      <div>
-      <Container style={{backgroundColor: "white", width:"97%"}}><br/>
-        <Header as='h2' icon style={{marginLeft:'40%'}}>
+      <Container style={{backgroundColor: "white", width:"97%", padding:'3%'}}><br/>
+        <Header as='h2' icon style={{marginLeft:'41%'}}>
           <Icon name='archive' />
            Caixa
           <Header.Subheader style={{fontSize:'14px'}}>
@@ -110,7 +110,7 @@ function App() {
           </Modal>
         </div>
       </Container>
-      <center style={{margin:'1%'}}><Footer/></center>
+      <center style={{marginTop:'-3%'}}><Footer/></center>
     </div>
   );
 }
