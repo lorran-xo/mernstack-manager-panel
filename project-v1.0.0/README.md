@@ -35,11 +35,11 @@
 
 Esse projeto é um Painel gerenciador de Estoque e fluxos de Caixa que pode ser adaptado para diversos 
 ramos de empreendimento que envolvem finanças, como por exemplo padarias, mercearias, mercados, horti-frutis, restaurantes, bares e 
-todos que tem a necessidade de gerenciar um negócio com Estoque, Compras, Vendas e Caixa.
+todos que tem a necessidade de gerenciar um negócio com controle de Estoque, Compras, Vendas e Caixa.
 
 This project is a Stock and Cash Flow Management Panel that can be adapted for different
 business areas that involve finances, such as bakeries, grocery stores, markets, restaurants, bars and
-everything that needs to manage a business with Stock, Purchases, Sales and Cash flow.
+everything that needs to manage a business controlling Stock, Purchases, Sales and Cash flow.
 
 ## :rocket: Technologies ##
 

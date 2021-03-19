@@ -31,7 +31,6 @@ class AppShell extends Component {
                   Saldo
                   <Label.Detail>1200</Label.Detail>
                 </Label>
-                
               </Button.Group>
               {/*<center style={{margin:'1%'}}><Header style={{fontSize:'14px'}}>Saldo: R$ 1200 </Header></center>*/}
             </Grid.Column>
