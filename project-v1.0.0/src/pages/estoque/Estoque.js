@@ -6,10 +6,7 @@ import Footer from './../footer/footer.js';
 import { Header, Icon, Container } from 'semantic-ui-react';
 function App() {
   
-    const [count, setCount] = useState(0);
-
     useEffect(() => {  
-      setCount('1')
     },[]);
 
   return (
@@ -22,8 +19,8 @@ function App() {
             Visualize os produtos do seu estoque e suas informações
           </Header.Subheader>
         </Header>
+        <StockTable/>
       </Container>
-      <StockTable value={count}/>
       <center style={{margin:'7.7%'}}><Footer/></center>
     </div>
   );

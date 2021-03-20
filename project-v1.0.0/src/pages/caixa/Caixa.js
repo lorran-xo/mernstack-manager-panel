@@ -1,5 +1,6 @@
 import './../../App.css';
 import React, { useState } from 'react';
+import StockTable from './components/stockTable';
 import Footer from './../footer/footer.js';
 import { GrCart } from 'react-icons/gr';
 import { Table, Button,
@@ -33,49 +34,7 @@ function App() {
             Visualize e venda os produtos disponíveis no estoque
           </Header.Subheader>
         </Header>
-        <Table basic size='mini'>
-          <Table.Header>
-            <Popup content='Venda produtos disponíveis no Estoque' trigger={<Button style={{margin:'3%'}} onClick={handleOpenSellPopup}>VENDER</Button>} />
-            <Header style={{margin:'3%', fontSize:'12px'}}>Descrição: Essa tabela mostra os produtos disponíveis no Estoque para venda</Header>
-            <Table.Row>
-              <Table.HeaderCell>Código de barras</Table.HeaderCell>
-              <Table.HeaderCell>Produto</Table.HeaderCell>
-              <Table.HeaderCell>Quantidade (kg)</Table.HeaderCell>
-              <Table.HeaderCell>Preço compra (kg)</Table.HeaderCell>
-              <Table.HeaderCell>Preço revenda (kg)</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-          <Table.Row>
-              <Table.Cell>789.823426.51238</Table.Cell>
-              <Table.Cell>Tomate</Table.Cell>
-              <Table.Cell>25</Table.Cell>
-              <Table.Cell>4,00</Table.Cell>
-              <Table.Cell>5,20</Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell>789.364726.55493</Table.Cell>
-              <Table.Cell>Batata</Table.Cell>
-              <Table.Cell>40</Table.Cell>
-              <Table.Cell>3,00</Table.Cell>
-              <Table.Cell>4,50</Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell>789.824426.23738</Table.Cell>
-              <Table.Cell>Cenoura</Table.Cell>
-              <Table.Cell>5</Table.Cell>
-              <Table.Cell>3,30</Table.Cell>
-              <Table.Cell>4,00</Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell>789.812346.74514</Table.Cell>
-              <Table.Cell>Banana</Table.Cell>
-              <Table.Cell>60</Table.Cell>
-              <Table.Cell>3,00</Table.Cell>
-              <Table.Cell>6,00</Table.Cell>
-            </Table.Row>
-          </Table.Body>
-        </Table><br/>
+          <StockTable/><br/>
         <div>
           <Modal
             onClose={handleCloseSellPopup} 

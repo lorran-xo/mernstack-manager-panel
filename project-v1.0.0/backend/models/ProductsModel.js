@@ -14,7 +14,7 @@ let productSchema = new mongoose.Schema({
 		required:true
 	},
 	kgPurchasePrice:{
-		type:Number,
+		type:Number, //toDo:passar pra Double
 		required:true
 	},
 	totalKgPurchasePrice:{

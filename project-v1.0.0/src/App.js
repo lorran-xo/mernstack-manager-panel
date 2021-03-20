@@ -15,7 +15,7 @@ class AppShell extends Component {
   render() {
     return (  //F3F3F3, DCE1E3, FDF8F5, a2c3a3, b2cdb2
       <div style={{backgroundColor:'#b2cdb2', paddingTop:'0.5%'}}>
-        <Grid columns={4}>
+        <Grid columns={4}> {/*toDo:Analisar GRID*/}
           <Grid.Row>
             <Grid.Column style={{margin:'1%'}}>
               <img src={GreenShopLogo} alt="Green-Shop-Logo"/>

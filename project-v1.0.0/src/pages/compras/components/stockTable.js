@@ -1,6 +1,7 @@
 import React from "react";
 import DataTable from 'react-data-table-component';
-import { Grid } from 'semantic-ui-react'
+import { Grid, Button, Popup } from 'semantic-ui-react'
+import { FaCartPlus } from 'react-icons/fa';
 
 class Table extends React.Component {
 
@@ -38,7 +39,10 @@ class Table extends React.Component {
             d = 'R$ '+res.data[i].kgPurchasePrice+' /kg';
             e = 'R$ '+res.data[i].kgResalePrice+' /kg';
 
-            stockData.push({'cod': a, 'product': b, 'quantity': c, 'purchasePrice': d, 'resalePrice': e/*, 'actions':<EditVirtualNumber refreshTable={this.handleRefreshTable} number={res.data[i].number} />*/});
+            stockData.push({'actions': <Popup content='Reabastecer esse produto' trigger={<Button><FaCartPlus style={{width:'150%', height:'150%', cursor:"pointer"}}/></Button>} />,
+            'cod': a, 'product': b, 'quantity': c, 'purchasePrice': d, 'resalePrice': e});
+            
+            
             cont = i;
           }
           this.setState({ noData: false });
@@ -82,6 +86,11 @@ class Table extends React.Component {
     };
     
     const columns = [
+      {
+        selector: "actions",
+        name: "Ação",
+        sortable: true,
+      },
       {
         selector: "cod",
         name: "Código de Barras",

@@ -1,9 +1,10 @@
 import './../../App.css';
 import React, { useState } from 'react';
+import StockTable from './components/stockTable';
 import Footer from './../footer/footer.js';
 import { GrCart } from 'react-icons/gr';
 import axios from 'axios';
-import { Table, Button,
+import { Button,
   Header, Modal, Input, Icon, Popup, Container } from 'semantic-ui-react'
 
 function App() {
@@ -106,27 +107,10 @@ function App() {
           <Header.Subheader style={{fontSize:'14px'}}>
             Compre produtos para adicionar em seu Estoque sempre que precisar
           </Header.Subheader>
-        </Header>
-        <Table basic size='mini'>
-          <Table.Header>
-            <Popup content='Compre produtos pro Estoque' trigger={<Button style={{margin:'3%'}} onClick={handleOpenBuyPopup}>COMPRAR</Button>} />
-            <Header style={{margin:'3%', fontSize:'12px'}}>Descrição: Essa tabela mostra produtos com menos de 5kg no estoque</Header>
-            <Table.Row>
-              <Table.HeaderCell>Produto</Table.HeaderCell>
-              <Table.HeaderCell>Quantidade (kg)</Table.HeaderCell>
-              <Table.HeaderCell>Preço compra (kg)</Table.HeaderCell>
-              <Table.HeaderCell>Preço revenda (kg)</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            <Table.Row>
-              <Table.Cell>Cenoura</Table.Cell>
-              <Table.Cell>5</Table.Cell>
-              <Table.Cell>3,30</Table.Cell>
-              <Table.Cell>4,00</Table.Cell>
-            </Table.Row>
-          </Table.Body>
-        </Table><br/>
+        </Header><br/>
+          <center style={{marginLeft:'5%'}}><Popup content='Compre produtos pro Estoque' trigger={<Button style={{margin:'3%'}} onClick={handleOpenBuyPopup}>COMPRAR</Button>} /></center>
+        <StockTable/>
+        <br/>
         <div>
           <Modal
             onClose={handleCloseBuyPopup} 
