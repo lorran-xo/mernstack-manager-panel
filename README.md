@@ -41,6 +41,8 @@ This project is a Stock and Cash Flow Management Panel that can be adapted for d
 business areas that involve finances, such as bakeries, grocery stores, markets, restaurants, bars and
 everything that needs to manage a business controlling Stock, Purchases, Sales and Cash flow.
 
+   | [Project Kanban](https://github.com/lorran-xo/mernstack-manager-panel/projects/1) |
+
 ## :rocket: Technologies ##
 
 The following tools were used in this project:
