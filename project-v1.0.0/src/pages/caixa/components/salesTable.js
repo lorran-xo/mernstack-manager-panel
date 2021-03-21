@@ -39,15 +39,17 @@ class Table extends React.Component {
             d = 'R$ '+res.data[i].kgPurchasePrice+' /kg';
             e = 'R$ '+res.data[i].kgResalePrice+' /kg';
 
-            stockData.push({'actions': <Popup content={'Vender '+ res.data[i].productName } trigger={<button style={{border: 'none', background:'none'}}><MdMonetizationOn style={{width:'145%', height:'145%', color:'green', cursor:"pointer"}}/></button>} />,
+            if(res.data[i].kgQuantity == 0){
+              console.log("Em falta no estoque!", res.data[i].productName);
+            } else {
+              stockData.push({'actions': <Popup content={'Vender '+ res.data[i].productName } trigger={<button style={{border: 'none', background:'none'}}><MdMonetizationOn style={{width:'145%', height:'145%', color:'green', cursor:"pointer"}}/></button>} />,
             'cod': a, 'product': b, 'quantity': c, 'purchasePrice': d, 'resalePrice': e});
-            
-            
+            }
+ 
             cont = i;
           }
           this.setState({ noData: false });
         }).catch((err) => {
-          console.log("catch");
           this.setState({ noData: true });
         }));
 
@@ -59,9 +61,6 @@ class Table extends React.Component {
         });
       }, 0);
     });
-
-    console.log(this.state.data);
-
   }
 
   render() {
@@ -149,7 +148,6 @@ class Table extends React.Component {
     */
 
     const { data, isLoading } = this.state;
-    console.log(this.state.noData);
     return (
       <div style={{margin:'1.5%'}}>
         {this.state.noData ? (

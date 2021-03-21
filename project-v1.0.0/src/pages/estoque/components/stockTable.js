@@ -1,6 +1,6 @@
 import React from "react";
 import DataTable from 'react-data-table-component';
-import { Grid } from 'semantic-ui-react'
+import { Grid, Popup } from 'semantic-ui-react'
 
 class Table extends React.Component {
 
@@ -30,7 +30,6 @@ class Table extends React.Component {
 
       fetch('http://localhost:9000/listStock').then(res => res.json().then(data =>({data: data}))
         .then((res) => {
-          console.log(res.data);
           for (let i = 0; i < res.data.length; i += 1) {
             a = res.data[i].barCode;
             b = res.data[i].productName;
@@ -38,12 +37,17 @@ class Table extends React.Component {
             d = 'R$ '+res.data[i].kgPurchasePrice+' /kg';
             e = 'R$ '+res.data[i].kgResalePrice+' /kg';
 
-            stockData.push({'cod': a, 'product': b, 'quantity': c, 'purchasePrice': d, 'resalePrice': e/*, 'actions':<EditVirtualNumber refreshTable={this.handleRefreshTable} number={res.data[i].number} />*/});
+            if(res.data[i].kgQuantity <= 5){
+              console.log('Produto no fim, recomendado comprar agora!', res.data[i].productName);
+              stockData.push({'cod': a, 'product': b, 'quantity': <Popup content={'Este produto está no fim!'} trigger={<span style={{color:"red"}}>{c}</span>}/>, 'purchasePrice': d, 'resalePrice': e});
+            } else {
+              stockData.push({'cod': a, 'product': b, 'quantity': c, 'purchasePrice': d, 'resalePrice': e});
+            }
+
             cont = i;
           }
           this.setState({ noData: false });
         }).catch((err) => {
-          console.log("catch");
           this.setState({ noData: true });
         }));
 
@@ -55,9 +59,6 @@ class Table extends React.Component {
         });
       }, 0);
     });
-
-    console.log(this.state.data);
-
   }
 
   render() {
@@ -141,7 +142,6 @@ class Table extends React.Component {
     */
 
     const { data, isLoading } = this.state;
-    console.log(this.state.noData);
     return (
       <div style={{margin:'1.5%'}}>
         {this.state.noData ? (
