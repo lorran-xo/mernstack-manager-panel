@@ -1,6 +1,6 @@
 import React from "react";
 import DataTable from 'react-data-table-component';
-import { Grid, Button, Popup } from 'semantic-ui-react'
+import { Grid, Popup, Divider } from 'semantic-ui-react'
 import { MdMonetizationOn } from 'react-icons/md';
 
 class Table extends React.Component {
@@ -173,7 +173,7 @@ class Table extends React.Component {
             paginationPerPage='7'
             paginationRowsPerPageOptions={[5, 10, 15, 20, 25, 30]}
             paginationComponentOptions={{rowsPerPageText: 'Linhas por página:', rangeSeparatorText: 'de', selectAllRowsItem: true, selectAllRowsItemText: 'Todas'}}
-
+            noDataComponent={<i style={{fontSize:"12px"}}><div class="ui divider"/>Não existem produtos disponíveis para venda, compre em "Compras".</i>}
           />
       )}
       </div>

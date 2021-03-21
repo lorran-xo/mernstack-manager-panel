@@ -167,7 +167,7 @@ class Table extends React.Component {
             paginationPerPage='7'
             paginationRowsPerPageOptions={[5, 10, 15, 20, 25, 30]}
             paginationComponentOptions={{rowsPerPageText: 'Linhas por página:', rangeSeparatorText: 'de', selectAllRowsItem: true, selectAllRowsItemText: 'Todas'}}
-
+            noDataComponent={<i style={{fontSize:"12px"}}><div class="ui divider"/>Não existem produtos no estoque, compre na aba "Compras".</i>}
           />
       )}
       </div>

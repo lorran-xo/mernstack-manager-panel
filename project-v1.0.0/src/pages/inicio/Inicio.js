@@ -73,7 +73,7 @@ function App() {
               <p style={{fontSize:10}}><b>Status do sistema:</b> {apiResponse} <GrStatusGoodSmall style={{color: statusColor }}/></p></center>
             </Card>
       </Container>
-      <center style={{margin:'4.7%'}}><Footer/></center>
+      <center style={{margin:'3%'}}><Footer/></center>
     </div>
   );
 }

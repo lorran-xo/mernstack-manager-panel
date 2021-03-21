@@ -116,9 +116,9 @@ function App() {
           <Header.Subheader style={{fontSize:'14px'}}>
             Compre produtos para adicionar em seu Estoque sempre que precisar
           </Header.Subheader>
+          <center><Popup content='Compre produtos pro Estoque' trigger={<Button style={{margin:'10%'}} onClick={handleOpenBuyPopup}>COMPRAR</Button>} /></center>
+          <PurchaseTable ref={passingLoadingTable}/>
         </Header><br/>
-          <center style={{marginLeft:'5%'}}><Popup content='Compre produtos pro Estoque' trigger={<Button style={{margin:'3%'}} onClick={handleOpenBuyPopup}>COMPRAR</Button>} /></center>
-        <PurchaseTable ref={passingLoadingTable}/>
         <br/>
         <div>
           <Modal
@@ -160,7 +160,7 @@ function App() {
           </Modal>
         </div>
       </Container>
-      <center style={{margin:'6.4%'}}><Footer/></center>
+      <center><Footer/></center>
     </div>
   );
 }

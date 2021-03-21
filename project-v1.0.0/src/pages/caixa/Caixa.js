@@ -38,8 +38,8 @@ function App() {
           <Header.Subheader style={{fontSize:'14px'}}>
             Visualize e venda os produtos disponíveis no estoque
           </Header.Subheader>
-        </Header>
-          <SalesTable/><br/>
+          <SalesTable/>
+        </Header><br/>
         <div>
           <Modal
             onClose={handleCloseSellPopup} 
@@ -74,7 +74,7 @@ function App() {
           </Modal>
         </div>
       </Container>
-      <center style={{marginTop:'-3%'}}><Footer/></center>
+      <center><Footer/></center>
     </div>
   );
 }
