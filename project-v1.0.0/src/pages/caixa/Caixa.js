@@ -1,6 +1,6 @@
 import './../../App.css';
 import React, { useState } from 'react';
-import StockTable from './components/stockTable';
+import SalesTable from './components/salesTable';
 import Footer from './../footer/footer.js';
 import { GrCart } from 'react-icons/gr';
 import { Table, Button,
@@ -9,6 +9,7 @@ import { Table, Button,
 function App() {
 
     const [openSellPopup, setOpenSellPopup] = useState(false);
+    const [passingLoadingTable] = useState(React.createRef());
 
     function handleOpenSellPopup(){
       setOpenSellPopup(true);
@@ -21,7 +22,11 @@ function App() {
     function handleConfirmSellPopup(){
       setOpenSellPopup(false);
       console.log("Venda efetuada!");
-      window.location.reload();
+      updateTable();
+    }
+
+    function updateTable(){
+      passingLoadingTable.current.loadData();
     }
 
   return (
@@ -34,7 +39,7 @@ function App() {
             Visualize e venda os produtos disponíveis no estoque
           </Header.Subheader>
         </Header>
-          <StockTable/><br/>
+          <SalesTable/><br/>
         <div>
           <Modal
             onClose={handleCloseSellPopup} 

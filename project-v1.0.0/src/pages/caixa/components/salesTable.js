@@ -1,7 +1,7 @@
 import React from "react";
 import DataTable from 'react-data-table-component';
 import { Grid, Button, Popup } from 'semantic-ui-react'
-import { FaCartPlus } from 'react-icons/fa';
+import { MdMonetizationOn } from 'react-icons/md';
 
 class Table extends React.Component {
 
@@ -39,7 +39,7 @@ class Table extends React.Component {
             d = 'R$ '+res.data[i].kgPurchasePrice+' /kg';
             e = 'R$ '+res.data[i].kgResalePrice+' /kg';
 
-            stockData.push({'actions': <Popup content='Reabastecer esse produto' trigger={<Button><FaCartPlus style={{width:'150%', height:'150%', cursor:"pointer"}}/></Button>} />,
+            stockData.push({'actions': <Popup content={'Vender '+ res.data[i].productName } trigger={<button style={{border: 'none', background:'none'}}><MdMonetizationOn style={{width:'145%', height:'145%', color:'green', cursor:"pointer"}}/></button>} />,
             'cod': a, 'product': b, 'quantity': c, 'purchasePrice': d, 'resalePrice': e});
             
             
@@ -89,7 +89,6 @@ class Table extends React.Component {
       {
         selector: "actions",
         name: "Ação",
-        sortable: true,
       },
       {
         selector: "cod",

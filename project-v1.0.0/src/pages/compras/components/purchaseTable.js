@@ -1,7 +1,7 @@
 import React from "react";
 import DataTable from 'react-data-table-component';
-import { Grid, Button, Popup } from 'semantic-ui-react'
-import { GiMoneyStack } from 'react-icons/gi';
+import { Grid, Button, Popup, Progress } from 'semantic-ui-react'
+import { FaCartArrowDown } from 'react-icons/fa';
 
 class Table extends React.Component {
 
@@ -39,7 +39,7 @@ class Table extends React.Component {
             d = 'R$ '+res.data[i].kgPurchasePrice+' /kg';
             e = 'R$ '+res.data[i].kgResalePrice+' /kg';
 
-            stockData.push({'actions': <Popup content='Vender desse produto' trigger={<Button><GiMoneyStack style={{width:'150%', height:'150%', color:'green', cursor:"pointer"}}/></Button>} />,
+            stockData.push({'actions': <Popup content={'Comprar mais '+ res.data[i].productName } trigger={<button style={{border: 'none', background:'none'}}><FaCartArrowDown style={{width:'145%', height:'145%', cursor:"pointer"}}/></button>} />,
             'cod': a, 'product': b, 'quantity': c, 'purchasePrice': d, 'resalePrice': e});
             
             
@@ -89,7 +89,6 @@ class Table extends React.Component {
       {
         selector: "actions",
         name: "Ação",
-        sortable: true,
       },
       {
         selector: "cod",

@@ -1,11 +1,11 @@
 import './../../App.css';
 import React, { useState } from 'react';
-import StockTable from './components/stockTable';
+import PurchaseTable from './components/purchaseTable';
 import Footer from './../footer/footer.js';
 import { GrCart } from 'react-icons/gr';
 import axios from 'axios';
 import { Button,
-  Header, Modal, Input, Icon, Popup, Container } from 'semantic-ui-react'
+  Header, Modal, Input, Icon, Popup, Container, Message } from 'semantic-ui-react'
 
 function App() {
   const [openBuyPopup, setOpenBuyPopup] = useState(false);
@@ -14,6 +14,8 @@ function App() {
   const [pQuantity, setPquantity] = useState('');
   const [resalePrice, setResalePrice] = useState('');
   const [purchasePrice, setPurchasePrice] = useState('');
+  const [successfulClass, setSuccessfulClass] = useState("ui hidden message");
+  const [passingLoadingTable] = useState(React.createRef());
 
   const [newProduct, setNewProduct] = useState('');
 
@@ -68,9 +70,9 @@ function App() {
       axios.post('http://localhost:9000/insertProduct', newProduct)
         .then(response => console.log(response.data))
 
-      console.log("Compra efetuada!");
       setOpenBuyPopup(false);
-      /*window.location.reload();*/
+      setSuccessfulClass("ui message");
+      updateTable();
     }
 
     function handleOpenBuyPopup(){
@@ -98,9 +100,16 @@ function App() {
       setResalePrice(e);
     }
 
+    function updateTable(){
+      passingLoadingTable.current.loadData();
+    }
+
   return (
     <div>
       <Container style={{backgroundColor: "white", width:"97%", padding:'3%'}}><br/>
+        <div class={successfulClass}>
+          <p>A compra foi efetuada com sucesso!</p>
+        </div>
         <Header as='h2' icon style={{marginLeft:'37%'}}>
           <Icon name='cart' />
            Compras
@@ -109,7 +118,7 @@ function App() {
           </Header.Subheader>
         </Header><br/>
           <center style={{marginLeft:'5%'}}><Popup content='Compre produtos pro Estoque' trigger={<Button style={{margin:'3%'}} onClick={handleOpenBuyPopup}>COMPRAR</Button>} /></center>
-        <StockTable/>
+        <PurchaseTable ref={passingLoadingTable}/>
         <br/>
         <div>
           <Modal
