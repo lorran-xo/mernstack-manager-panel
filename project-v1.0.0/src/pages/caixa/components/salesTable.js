@@ -1,7 +1,7 @@
 import React from "react";
 import DataTable from 'react-data-table-component';
-import { Grid, Popup, Divider } from 'semantic-ui-react'
-import { MdMonetizationOn } from 'react-icons/md';
+import SalesAction from './salesAction';
+import { Grid } from 'semantic-ui-react'
 
 class Table extends React.Component {
 
@@ -31,7 +31,6 @@ class Table extends React.Component {
 
       fetch('http://localhost:9000/listStock').then(res => res.json().then(data =>({data: data}))
         .then((res) => {
-          console.log(res.data);
           for (let i = 0; i < res.data.length; i += 1) {
             a = res.data[i].barCode;
             b = res.data[i].productName;
@@ -40,9 +39,8 @@ class Table extends React.Component {
             e = 'R$ '+res.data[i].kgResalePrice+' /kg';
 
             if(res.data[i].kgQuantity == 0){
-              console.log("Em falta no estoque!", res.data[i].productName);
             } else {
-              stockData.push({'actions': <Popup content={'Vender '+ res.data[i].productName } trigger={<button style={{border: 'none', background:'none'}}><MdMonetizationOn onClick={console.log("teste")} style={{width:'145%', height:'145%', color:'green', cursor:"pointer"}}/></button>} />,
+              stockData.push({'actions': <SalesAction productName={res.data[i].productName} availableQtd={res.data[i].kgQuantity} resalePrice={res.data[i].kgResalePrice}/>,
             'cod': a, 'product': b, 'quantity': c, 'purchasePrice': d, 'resalePrice': e});
             }
  
@@ -151,7 +149,7 @@ class Table extends React.Component {
     return (
       <div style={{margin:'1.5%'}}>
         {this.state.noData ? (
-          <div>
+          <div style={{marginLeft:'3%'}}>
             <Grid columns={1}>
               <Grid.Row>
                 <Grid.Column>
@@ -174,7 +172,7 @@ class Table extends React.Component {
               paginationPerPage='7'
               paginationRowsPerPageOptions={[5, 10, 15, 20, 25, 30]}
               paginationComponentOptions={{rowsPerPageText: 'Produtos por página:', rangeSeparatorText: 'de', selectAllRowsItem: true, selectAllRowsItemText: 'Todas'}}
-              noDataComponent={<i style={{fontSize:"12px", marginLeft:'-10%'}}><div class="ui divider"/>Não existem produtos disponíveis para venda, compre em "Compras".</i>}
+              noDataComponent={<i style={{fontSize:"12px", marginLeft:'-10%'}}><div class="ui divider"/>Não existem produtos disponíveis para venda, compre na aba "Compras".</i>}
             />
           </div>
       )}

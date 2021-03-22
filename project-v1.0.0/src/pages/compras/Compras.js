@@ -2,10 +2,9 @@ import './../../App.css';
 import React, { useState } from 'react';
 import PurchaseTable from './components/purchaseTable';
 import Footer from './../footer/footer.js';
-import { GrCart } from 'react-icons/gr';
 import axios from 'axios';
 import { Button,
-  Header, Modal, Input, Icon, Popup, Container, Message } from 'semantic-ui-react'
+  Header, Modal, Input, Icon, Popup, Container, Message, Divider, Grid } from 'semantic-ui-react'
 
 function App() {
   const [openBuyPopup, setOpenBuyPopup] = useState(false);
@@ -15,65 +14,99 @@ function App() {
   const [resalePrice, setResalePrice] = useState('');
   const [purchasePrice, setPurchasePrice] = useState('');
   const [successfulClass, setSuccessfulClass] = useState("ui hidden message");
+  const [buyingError, setBuyingError] = useState('');
   const [passingLoadingTable, setPassingLoadingTable] = useState(React.createRef());
+  const [nameError, setNameError] = useState('');
+  const [qtdError, setQtdError] = useState('');
+  const [purchasePriceError, setPurchasePriceError] = useState('');
+  const [resalePriceError, setResalePriceError] = useState('');
+  const [nameInputError, setNameInputError] = useState(false);
+  const [qtdInputError, setQtdInputError] = useState(false);
+  const [purchasePriceInputError, setPurchasePriceInputError] = useState(false);
+  const [resalePriceInputError, setResalePriceInputError] = useState(false);
 
-  {/*
-    const [balance, setBalance] = useState(1200);
-    const [quantity, setQuantity] = useState(0);
-    const [productValue, setProductValue] = useState(0);
-    const [disableBuyButton, setDisableBuyButton] = useState(false);
-    const [buyPrice, setBuyPrice] = useState(0);
-    const [afterBuyingBalance, setAfterBuyingBalance] = useState(balance);
-    const [buyButtonPopup, setBuyButtonPopup] = useState('');
-      setAfterBuyingBalance(balance - buyPrice);
+    async function insertNewProduct(){
+      let repeatedProduct = false;
 
-      if(afterBuyingBalance > balance){
-        setDisableBuyButton(true);
-        setBuyButtonPopup("Você não tem saldo suficiente.");
-      } else {
-        setDisableBuyButton(false);
-        setBuyButtonPopup("");
-        setOpenBuyPopup(false);
-        console.log("Compra efetuada!");
-        window.location.reload();
-      }
+      await fetch('http://localhost:9000/listStock').then(res => res.json().then(data =>({data: data})) //Ve se já tem no banco o produto que está sendo adicionado pra nao duplicar
+        .then((res) => {
+          for (let i = 0; i < res.data.length; i += 1) {
+            if(typedProductName == res.data[i].productName){
+              repeatedProduct = true;
+            }
+          }
+        }).catch((err) => {
+        }));
 
-  */}
+      setBuyingError('');
+      setNameError('');
+      setQtdError('');
+      setPurchasePriceError('');
+      setResalePriceError('');
+      setNameInputError(false);
+      setQtdInputError(false);
+      setPurchasePriceInputError(false);
+      setResalePriceInputError(false);
 
-    async function insertNewProduct(){  
       const min = 1;
       const max = 900;
 
       var val1 = Math.floor(1000 + Math.random() * 9999);
       var val2 = Math.floor(100000 + Math.random() * 999999);
       var calculatesBarCode = "789."+val1+'.'+val2;
-
-      console.log(calculatesBarCode)
-
-      var kgPurchasePrice = purchasePrice
-      var kgResalePrice = resalePrice
       var calculatedTotalPurchasePrice = (pQuantity * purchasePrice)
 
-      const newProduct = {
-        barCode: calculatesBarCode,
-        productName: typedProductName,
-        kgQuantity: pQuantity,
-        kgPurchasePrice: purchasePrice,
-        kgResalePrice: resalePrice,
-        totalKgPurchasePrice: calculatedTotalPurchasePrice
-      };
+      if(typedProductName == '' || typedProductName.length <= 2){
+        setNameError(<span style={{color:'red'}}>Preencha o nome do produto!</span>);
+        setNameInputError(true);
+      } else if (pQuantity == '' || pQuantity == 0 || pQuantity < 0){
+        setQtdError(<span style={{color:'red'}}>Preencha a quantidade do produto!</span>);
+        setQtdInputError(true);
+      }else if(purchasePrice == '' || purchasePrice == 0 || purchasePrice < 0){
+        setPurchasePriceError(<span style={{color:'red'}}>Preencha o preço do produto!</span>);
+        setPurchasePriceInputError(true);
+      } else if(resalePrice == '' || resalePrice == 0 || resalePrice < 0){
+        setResalePriceError(<span style={{color:'red'}}>Preencha o preço de revenda do produto!</span>);
+        setResalePriceInputError(true);
+      } else if(balance < (balance - (pQuantity * purchasePrice))){ //saldo menor que o valor da compra
+        setBuyingError(<span style={{color:'red'}}>Você não tem saldo suficiente!</span>);
+      } else if(repeatedProduct == true){
+        setBuyingError(<span style={{color:'red'}}>Esse produto já existe, compre dele diretamente na tabela!</span>);
+      } else {
+        const newProduct = {
+          barCode: calculatesBarCode,
+          productName: typedProductName,
+          kgQuantity: pQuantity,
+          kgPurchasePrice: purchasePrice,
+          kgResalePrice: resalePrice,
+          totalKgPurchasePrice: calculatedTotalPurchasePrice
+        };
       
-      console.log(newProduct);
-
-      axios.post('http://localhost:9000/insertProduct', newProduct)
-        .then(response => console.log(response.data))
-
-      setOpenBuyPopup(false);
-      setSuccessfulClass("ui message");
-      updateTable();
+        await axios.post('http://localhost:9000/insertProduct', newProduct)
+          .then((response) => {
+            setOpenBuyPopup(false);
+            setSuccessfulClass("ui message");
+            //updateTable();
+          }).catch((err) => {
+            setBuyingError(<span style={{color:'red'}}>Ocorreu um erro ao efetuar a compra!</span>);
+          })
+      }
     }
 
     function handleOpenBuyPopup(){
+      setTypedProductName('');
+      setPquantity('');
+      setPurchasePrice('');
+      setResalePrice('');
+      setBuyingError('');
+      setNameError('');
+      setQtdError('');
+      setPurchasePriceError('');
+      setResalePriceError('');
+      setNameInputError(false);
+      setQtdInputError(false);
+      setPurchasePriceInputError(false);
+      setResalePriceInputError(false);
       setOpenBuyPopup(true);
     }
 
@@ -82,7 +115,6 @@ function App() {
     }
 
     const handleProductName = (e) => {
-      console.log(e);
       setTypedProductName(e);
     }
 
@@ -118,7 +150,6 @@ function App() {
           <center><Popup content='Compre produtos pro Estoque' trigger={<Button style={{margin:'5%'}} onClick={handleOpenBuyPopup}>COMPRAR</Button>} /></center>
         </Header>
         <PurchaseTable ref={passingLoadingTable}/>
-        <div>
           <Modal
             onClose={handleCloseBuyPopup} 
             onOpen={handleOpenBuyPopup} 
@@ -126,22 +157,34 @@ function App() {
           >
             <Modal.Header>Comprar um produto</Modal.Header>
             <Modal.Content image>
-              <GrCart style={{width:"250px", height:"250px"}} wrapped />
-              <Modal.Description>
-                {/*<Header>Default Profile Image</Header>*/}
-                <p>
-                  Preencha abaixo com as informações do produto à comprar para adicionar no estoque.
+              <Modal.Description style={{margin:'3%'}}>
+                <p style={{fontSize:'15px'}}>
+                  Preencha abaixo com as informações do produto à comprar para adicionar no estoque
                 </p>
-                <Input focus label="Produto" value={typedProductName} onChange={e => handleProductName(e.target.value)} style={{margin:'2%'}}/>
-                <Input focus label="Quantidade" value={pQuantity} onChange={e => handleProductQuantity(e.target.value)} placeholder='(kg)'/><br/>
-                <Input focus label="Valor de Compra" value={purchasePrice}  onChange={e => handlePurchasePrice(e.target.value)} placeholder='(R$/kg)' style={{margin:'2%'}}/>
-                <Input focus label="Valor de Revenda" value={resalePrice} onChange={e => handleResalePrice(e.target.value)} placeholder='(R$/kg)'/><br/><br/>
+                <Grid columns={3}>
+                  <Grid.Row>
+                    <Grid.Column>
+                      <Input focus error={nameInputError} label="Produto" type="text" value={typedProductName.replace(/:|  |;|,|<|>|1|2|3|4|5|6|7|8|9|0|/g, '')} onChange={e => handleProductName(e.target.value)} style={{margin:'3%'}}/>
+                      <br/>{nameError}<br/>
+                      <Input focus error={qtdInputError} label="Quantidade" type="number" value={pQuantity} onChange={e => handleProductQuantity(e.target.value)} placeholder='(kg)'/><br/>
+                      <br/>{qtdError}
+                    </Grid.Column>
+                    <Grid.Column>
+                      <Input focus error={purchasePriceInputError} label="Valor de Compra" type="number"  value={purchasePrice}  onChange={e => handlePurchasePrice(e.target.value)} placeholder='(R$/kg)' style={{margin:'3%'}}/>
+                      <br/>{purchasePriceError}<br/>
+                      <Input focus error={resalePriceInputError} label="Valor de Revenda" type="number"  value={resalePrice} onChange={e => handleResalePrice(e.target.value)} placeholder='(R$/kg)'/><br/><br/>
+                      {resalePriceError}
+                    </Grid.Column>
+                  </Grid.Row>
+                </Grid><br/>
+                <div class="ui divider"/>
                 <p>Saldo: R${balance}</p>
-                <p>Valor dessa compra: R${pQuantity * purchasePrice}</p>
+                <p>Valor dessa compra: <b>R${pQuantity * purchasePrice}</b></p>
                 <p>Saldo após a compra: R${balance - (pQuantity * purchasePrice)}</p>
               </Modal.Description>
             </Modal.Content>
             <Modal.Actions>
+              {buyingError}
               <Button
                 content='Cancelar'
                 negative
@@ -156,7 +199,6 @@ function App() {
               />
             </Modal.Actions>
           </Modal>
-        </div>
       </Container>
       <center><Footer/></center>
     </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import DataTable from 'react-data-table-component';
-import { Grid, Button, Popup, Progress } from 'semantic-ui-react'
-import { FaCartArrowDown } from 'react-icons/fa';
+import PurchaseAction from './purchaseAction'
+import { Grid, Button, Popup } from 'semantic-ui-react'
 
 class Table extends React.Component {
 
@@ -39,14 +39,12 @@ class Table extends React.Component {
             e = 'R$ '+res.data[i].kgResalePrice+' /kg';
 
             if(res.data[i].kgQuantity <= 5){
-              console.log('Produto no fim, recomendado comprar agora!', res.data[i].productName);
-              stockData.push({'actions': <Popup content={'Comprar mais '+ res.data[i].productName } trigger={<button style={{border: 'none', background:'none'}}><FaCartArrowDown style={{width:'145%', height:'145%', cursor:"pointer", color:'red'}}/></button>} />,
-              'cod': a, 'product': b, 'quantity': <Popup content={'Este produto está no fim!'} trigger={<span style={{color:"red"}}>{c}</span>}/>, 'purchasePrice': d, 'resalePrice': e});
+              stockData.push({'actions': <PurchaseAction cartColor={"red"} productName={res.data[i].productName} availableQtd={res.data[i].kgQuantity} purchasePrice={res.data[i].kgPurchasePrice}/>,
+            'cod': a, 'product': b, 'quantity': <Popup content={'Este produto está no fim!'} trigger={<span style={{color:"red"}}>{c}</span>}/>, 'purchasePrice': d, 'resalePrice': e});
             } else {
-              stockData.push({'actions': <Popup content={'Comprar mais '+ res.data[i].productName } trigger={<button style={{border: 'none', background:'none'}}><FaCartArrowDown style={{width:'145%', height:'145%', cursor:"pointer"}}/></button>} />,
-              'cod': a, 'product': b, 'quantity': c, 'purchasePrice': d, 'resalePrice': e});
+              stockData.push({'actions': <PurchaseAction cartColor={"green"} productName={res.data[i].productName} availableQtd={res.data[i].kgQuantity} purchasePrice={res.data[i].kgPurchasePrice}/>,
+            'cod': a, 'product': b, 'quantity': c, 'purchasePrice': d, 'resalePrice': e});
             }
-
             cont = i;
           }
           this.setState({ noData: false });
@@ -117,42 +115,11 @@ class Table extends React.Component {
       },
     ];
 
-    /*const data = [
-      {
-        cod: "valor 1",
-        product: "dfgdg",
-        quantity: "jfdhlskgj",
-        purchasePrice: "gsduifg",
-        resalePrice: "hjushrf",
-      },
-      {
-        cod: "valor 2",
-        product: "123",
-        quantity: "455241",
-        purchasePrice: "64431",
-        resalePrice: "123123",
-      },
-    ];
-        toDo: ver se os outros Grids tambem estao assim: 
-            <Grid columns={9}>
-              <Grid.Row>
-                <Grid.Column>
-                  <div class="ui active centered inline loader"/>
-                </Grid.Column>
-              </Grid.Row>
-              <Grid.Row>
-                <Grid.Column>
-                  Carregando produtos...
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-    */
-
     const { data, isLoading } = this.state;
     return (
       <div style={{margin:'1.5%'}}>
         {this.state.noData ? (
-          <div>
+          <div style={{marginLeft:'5%'}}>
             <Grid columns={1}>
               <Grid.Row>
                 <Grid.Column>
@@ -175,7 +142,7 @@ class Table extends React.Component {
               paginationPerPage='7'
               paginationRowsPerPageOptions={[5, 10, 15, 20, 25, 30]}
               paginationComponentOptions={{rowsPerPageText: 'Produtos por página:', rangeSeparatorText: 'de', selectAllRowsItem: true, selectAllRowsItemText: 'Todas'}}
-              noDataComponent={<i style={{fontSize:"12px", marginLeft:'-8%'}}><div class="ui divider"/>Não existem produtos para reabastecer, clique em "Comprar".</i>}
+              noDataComponent={<i style={{fontSize:"12px", marginLeft:'-5%'}}><div class="ui divider"/>Não existem produtos para reabastecer, clique em "Comprar".</i>}
             />
           </div>
       )}
