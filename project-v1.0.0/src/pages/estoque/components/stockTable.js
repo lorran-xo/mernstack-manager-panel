@@ -65,18 +65,18 @@ class Table extends React.Component {
     const customStyles = {
       rows: {
         style: {
-          minHeight: '72px', // override the row height
+          minHeight: '72px', // row height
         }
       },
       headCells: {
         style: {
-          paddingLeft: '8px', // override the cell padding for head cells
+          paddingLeft: '8px', // cell padding for head cells
           paddingRight: '8px',
         },
       },
       cells: {
         style: {
-          paddingLeft: '8px', // override the cell padding for data cells
+          paddingLeft: '8px', // cell padding for data cells
           paddingRight: '8px',
         },
       },
@@ -149,26 +149,28 @@ class Table extends React.Component {
             <Grid columns={1}>
               <Grid.Row>
                 <Grid.Column>
-                  <div class="ui active centered inline loader"><br/><br/>Carregando...</div>
+                  <br/><br/><div class="ui active centered inline loader"/>
                 </Grid.Column>
               </Grid.Row>
             </Grid>
           </div>
           ) : (
-          <DataTable
-            data={data}
-            columns={columns}
-            customStyles={customStyles}
-            pagination
-            highlightOnHover
-            resposive
-            fixedHeader
-            fixedHeaderScrollHeight='250px'
-            paginationPerPage='7'
-            paginationRowsPerPageOptions={[5, 10, 15, 20, 25, 30]}
-            paginationComponentOptions={{rowsPerPageText: 'Linhas por página:', rangeSeparatorText: 'de', selectAllRowsItem: true, selectAllRowsItemText: 'Todas'}}
-            noDataComponent={<i style={{fontSize:"12px"}}><div class="ui divider"/>Não existem produtos no estoque, compre na aba "Compras".</i>}
-          />
+          <div style={{marginLeft:'23%', width:'60%'}}>
+            <DataTable
+              data={data}
+              columns={columns}
+              customStyles={customStyles}
+              pagination
+              highlightOnHover
+              resposive
+              fixedHeader
+              fixedHeaderScrollHeight='250px'
+              paginationPerPage='7'
+              paginationRowsPerPageOptions={[5, 10, 15, 20, 25, 30]}
+              paginationComponentOptions={{rowsPerPageText: 'Produtos por página:', rangeSeparatorText: 'de', selectAllRowsItem: true, selectAllRowsItemText: 'Todas'}}
+              noDataComponent={<i style={{fontSize:"12px", marginLeft:'-10%'}}><div class="ui divider"/>Não existem produtos no estoque, compre na aba "Compras".</i>}
+            />
+          </div>
       )}
       </div>
     )

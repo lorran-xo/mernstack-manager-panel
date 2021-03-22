@@ -15,9 +15,7 @@ function App() {
   const [resalePrice, setResalePrice] = useState('');
   const [purchasePrice, setPurchasePrice] = useState('');
   const [successfulClass, setSuccessfulClass] = useState("ui hidden message");
-  const [passingLoadingTable] = useState(React.createRef());
-
-  const [newProduct, setNewProduct] = useState('');
+  const [passingLoadingTable, setPassingLoadingTable] = useState(React.createRef());
 
   {/*
     const [balance, setBalance] = useState(1200);
@@ -102,24 +100,24 @@ function App() {
 
     function updateTable(){
       passingLoadingTable.current.loadData();
+      window.location.reload();
     }
 
   return (
     <div>
-      <Container style={{backgroundColor: "white", width:"97%", padding:'3%'}}><br/>
+      <Container style={{backgroundColor: "white", width:"90%", padding:'5%'}}><br/>
         <div class={successfulClass}>
           <p>A compra foi efetuada com sucesso!</p>
         </div>
-        <Header as='h2' icon style={{marginLeft:'37%'}}>
+        <Header as='h2' icon style={{marginLeft:'38%'}}>
           <Icon name='cart' />
            Compras
-          <Header.Subheader style={{fontSize:'14px'}}>
+          <Header.Subheader style={{fontSize:'15px'}}>
             Compre produtos para adicionar em seu Estoque sempre que precisar
           </Header.Subheader>
-          <center><Popup content='Compre produtos pro Estoque' trigger={<Button style={{margin:'10%'}} onClick={handleOpenBuyPopup}>COMPRAR</Button>} /></center>
-          <PurchaseTable ref={passingLoadingTable}/>
-        </Header><br/>
-        <br/>
+          <center><Popup content='Compre produtos pro Estoque' trigger={<Button style={{margin:'5%'}} onClick={handleOpenBuyPopup}>COMPRAR</Button>} /></center>
+        </Header>
+        <PurchaseTable ref={passingLoadingTable}/>
         <div>
           <Modal
             onClose={handleCloseBuyPopup} 

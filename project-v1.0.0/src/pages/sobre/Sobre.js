@@ -10,20 +10,23 @@ function App() {
     <div>
       {/*<header className="App-header">
       </header>*/}
-      <Container style={{backgroundColor: "white", width:"97%"}}><br/>
+      <Container style={{backgroundColor: "white", width:"90%", padding:'5%'}}><br/>
         <Header as='h2' icon style={{marginLeft:'40%'}}>
           <Icon name='info circle' />
            Sobre
-          <Header.Subheader>
+          <Header.Subheader style={{fontSize:'15px'}}>
             Saiba mais sobre o Painel e todo seu desenvolvimento
           </Header.Subheader><br/>
           <Header.Subheader>
-          <strong> Tecnologias Utilizadas </strong><br/><br/>
-            <span style={{fontSize:'13px'}}><strong>Frontend:</strong> ReactJS, HTML5, CSS, Styled Components, SemanticUI<br/>
-            <strong>Backend:</strong> NodeJS<br/>
-            <strong>Banco de Dados:</strong> NoSql - MongoDB</span><br/><br/>
-          <strong> Organização </strong><br/>
-           <span style={{fontSize:'13px'}}>Foram utilizadas as metodologias ágeis Scrum e Kanban nesse projeto.<br/>Versionamento de código Git (Github).</span>
+            <strong> Tecnologias </strong><br/>
+            <span style={{fontSize:'13px'}}><strong>Frontend:</strong> ReactJS, HTML5, CSS, Styled Components, SemanticUI.<br/>
+            <strong>Backend:</strong> NodeJS, Express, Mongoose, Nodemon.<br/>
+            <strong>Banco de Dados:</strong> NoSQL (MongoDB).</span><br/><br/>
+            <strong> Organização </strong><br/>
+            <span style={{fontSize:'13px'}}>Foram utilizadas as metodologias ágeis Scrum e Kanban nesse projeto.<br/>Versionamento de código Git (Github).</span><br/>
+            <br/><strong> Repositório </strong><br/>
+            <span style={{fontSize:'13px'}}>Acesse o repositório do painel clicando <a href="https://github.com/lorran-xo/mernstack-manager-panel" target="_blank">aqui</a>.</span>
+
           </Header.Subheader><br/>
         </Header>
           <Card style={{marginLeft:'43%'}}>
@@ -37,9 +40,8 @@ function App() {
               <Card.Header>Lorran Oliveira</Card.Header>
               <Card.Meta>Desenvolvedor Full-Stack</Card.Meta>
               <Card.Description>
-                 Frontend: ReactJS, JavaScript, HTML5, CSS3<br/>
-                 Backend:NodeJS<br/>
-                 Banco de Dados: MongoDB (NoSQL)
+                Projeto de Análise e Desenvolvimento de Sistemas<br/>
+                Matrícula: 201903161622
               </Card.Description>
             </Card.Content>
             <Card.Content extra>

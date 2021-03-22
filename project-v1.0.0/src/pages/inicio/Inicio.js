@@ -33,15 +33,15 @@ function App() {
 
   return (
     <div>
-      <Container style={{backgroundColor: "white", width:"97%", padding:'3%'}}><br/>
-        <Header as='h2' icon style={{marginLeft:'42%'}}>
+      <Container style={{backgroundColor: "white", width:"90%", padding:'5%'}}><br/>
+        <Header as='h2' icon style={{marginLeft:'40%'}}>
           <Icon name='home' />
             Início
-          <Header.Subheader style={{fontSize:'14px'}}>
+          <Header.Subheader style={{fontSize:'15px'}}>
             Visualize as principais informações do seu Sistema
           </Header.Subheader><br/>
         </Header>
-          <Card style={{marginLeft:'42%'}}> 
+          <Card style={{marginLeft:'41%'}}> 
             <Card.Content style={{marginLeft:'10%', margin:"5%"}}>
               <Statistic.Group size='tiny'>
                 <h2 style={{marginLeft:'25%'}}>DASHBOARD</h2>
@@ -73,7 +73,7 @@ function App() {
               <p style={{fontSize:10}}><b>Status do sistema:</b> {apiResponse} <GrStatusGoodSmall style={{color: statusColor }}/></p></center>
             </Card>
       </Container>
-      <center style={{margin:'3%'}}><Footer/></center>
+      <center><Footer/></center>
     </div>
   );
 }

@@ -42,7 +42,7 @@ class Table extends React.Component {
             if(res.data[i].kgQuantity == 0){
               console.log("Em falta no estoque!", res.data[i].productName);
             } else {
-              stockData.push({'actions': <Popup content={'Vender '+ res.data[i].productName } trigger={<button style={{border: 'none', background:'none'}}><MdMonetizationOn style={{width:'145%', height:'145%', color:'green', cursor:"pointer"}}/></button>} />,
+              stockData.push({'actions': <Popup content={'Vender '+ res.data[i].productName } trigger={<button style={{border: 'none', background:'none'}}><MdMonetizationOn onClick={console.log("teste")} style={{width:'145%', height:'145%', color:'green', cursor:"pointer"}}/></button>} />,
             'cod': a, 'product': b, 'quantity': c, 'purchasePrice': d, 'resalePrice': e});
             }
  
@@ -155,26 +155,28 @@ class Table extends React.Component {
             <Grid columns={1}>
               <Grid.Row>
                 <Grid.Column>
-                  <div class="ui active centered inline loader"><br/><br/>Carregando...</div>
+                  <br/><br/><div class="ui active centered inline loader"/>
                 </Grid.Column>
               </Grid.Row>
             </Grid>
           </div>
           ) : (
-          <DataTable
-            data={data}
-            columns={columns}
-            customStyles={customStyles}
-            pagination
-            highlightOnHover
-            resposive
-            fixedHeader
-            fixedHeaderScrollHeight='250px'
-            paginationPerPage='7'
-            paginationRowsPerPageOptions={[5, 10, 15, 20, 25, 30]}
-            paginationComponentOptions={{rowsPerPageText: 'Linhas por página:', rangeSeparatorText: 'de', selectAllRowsItem: true, selectAllRowsItemText: 'Todas'}}
-            noDataComponent={<i style={{fontSize:"12px"}}><div class="ui divider"/>Não existem produtos disponíveis para venda, compre em "Compras".</i>}
-          />
+          <div style={{marginLeft:'23%', width:'60%'}}>
+            <DataTable
+              data={data}
+              columns={columns}
+              customStyles={customStyles}
+              pagination
+              highlightOnHover
+              resposive
+              fixedHeader
+              fixedHeaderScrollHeight='250px'
+              paginationPerPage='7'
+              paginationRowsPerPageOptions={[5, 10, 15, 20, 25, 30]}
+              paginationComponentOptions={{rowsPerPageText: 'Produtos por página:', rangeSeparatorText: 'de', selectAllRowsItem: true, selectAllRowsItemText: 'Todas'}}
+              noDataComponent={<i style={{fontSize:"12px", marginLeft:'-10%'}}><div class="ui divider"/>Não existem produtos disponíveis para venda, compre em "Compras".</i>}
+            />
+          </div>
       )}
       </div>
     )

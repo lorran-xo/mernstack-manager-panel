@@ -11,17 +11,17 @@ function App() {
 
   return (
     <div>
-      <Container style={{backgroundColor: "white", width:"97%", padding:'3%'}}><br/>
-        <Header as='h2' icon style={{marginLeft:'40%'}}>
+      <Container style={{backgroundColor: "white", width:"90%", padding:'5%'}}><br/>
+        <Header as='h2' icon style={{marginLeft:'38%'}}>
           <Icon name='cart' />
            Estoque
-          <Header.Subheader style={{fontSize:'14px'}}>
+          <Header.Subheader style={{fontSize:'15px'}}>
             Visualize os produtos do seu estoque e suas informações
           </Header.Subheader>
-          <StockTable/>
         </Header>
+        <StockTable/>
       </Container>
-      <center style={{margin:'12%', marginLeft:'9%'}}><Footer/></center>
+      <center><Footer/></center>
     </div>
   );
 }

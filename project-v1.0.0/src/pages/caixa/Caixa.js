@@ -31,15 +31,15 @@ function App() {
 
   return (
      <div>
-      <Container style={{backgroundColor: "white", width:"97%", padding:'3%'}}><br/>
-        <Header as='h2' icon style={{marginLeft:'41%'}}>
+      <Container style={{backgroundColor: "white", width:"90%", padding:'5%'}}><br/>
+        <Header as='h2' icon style={{marginLeft:'40%'}}>
           <Icon name='archive' />
            Caixa
-          <Header.Subheader style={{fontSize:'14px'}}>
+          <Header.Subheader style={{fontSize:'15px'}}>
             Visualize e venda os produtos disponíveis no estoque
           </Header.Subheader>
-          <SalesTable/>
         </Header><br/>
+        <SalesTable/>
         <div>
           <Modal
             onClose={handleCloseSellPopup} 
