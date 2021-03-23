@@ -6,7 +6,6 @@ import { Grid } from 'semantic-ui-react'
 class Table extends React.Component {
 
   state = { 
-    loadingTable: false,
     counting: 1,
     data: "Carregando...",
     noData: true,
@@ -17,9 +16,8 @@ class Table extends React.Component {
   }
 
   loadData = () => {
-    this.setState({ loadingTable: true });
     this.loadTable().then(res => {
-      this.setState({ data: res.data, count: res.total, isLoading: false,});
+      this.setState({ data: res.data, count: res.total });
     });
   }
 
@@ -38,7 +36,7 @@ class Table extends React.Component {
             d = 'R$ '+res.data[i].kgPurchasePrice+' /kg';
             e = 'R$ '+res.data[i].kgResalePrice+' /kg';
 
-            if(res.data[i].kgQuantity == 0){
+            if(res.data[i].kgQuantity === 0){
             } else {
               stockData.push({'actions': <SalesAction productName={res.data[i].productName} availableQtd={res.data[i].kgQuantity} resalePrice={res.data[i].kgResalePrice}/>,
             'cod': a, 'product': b, 'quantity': c, 'purchasePrice': d, 'resalePrice': e});
@@ -145,7 +143,7 @@ class Table extends React.Component {
             </Grid>
     */
 
-    const { data, isLoading } = this.state;
+    const { data } = this.state;
     return (
       <div style={{margin:'1.5%'}}>
         {this.state.noData ? (

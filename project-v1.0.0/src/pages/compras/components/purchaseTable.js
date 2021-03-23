@@ -1,12 +1,11 @@
 import React from "react";
 import DataTable from 'react-data-table-component';
 import PurchaseAction from './purchaseAction'
-import { Grid, Button, Popup } from 'semantic-ui-react'
+import { Grid, Popup } from 'semantic-ui-react'
 
 class Table extends React.Component {
 
   state = { 
-    loadingTable: false,
     counting: 1,
     data: "Carregando...",
     noData: true,
@@ -17,9 +16,8 @@ class Table extends React.Component {
   }
 
   loadData = () => {
-    this.setState({ loadingTable: true });
     this.loadTable().then(res => {
-      this.setState({ data: res.data, count: res.total, isLoading: false,});
+      this.setState({ data: res.data, count: res.total });
     });
   }
 
@@ -115,7 +113,7 @@ class Table extends React.Component {
       },
     ];
 
-    const { data, isLoading } = this.state;
+    const { data } = this.state;
     return (
       <div style={{margin:'1.5%'}}>
         {this.state.noData ? (

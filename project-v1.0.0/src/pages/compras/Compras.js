@@ -4,18 +4,18 @@ import PurchaseTable from './components/purchaseTable';
 import Footer from './../footer/footer.js';
 import axios from 'axios';
 import { Button,
-  Header, Modal, Input, Icon, Popup, Container, Message, Divider, Grid } from 'semantic-ui-react'
+  Header, Modal, Input, Icon, Popup, Container, Grid } from 'semantic-ui-react'
 
 function App() {
   const [openBuyPopup, setOpenBuyPopup] = useState(false);
-  const [balance, setBalance] = useState(1200);
+  const [balance] = useState(1200);
   const [typedProductName, setTypedProductName] = useState('');
   const [pQuantity, setPquantity] = useState('');
   const [resalePrice, setResalePrice] = useState('');
   const [purchasePrice, setPurchasePrice] = useState('');
   const [successfulClass, setSuccessfulClass] = useState("ui hidden message");
   const [buyingError, setBuyingError] = useState('');
-  const [passingLoadingTable, setPassingLoadingTable] = useState(React.createRef());
+  const [passingLoadingTable] = useState(React.createRef());
   const [nameError, setNameError] = useState('');
   const [qtdError, setQtdError] = useState('');
   const [purchasePriceError, setPurchasePriceError] = useState('');
@@ -31,7 +31,7 @@ function App() {
       await fetch('http://localhost:9000/listStock').then(res => res.json().then(data =>({data: data})) //Ve se já tem no banco o produto que está sendo adicionado pra nao duplicar
         .then((res) => {
           for (let i = 0; i < res.data.length; i += 1) {
-            if(typedProductName == res.data[i].productName){
+            if(typedProductName === res.data[i].productName){
               repeatedProduct = true;
             }
           }
@@ -48,30 +48,27 @@ function App() {
       setPurchasePriceInputError(false);
       setResalePriceInputError(false);
 
-      const min = 1;
-      const max = 900;
-
       var val1 = Math.floor(1000 + Math.random() * 9999);
       var val2 = Math.floor(100000 + Math.random() * 999999);
       var calculatesBarCode = "789."+val1+'.'+val2;
       var calculatedTotalPurchasePrice = (pQuantity * purchasePrice)
 
-      if(typedProductName == '' || typedProductName.length <= 2){
+      if(typedProductName === '' || typedProductName.length <= 2){
         setNameError(<span style={{color:'red'}}>Preencha o nome do produto!</span>);
         setNameInputError(true);
-      } else if (pQuantity == '' || pQuantity == 0 || pQuantity < 0){
+      } else if (pQuantity === '' || pQuantity === 0 || pQuantity < 0){
         setQtdError(<span style={{color:'red'}}>Preencha a quantidade do produto!</span>);
         setQtdInputError(true);
-      }else if(purchasePrice == '' || purchasePrice == 0 || purchasePrice < 0){
+      }else if(purchasePrice === '' || purchasePrice === 0 || purchasePrice < 0){
         setPurchasePriceError(<span style={{color:'red'}}>Preencha o preço do produto!</span>);
         setPurchasePriceInputError(true);
-      } else if(resalePrice == '' || resalePrice == 0 || resalePrice < 0){
+      } else if(resalePrice === '' || resalePrice === 0 || resalePrice < 0){
         setResalePriceError(<span style={{color:'red'}}>Preencha o preço de revenda do produto!</span>);
         setResalePriceInputError(true);
       } else if(balance < (balance - (pQuantity * purchasePrice))){ //saldo menor que o valor da compra
         setBuyingError(<span style={{color:'red'}}>Você não tem saldo suficiente!</span>);
-      } else if(repeatedProduct == true){
-        setBuyingError(<span style={{color:'red'}}>Esse produto já existe, compre dele diretamente na tabela!</span>);
+      } else if(repeatedProduct === true){
+        setBuyingError(<span style={{color:'red'}}>Já existe um produto com esse nome no estoque, compre dele diretamente da tabela!</span>);
       } else {
         const newProduct = {
           barCode: calculatesBarCode,
@@ -86,7 +83,7 @@ function App() {
           .then((response) => {
             setOpenBuyPopup(false);
             setSuccessfulClass("ui message");
-            //updateTable();
+            updateTable();
           }).catch((err) => {
             setBuyingError(<span style={{color:'red'}}>Ocorreu um erro ao efetuar a compra!</span>);
           })
@@ -170,9 +167,9 @@ function App() {
                       <br/>{qtdError}
                     </Grid.Column>
                     <Grid.Column>
-                      <Input focus error={purchasePriceInputError} label="Valor de Compra" type="number"  value={purchasePrice}  onChange={e => handlePurchasePrice(e.target.value)} placeholder='(R$/kg)' style={{margin:'3%'}}/>
+                      <Input focus error={purchasePriceInputError} label="Valor de Compra" type="number" value={purchasePrice} onChange={e => handlePurchasePrice(e.target.value)} placeholder='(R$/kg)' style={{margin:'3%'}}/>
                       <br/>{purchasePriceError}<br/>
-                      <Input focus error={resalePriceInputError} label="Valor de Revenda" type="number"  value={resalePrice} onChange={e => handleResalePrice(e.target.value)} placeholder='(R$/kg)'/><br/><br/>
+                      <Input focus error={resalePriceInputError} label="Valor de Revenda" type="number" value={resalePrice} onChange={e => handleResalePrice(e.target.value)} placeholder='(R$/kg)'/><br/><br/>
                       {resalePriceError}
                     </Grid.Column>
                   </Grid.Row>

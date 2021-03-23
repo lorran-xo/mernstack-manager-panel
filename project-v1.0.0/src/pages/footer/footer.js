@@ -7,10 +7,10 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__social">
-        <a href="https://www.linkedin.com/in/lorran-oliveira-38194b117" target="_blank">
+        <a href="https://www.linkedin.com/in/lorran-oliveira-38194b117" target="_blank" rel="noreferrer">
           <AiFillLinkedin size="30"  color="#fff"/>
         </a>
-        <a href="https://github.com/lorran-xo" target="_blank">
+        <a href="https://github.com/lorran-xo" target="_blank" rel="noreferrer">
           <AiFillGithub size="30"  color="#fff"/>
         </a>  
       </div>

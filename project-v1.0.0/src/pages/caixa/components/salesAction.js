@@ -1,13 +1,12 @@
 import React, {useState, useEffect} from "react";
-import { Divider } from 'semantic-ui-react'
 import { MdMonetizationOn } from 'react-icons/md';
 import { Button, Modal, Input, Label, Popup } from 'semantic-ui-react'
 
 export default function FormDialog(props) {
     const [openSellPopup, setOpenSellPopup] = useState(false);
-    const [productName, setProductName] = useState(props.productName);
-    const [availableQtd, setAvailableQtd] = useState(props.availableQtd);
-    const [resalePrice, setResalePrice] = useState(props.resalePrice);
+    const [productName] = useState(props.productName);
+    const [availableQtd] = useState(props.availableQtd);
+    const [resalePrice] = useState(props.resalePrice);
     const [typedProductQtd, setTypedProductQtd] = useState('');
     const [saleTotal, setSaleTotal] = useState(0);
     const [qtdError, setQtdError] = useState('');
@@ -18,7 +17,7 @@ export default function FormDialog(props) {
 
     async function handleConfirmSellPopup(){  
 
-        if(typedProductQtd == '' || typedProductQtd == 0 || typedProductQtd < 0){
+        if(typedProductQtd === '' || typedProductQtd === 0 || typedProductQtd < 0){
             setQtdError(<span style={{color:'red'}}>Preencha com a quantidade!</span>);
             setQtdInputError(true);
         } else if(typedProductQtd > availableQtd){

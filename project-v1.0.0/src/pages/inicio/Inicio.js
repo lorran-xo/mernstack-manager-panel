@@ -2,8 +2,8 @@ import './../../App.css';
 import React, { useState, useEffect } from 'react';
 import Footer from './../footer/footer.js';
 import { GrStatusGoodSmall } from 'react-icons/gr';
-import { Header, Icon, Container, Grid, Statistic, Segment, Card } from 'semantic-ui-react'
-import styled from 'styled-components'
+import { Header, Icon, Container, Grid, Statistic, Card } from 'semantic-ui-react'
+//import styled from 'styled-components'
 
 function App() {
 
@@ -44,7 +44,7 @@ function App() {
           <Card style={{marginLeft:'41%'}}> 
             <Card.Content style={{marginLeft:'10%', margin:"5%"}}>
               <Statistic.Group size='tiny'>
-                <h2 style={{marginLeft:'25%'}}>DASHBOARD</h2>
+                <h2 style={{marginLeft:'25%', fontFamily:'Courier New'}}>RESULTADOS</h2>
                 <Grid class="ui grid">
                   <Grid.Row container columns={3}>
                     <Grid.Column>

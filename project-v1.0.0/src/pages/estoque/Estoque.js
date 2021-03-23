@@ -1,13 +1,9 @@
 import './../../App.css';
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import StockTable from './components/stockTable';
 import Footer from './../footer/footer.js';
 import { Header, Icon, Container } from 'semantic-ui-react';
 function App() {
-  
-    useEffect(() => {  
-    },[]);
 
   return (
     <div>

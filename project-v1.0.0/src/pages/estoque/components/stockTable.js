@@ -1,11 +1,11 @@
 import React from "react";
+import StockAction from './stockAction';
 import DataTable from 'react-data-table-component';
 import { Grid, Popup } from 'semantic-ui-react'
 
 class Table extends React.Component {
 
   state = { 
-    loadingTable: false,
     counting: 1,
     data: "Carregando...",
     noData: true,
@@ -16,9 +16,8 @@ class Table extends React.Component {
   }
 
   loadData = () => {
-    this.setState({ loadingTable: true });
     this.loadTable().then(res => {
-      this.setState({ data: res.data, count: res.total, isLoading: false,});
+      this.setState({ data: res.data, count: res.total});
     });
   }
 
@@ -39,11 +38,10 @@ class Table extends React.Component {
 
             if(res.data[i].kgQuantity <= 5){
               console.log('Produto no fim, recomendado comprar agora!', res.data[i].productName);
-              stockData.push({'cod': a, 'product': b, 'quantity': <Popup content={'Este produto está no fim!'} trigger={<span style={{color:"red"}}>{c}</span>}/>, 'purchasePrice': d, 'resalePrice': e});
+              stockData.push({'actions': <StockAction productName={res.data[i].productName} purchasePrice={res.data[i].kgPurchasePrice} resalePrice={res.data[i].kgResalePrice}/>, 'cod': a, 'product': b, 'quantity': <Popup content={'Este produto está no fim!'} trigger={<span style={{color:"red"}}>{c}</span>}/>, 'purchasePrice': d, 'resalePrice': e});
             } else {
-              stockData.push({'cod': a, 'product': b, 'quantity': c, 'purchasePrice': d, 'resalePrice': e});
+              stockData.push({'actions': <StockAction productName={res.data[i].productName} purchasePrice={res.data[i].kgPurchasePrice} resalePrice={res.data[i].kgResalePrice}/>, 'cod': a, 'product': b, 'quantity': c, 'purchasePrice': d, 'resalePrice': e});
             }
-
             cont = i;
           }
           this.setState({ noData: false });
@@ -83,6 +81,10 @@ class Table extends React.Component {
     };
     
     const columns = [
+      {
+        selector: "actions",
+        name: "Ação",
+      },
       {
         selector: "cod",
         name: "Código de Barras",
@@ -141,7 +143,7 @@ class Table extends React.Component {
             </Grid>
     */
 
-    const { data, isLoading } = this.state;
+    const { data } = this.state;
     return (
       <div style={{margin:'1.5%'}}>
         {this.state.noData ? (

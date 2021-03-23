@@ -25,8 +25,7 @@ function App() {
             <strong> Organização </strong><br/>
             <span style={{fontSize:'13px'}}>Foram utilizadas as metodologias ágeis Scrum e Kanban nesse projeto.<br/>Versionamento de código Git (Github).</span><br/>
             <br/><strong> Repositório </strong><br/>
-            <span style={{fontSize:'13px'}}>Acesse o repositório do painel clicando <a href="https://github.com/lorran-xo/mernstack-manager-panel" target="_blank">aqui</a>.</span>
-
+            <span style={{fontSize:'13px'}}>Acesse o repositório do painel clicando <a href="https://github.com/lorran-xo/mernstack-manager-panel" target="_blank" rel="noreferrer">aqui</a>.</span>
           </Header.Subheader><br/>
         </Header>
           <Card style={{marginLeft:'43%'}}>
@@ -40,17 +39,17 @@ function App() {
               <Card.Header>Lorran Oliveira</Card.Header>
               <Card.Meta>Desenvolvedor Full-Stack</Card.Meta>
               <Card.Description>
-                Projeto de Análise e Desenvolvimento de Sistemas<br/>
+                Projeto de Análise e Desenvolvimento de Sistemas<br/><br/>
                 Matrícula: 201903161622
               </Card.Description>
             </Card.Content>
-            <Card.Content extra>
-              <div className='ui three buttons'>
-                <a href='https://github.com/lorran-xo' rel="noreferrer" style={{textDecoration:'none'}} target="_blank"><Button circular color='github square' icon='github square' /></a>
-                <a href='https://www.linkedin.com/in/lorran-oliveira-38194b117' rel="noreferrer" style={{textDecoration:'none'}} target="_blank"><Button circular color='linkedin' icon='linkedin' /></a>
-                <a href='https://www.instagram.com/lorran_xo/' rel="noreferrer" style={{textDecoration:'none'}} target="_blank"><Button circular color='instagram' icon='instagram' /></a>
-              </div>
-            </Card.Content>
+              <Card.Content extra>
+                <div className='ui three buttons' style={{marginLeft:'25%'}}>
+                  <a href='https://github.com/lorran-xo' rel="noreferrer" style={{textDecoration:'none'}} target="_blank"><Button circular color='github square' icon='github square' /></a>
+                  <a href='https://www.linkedin.com/in/lorran-oliveira-38194b117' rel="noreferrer" style={{textDecoration:'none'}} target="_blank"><Button circular color='linkedin' icon='linkedin' /></a>
+                  <a href='https://www.instagram.com/lorran_xo/' rel="noreferrer" style={{textDecoration:'none'}} target="_blank"><Button circular color='Instagram' icon='instagram' /></a>
+                </div>
+              </Card.Content>
           </Card><br/>
       </Container>
       <center style={{marginTop:'-3%'}}><Footer/></center>
