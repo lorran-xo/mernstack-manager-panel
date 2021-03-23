@@ -151,6 +151,7 @@ function App() {
             onClose={handleCloseBuyPopup} 
             onOpen={handleOpenBuyPopup} 
             open={openBuyPopup}
+            dimmer={"blurring"}
           >
             <Modal.Header>Comprar um produto</Modal.Header>
             <Modal.Content image>

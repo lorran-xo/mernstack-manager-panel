@@ -61,6 +61,7 @@ export default function FormDialog(props) {
                 onClose={handleCloseSellPopup} 
                 onOpen={handleOpenSellPopup} 
                 open={openSellPopup}
+                dimmer={"blurring"}
             >
                 <Modal.Header>Vender {productName}</Modal.Header>
                 <Modal.Content image>

@@ -4,6 +4,7 @@ import { Button, Modal, Input, Popup, Grid } from 'semantic-ui-react'
 
 export default function FormDialog(props) {
     const [openEditPopup, setOpenEditPopup] = useState(false);
+    const [openDeleteProductConfirm, setOpenDeleteProductConfirm] = useState(false);
     const [purchasePrice, setPurchasePrice] = useState(props.purchasePrice);
     const [resalePrice, setResalePrice] = useState(props.resalePrice);
     const [purchasePriceError, setPurchasePriceError] = useState('');
@@ -41,7 +42,16 @@ export default function FormDialog(props) {
         }
     }
 
+    function handleOpenDeleteProductConfirm(){
+        setOpenDeleteProductConfirm(true);
+    }
+
+    function handleCloseDeleteProductConfirm(){
+        setOpenDeleteProductConfirm(false);
+    }
+
     async function handleDeleteProduct(){
+        setOpenDeleteProductConfirm(false);
         setOpenEditPopup(false);
         window.location.reload();
         /*await api.post('/')
@@ -73,7 +83,7 @@ export default function FormDialog(props) {
     const handleResalePrice = (e) => {
         setResalePrice(e);
     }
-    
+
     return (
         <div>
             <Popup content={'Editar '+ props.productName} trigger={<button style={{border: 'none', background:'none'}}><FiEdit onClick={handleOpenEditPopup} style={{width:'145%', height:'145%', cursor:"pointer"}}/></button>} />            
@@ -81,6 +91,7 @@ export default function FormDialog(props) {
                 onClose={handleCloseEditPopup} 
                 onOpen={handleOpenEditPopup} 
                 open={openEditPopup}
+                dimmer={"blurring"}
             >
                 <Modal.Header>Editar {props.productName}</Modal.Header>
                 <Modal.Content image>
@@ -106,7 +117,7 @@ export default function FormDialog(props) {
                     <Button
                         content='EXCLUIR'
                         negative
-                        onClick={handleDeleteProduct}
+                        onClick={handleOpenDeleteProductConfirm}
                     />
                     <Button
                         content='Cancelar'
@@ -120,6 +131,27 @@ export default function FormDialog(props) {
                         positive
                         onClick={handleConfirmEditPopup}
                     />
+                </Modal.Actions>
+            </Modal>
+            {/*Delete product Modal*/}
+            <Modal
+                size="mini"
+                open={openDeleteProductConfirm}
+                onOpen={handleOpenDeleteProductConfirm} 
+                onClose={handleCloseDeleteProductConfirm}
+                dimmer={"blurring"}
+            >
+                <Modal.Header>Excluir Produto</Modal.Header>
+                <Modal.Content>
+                <p>Tem certeza que deseja excluir o produto '{props.productName}'?</p>
+                </Modal.Content>
+                <Modal.Actions>
+                <Button negative onClick={handleCloseDeleteProductConfirm}>
+                    Não
+                </Button>
+                <Button positive onClick={handleDeleteProduct}>
+                    Sim
+                </Button>
                 </Modal.Actions>
             </Modal>
         </div>
