@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { FiEdit } from 'react-icons/fi';
 import { Button, Modal, Input, Popup, Grid } from 'semantic-ui-react'
+import axios from 'axios';
 
 export default function FormDialog(props) {
     const [openEditPopup, setOpenEditPopup] = useState(false);
@@ -30,37 +31,53 @@ export default function FormDialog(props) {
             setResalePriceError(<span style={{color:'red'}}>Preencha com o preço de revenda!</span>);
             setResalePriceInputError(true);
         } else {
-            setOpenEditPopup(false);
-            window.location.reload();
-            /*await api.post('/')
+            const doc = {
+                _id: props.id,
+                kgPurchasePrice: purchasePrice,
+                kgResalePrice: resalePrice,
+            };
+
+            await axios.post('http://localhost:9000/updateProduct', doc)
             .then((res) => {
+                console.log("thenUPDATE");
                 setOpenEditPopup(false);
                 window.location.reload();
             }).catch((err) => {
+                console.log("ctachUPDATE");
+
                 setEditingError('Ocorreu um erro ao editar o produto!');
-            })*/ 
+            })
         }
     }
 
+    async function handleDeleteProduct(){
+        setEditingError('');
+
+        const doc = {
+            _id: props.id,
+        };
+
+        await axios.post('http://localhost:9000/deleteProduct', doc)
+        .then((res) => {
+            console.log("thenDELTE");
+
+            setOpenDeleteProductConfirm(false);
+            setOpenEditPopup(false);
+            window.location.reload();
+        }).catch((err) => {
+            console.log("catchDELTE");
+            setOpenDeleteProductConfirm(false);
+            setEditingError('Ocorreu um erro ao editar o produto!');
+        }) 
+    }
+
     function handleOpenDeleteProductConfirm(){
+        console.log(props.id);
         setOpenDeleteProductConfirm(true);
     }
 
     function handleCloseDeleteProductConfirm(){
         setOpenDeleteProductConfirm(false);
-    }
-
-    async function handleDeleteProduct(){
-        setOpenDeleteProductConfirm(false);
-        setOpenEditPopup(false);
-        window.location.reload();
-        /*await api.post('/')
-        .then((res) => {
-            setOpenEditPopup(false);
-            window.location.reload();
-        }).catch((err) => {
-
-        })*/ 
     }
     
     function handleOpenEditPopup(){
@@ -98,7 +115,7 @@ export default function FormDialog(props) {
                     <FiEdit style={{width:"200px", height:"200px", margin:'2%'}} wrapped />
                     <Modal.Description>
                         <p style={{fontSize:'15px'}}>
-                        Visualize os dados atuais de {props.productName} para editar ou excluir quando necessário.<br/><br/>
+                        Visualize os valores de Compra e Revenda do produto {props.productName}, edite ou exclua quando necessário.<br/><br/>
                         </p><br/>
                         <Grid columns={3}>
                             <Grid.Row>

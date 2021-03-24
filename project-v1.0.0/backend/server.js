@@ -12,8 +12,10 @@ var logger = require('morgan');
 
 //##### 1st FOLDER ROUTES IMPORTS #####
 var indexRouter = require('./routes/index');
-var insertProductRoute = require('./routes/insertProduct')
 var listStock = require('./routes/listStock')
+var insertProductRoute = require('./routes/insertProduct')
+var updateProductRoute = require('./routes/updateProduct')
+var deleteProductRoute = require('./routes/deleteProduct')
 //##### 1st ROUTES IMPORTS #####
 
 
@@ -35,10 +37,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //##### 2nd ROUTES CREATIONS #####
 app.use(express.json());
-app.use('/', indexRouter); //rota padrao de conexao e teste NodeJS
-app.use('/insertProduct', insertProductRoute);
-app.use('/listStock', listStock);
 app.listen(9000, () => console.log("server is up and running"))
+app.use('/', indexRouter); //rota padrao de conexao e teste NodeJS
+app.use('/listStock', listStock);
+app.use('/insertProduct', insertProductRoute);
+app.use('/updateProduct', updateProductRoute);
+app.use('/deleteProduct', deleteProductRoute);
+
 //##### 2nd ROUTES CREATIONS #####
 
 // catch 404 and forward to error handler

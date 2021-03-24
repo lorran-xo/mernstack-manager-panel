@@ -24,10 +24,8 @@ function App() {
     .then((res) => {
       setApiResponse(res);
       setStatusColor('green');
-      console.log("then");
     }).catch((err) => {
       setStatusColor('red');
-      console.log("catch");
     })
   }
 

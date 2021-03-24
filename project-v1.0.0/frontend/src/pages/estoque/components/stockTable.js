@@ -37,10 +37,9 @@ class Table extends React.Component {
             e = 'R$ '+res.data[i].kgResalePrice+' /kg';
 
             if(res.data[i].kgQuantity <= 5){
-              console.log('Produto no fim, recomendado comprar agora!', res.data[i].productName);
-              stockData.push({'actions': <StockAction productName={res.data[i].productName} purchasePrice={res.data[i].kgPurchasePrice} resalePrice={res.data[i].kgResalePrice}/>, 'cod': a, 'product': b, 'quantity': <Popup content={'Este produto está no fim!'} trigger={<span style={{color:"red"}}>{c}</span>}/>, 'purchasePrice': d, 'resalePrice': e});
+              stockData.push({'actions': <StockAction id={res.data[i]._id} productName={res.data[i].productName} purchasePrice={res.data[i].kgPurchasePrice} resalePrice={res.data[i].kgResalePrice}/>, 'cod': a, 'product': b, 'quantity': <Popup content={'Este produto está no fim!'} trigger={<span style={{color:"red"}}>{c}</span>}/>, 'purchasePrice': d, 'resalePrice': e});
             } else {
-              stockData.push({'actions': <StockAction productName={res.data[i].productName} purchasePrice={res.data[i].kgPurchasePrice} resalePrice={res.data[i].kgResalePrice}/>, 'cod': a, 'product': b, 'quantity': c, 'purchasePrice': d, 'resalePrice': e});
+              stockData.push({'actions': <StockAction id={res.data[i]._id} productName={res.data[i].productName} purchasePrice={res.data[i].kgPurchasePrice} resalePrice={res.data[i].kgResalePrice}/>, 'cod': a, 'product': b, 'quantity': c, 'purchasePrice': d, 'resalePrice': e});
             }
             cont = i;
           }
