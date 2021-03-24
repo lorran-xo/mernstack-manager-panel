@@ -1,5 +1,6 @@
 import './../../App.css';
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Footer from './../footer/footer.js';
 import { GrStatusGoodSmall } from 'react-icons/gr';
 import { Header, Icon, Container, Grid, Statistic, Card } from 'semantic-ui-react'
@@ -13,9 +14,13 @@ function App() {
 
   const [apiResponse, setApiResponse] = useState('offline');
   const [statusColor, setStatusColor] = useState('red');
+  const [qtProducts, setQtProducts] = useState('...');
+  const [totalPurchases, setTotalPurchases] = useState('...');
+  const [totalSales, setTotalSales] = useState('...');
 
   useEffect(() => {  
     callApi();
+    getDashboard();
   },[]);
 
   async function callApi(){         
@@ -27,6 +32,17 @@ function App() {
     }).catch((err) => {
       setStatusColor('red');
     })
+  }
+
+  async function getDashboard(){
+    fetch('http://localhost:9000/listFinancials').then(res => res.json().then(data =>({data: data}))
+      .then((res) => {
+        setQtProducts(res.data[0].qtProducts);
+        setTotalPurchases(res.data[0].totalPurchases);
+        setTotalSales(res.data[0].totalSales);
+      }).catch((err) => {
+        console.log("catch");
+      }));
   }
 
   return (
@@ -47,19 +63,19 @@ function App() {
                   <Grid.Row container columns={3}>
                     <Grid.Column>
                       <Statistic><br/>
-                        <Statistic.Value>R$520</Statistic.Value>
+                        <Statistic.Value><span style={{fontSize:'15px'}}>R$ {totalPurchases}</span></Statistic.Value>
                         <Statistic.Label style={{fontSize:'12px'}}>em compras</Statistic.Label>
                       </Statistic>
                     </Grid.Column>
                     <Grid.Column>
                       <Statistic><br/>
-                        <Statistic.Value>R$658</Statistic.Value>
+                        <Statistic.Value><span style={{fontSize:'15px'}}>R$ {totalSales}</span></Statistic.Value>
                         <Statistic.Label style={{fontSize:'12px'}}>em vendas</Statistic.Label>
                       </Statistic>
                     </Grid.Column>
                     <Grid.Column>
                         <Statistic><br/>
-                          <Statistic.Value>3</Statistic.Value>
+                          <Statistic.Value><span style={{fontSize:'15px'}}>{qtProducts}</span></Statistic.Value>
                           <Statistic.Label style={{fontSize:'12px'}}>Produtos</Statistic.Label>
                         </Statistic>
                     </Grid.Column>

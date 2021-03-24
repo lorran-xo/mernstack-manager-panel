@@ -1,12 +1,11 @@
-POST http://localhost:9000/insertProduct/
+POST http://localhost:9000/insertFinancials
 Content-Type: application/json
 
 {
-    "code": "9823",
-    "productName":"Tomate",
-    "kgQuantity":"25",
-    "kgPurchasePrice":"4.00",
-    "totalKgPurchasePrice": "100.00",
-    "kgResalePrice":"5.20"
+    "balance": "10.000",
+    "totalPurchases":"425.53",
+    "totalSales":"782.65",
+    "qtProducts":"3"
 }
+
     

@@ -16,8 +16,9 @@ var listStock = require('./routes/listStock')
 var insertProductRoute = require('./routes/insertProduct')
 var updateProductRoute = require('./routes/updateProduct')
 var deleteProductRoute = require('./routes/deleteProduct')
+var insertFinancialsRoute = require('./routes/insertFinancials')
+var listFinancialsRoute = require('./routes/listFinancials')
 //##### 1st ROUTES IMPORTS #####
-
 
 dotenv.config()
 
@@ -43,7 +44,8 @@ app.use('/listStock', listStock);
 app.use('/insertProduct', insertProductRoute);
 app.use('/updateProduct', updateProductRoute);
 app.use('/deleteProduct', deleteProductRoute);
-
+app.use('/insertFinancials', insertFinancialsRoute);
+app.use('/listFinancials', listFinancialsRoute);
 //##### 2nd ROUTES CREATIONS #####
 
 // catch 404 and forward to error handler

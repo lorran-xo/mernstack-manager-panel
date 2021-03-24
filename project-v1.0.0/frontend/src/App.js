@@ -12,6 +12,29 @@ import { Button, Grid, Icon, Label } from 'semantic-ui-react'
 import GreenShopLogo from './images/Green-Shop-Logo.png';
 
 class AppShell extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      balance: '',
+    }
+  }
+  componentDidMount() {
+    this.getPanelBalance();
+  }
+
+
+  getPanelBalance = async () => {
+    fetch('http://localhost:9000/listFinancials').then(res => res.json().then(data =>({data: data}))
+      .then((res) => {
+        console.log(res.data);
+        this.setState({
+          balance: res.data[0].balance,
+        });
+      }).catch((err) => {
+        console.log("catch");
+      }));
+  };
+
   render() {
     return (  //F3F3F3, DCE1E3, FDF8F5, a2c3a3, b2cdb2
       <div style={{backgroundColor:'#b2cdb2', paddingTop:'0.5%'}}>
@@ -29,7 +52,7 @@ class AppShell extends Component {
                 <Link to='/sobre'><Button labelPosition='right' icon>Sobre<Icon name='info circle'/></Button></Link>
                 <Label>
                   Saldo
-                  <Label.Detail>1200</Label.Detail>
+                  <Label.Detail>R${this.state.balance}</Label.Detail>
                 </Label>
               </Button.Group>
               {/*<center style={{margin:'1%'}}><Header style={{fontSize:'14px'}}>Saldo: R$ 1200 </Header></center>*/}
