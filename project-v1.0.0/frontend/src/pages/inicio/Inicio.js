@@ -17,6 +17,8 @@ function App() {
   const [qtProducts, setQtProducts] = useState('...');
   const [totalPurchases, setTotalPurchases] = useState('...');
   const [totalSales, setTotalSales] = useState('...');
+  const [profit, setProfit] = useState('...');
+
 
   useEffect(() => {  
     callApi();
@@ -40,6 +42,7 @@ function App() {
         setQtProducts(res.data[0].qtProducts);
         setTotalPurchases(res.data[0].totalPurchases);
         setTotalSales(res.data[0].totalSales);
+        setProfit(res.data[0].totalSales - res.data[0].totalPurchases);
       }).catch((err) => {
         console.log("catch");
       }));
@@ -83,7 +86,7 @@ function App() {
                 </Grid>
               </Statistic.Group>
             </Card.Content><br/><br/>
-              <center><h3 style={{fontSize:'14px'}}> Balanço de R$ 138 em 3 Produtos</h3><br/><br/>
+              <center><h3 style={{fontSize:'14px'}}> Balanço de R${profit} em {qtProducts} Produtos</h3><br/><br/>
               <p style={{fontSize:10}}><b>Status do sistema:</b> {apiResponse} <GrStatusGoodSmall style={{color: statusColor }}/></p></center>
             </Card>
       </Container>
