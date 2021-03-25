@@ -1,6 +1,5 @@
 import './../../App.css';
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import Footer from './../footer/footer.js';
 import { GrStatusGoodSmall } from 'react-icons/gr';
 import { Header, Icon, Container, Grid, Statistic, Card } from 'semantic-ui-react'

@@ -71,7 +71,7 @@ export default function FormDialog(props) {
                         Preencha abaixo qual a quantidade de {productName} para a venda<br/><br/>
                         Quantidade disponível: <b>{availableQtd}kg</b>
                         </p><br/>
-                        <Input value={typedProductQtd} onChange={e => handleProductQuantity(e.target.value)} error={qtdInputError} type="number" focus label="Quantidade" placeholder='kg'/><Popup content={'Valor de revenda'} trigger={<Label>x R${resalePrice}</Label>} />
+                        <Input value={typedProductQtd} onChange={e => handleProductQuantity(e.target.value)} error={qtdInputError} type="number" focus label="Quantidade" placeholder='kg'/><Label>x R${resalePrice}</Label>{/*<Popup content={'Valor de revenda'} trigger={<Label>x R${resalePrice}</Label>} />*/}
                         <br/>{qtdError}
                         <br/><br/>
                         <div class="ui divider"/>
