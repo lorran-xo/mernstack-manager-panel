@@ -1,11 +1,9 @@
 var createError = require('http-errors');
-//############################
 var express = require('express');
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 var app = express();
 const cors = require('cors')
-//############################
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -21,11 +19,10 @@ var listFinancialsRoute = require('./routes/listFinancials')
 //##### 1st ROUTES IMPORTS #####
 
 dotenv.config()
+mongoose.connect(process.env.DATABASE_ACCESS, () =>console.log("Database connected.")) //Passando acesso banco por arquivo .env
 
-mongoose.connect(process.env.DATABASE_ACCESS, () =>console.log("Database connected.")) 
-//Passando acesso por arquivo .env
 
-// view engine setup
+// view
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
@@ -36,7 +33,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//##### 2nd ROUTES CREATIONS #####
+//rotas
 app.use(express.json());
 app.listen(9000, () => console.log("server is up and running"))
 app.use('/', indexRouter); //rota padrao de conexao e teste NodeJS
@@ -44,9 +41,9 @@ app.use('/listStock', listStock);
 app.use('/insertProduct', insertProductRoute);
 app.use('/updateProduct', updateProductRoute);
 app.use('/deleteProduct', deleteProductRoute);
-app.use('/insertFinancials', insertFinancialsRoute);
+
 app.use('/listFinancials', listFinancialsRoute);
-//##### 2nd ROUTES CREATIONS #####
+app.use('/insertFinancials', insertFinancialsRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
