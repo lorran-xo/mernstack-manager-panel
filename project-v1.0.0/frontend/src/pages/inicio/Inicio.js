@@ -39,7 +39,7 @@ function App() {
     fetch('http://localhost:9000/listFinancials').then(res => res.json().then(data =>({data: data}))
       .then((res) => {
         setQtProducts(res.data[0].qtProducts);
-        setTotalPurchases(res.data[0].totalPurchases);
+        setTotalPurchases(res.data[0].totalPurchases); //.length(0,5)
         setTotalSales(res.data[0].totalSales);
         setProfit(res.data[0].totalSales - res.data[0].totalPurchases);
       }).catch((err) => {

@@ -10,15 +10,19 @@ var logger = require('morgan');
 
 //##### 1st FOLDER ROUTES IMPORTS #####
 var indexRouter = require('./routes/index');
+// Produtos
 var listStock = require('./routes/listStock')
 var insertProductRoute = require('./routes/insertProduct')
 var updateProductRoute = require('./routes/updateProduct')
 var deleteProductRoute = require('./routes/deleteProduct')
+// Financeiro
 var insertFinancialsRoute = require('./routes/insertFinancials')
 var listFinancialsRoute = require('./routes/listFinancials')
+var updateFinancialsRoute = require('./routes/updateFinancials')
 //##### 1st ROUTES IMPORTS #####
 
 dotenv.config()
+mongoose.set('useFindAndModify', false);
 mongoose.connect(process.env.DATABASE_ACCESS, () =>console.log("Database connected.")) //Passando acesso banco por arquivo .env
 
 
@@ -44,6 +48,7 @@ app.use('/deleteProduct', deleteProductRoute);
 
 app.use('/listFinancials', listFinancialsRoute);
 app.use('/insertFinancials', insertFinancialsRoute);
+app.use('/updateFinancials', updateFinancialsRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

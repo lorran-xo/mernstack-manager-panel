@@ -26,7 +26,6 @@ class AppShell extends Component {
   getPanelBalance = async () => {
     fetch('http://localhost:9000/listFinancials').then(res => res.json().then(data =>({data: data}))
       .then((res) => {
-        console.log(res.data);
         this.setState({
           balance: res.data[0].balance,
         });

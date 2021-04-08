@@ -1,5 +1,5 @@
 import './../../App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PurchaseTable from './components/purchaseTable';
 import Footer from './../footer/footer.js';
 import axios from 'axios';
@@ -8,7 +8,6 @@ import { Button,
 
 function App() {
   const [openBuyPopup, setOpenBuyPopup] = useState(false);
-  const [balance] = useState(1200);
   const [typedProductName, setTypedProductName] = useState('');
   const [pQuantity, setPquantity] = useState('');
   const [resalePrice, setResalePrice] = useState('');
@@ -25,112 +24,155 @@ function App() {
   const [purchasePriceInputError, setPurchasePriceInputError] = useState(false);
   const [resalePriceInputError, setResalePriceInputError] = useState(false);
 
-    async function insertNewProduct(){
-      let repeatedProduct = false;
+  const [qtProducts, setQtProducts] = useState(0);
+  const [totalPurchases, setTotalPurchases] = useState(0);
+  const [balance, setBalance] = useState(0);
 
-      await fetch('http://localhost:9000/listStock').then(res => res.json().then(data =>({data: data})) //Ve se já tem no banco o produto que está sendo adicionado pra nao duplicar
-        .then((res) => {
-          for (let i = 0; i < res.data.length; i += 1) {
-            if(typedProductName === res.data[i].productName){
-              repeatedProduct = true;
-            }
+  useEffect(() => {  
+    getFinancials();
+  },[]);
+
+  async function insertNewProduct(){
+    let repeatedProduct = false;
+
+    await fetch('http://localhost:9000/listStock').then(res => res.json().then(data =>({data: data})) //Ve se já tem no banco o produto que está sendo adicionado pra nao duplicar
+      .then((res) => {
+        for (let i = 0; i < res.data.length; i += 1) {
+          if(typedProductName === res.data[i].productName){
+            repeatedProduct = true;
           }
+        }
+      }).catch((err) => {
+      }));
+
+    setBuyingError('');
+    setNameError('');
+    setQtdError('');
+    setPurchasePriceError('');
+    setResalePriceError('');
+    setNameInputError(false);
+    setQtdInputError(false);
+    setPurchasePriceInputError(false);
+    setResalePriceInputError(false);
+
+    var val1 = Math.floor(1000 + Math.random() * 9999);
+    var val2 = Math.floor(100000 + Math.random() * 999999);
+    var calculatesBarCode = "789."+val1+'.'+val2;
+    var calculatedTotalPurchasePrice = (pQuantity * purchasePrice)
+
+    if(typedProductName === '' || typedProductName.length <= 2){
+      setNameError(<span style={{color:'red'}}>Preencha o nome do produto!</span>);
+      setNameInputError(true);
+    } else if (pQuantity === '' || pQuantity === 0 || pQuantity < 0){
+      setQtdError(<span style={{color:'red'}}>Preencha a quantidade do produto!</span>);
+      setQtdInputError(true);
+    }else if(purchasePrice === '' || purchasePrice === 0 || purchasePrice < 0){
+      setPurchasePriceError(<span style={{color:'red'}}>Preencha o preço do produto!</span>);
+      setPurchasePriceInputError(true);
+    } else if(resalePrice === '' || resalePrice === 0 || resalePrice < 0){
+      setResalePriceError(<span style={{color:'red'}}>Preencha o preço de revenda do produto!</span>);
+      setResalePriceInputError(true);
+    } else if(balance < (balance - (pQuantity * purchasePrice))){ //saldo menor que o valor da compra
+      setBuyingError(<span style={{color:'red'}}>Você não tem saldo suficiente!</span>);
+    } else if(repeatedProduct === true){
+      setBuyingError(<span style={{color:'red'}}>Já existe um produto com esse nome no estoque, compre dele diretamente da tabela!</span>);
+    } else {
+      const newProduct = {
+        barCode: calculatesBarCode,
+        productName: typedProductName,
+        kgQuantity: pQuantity,
+        kgPurchasePrice: purchasePrice,
+        kgResalePrice: resalePrice,
+        totalKgPurchasePrice: calculatedTotalPurchasePrice
+      };
+    
+      await axios.post('http://localhost:9000/insertProduct', newProduct)
+        .then((response) => {
+          updateFinancials();
+          setOpenBuyPopup(false);
+          setSuccessfulClass("ui message");
+          //updateTable();
         }).catch((err) => {
-        }));
-
-      setBuyingError('');
-      setNameError('');
-      setQtdError('');
-      setPurchasePriceError('');
-      setResalePriceError('');
-      setNameInputError(false);
-      setQtdInputError(false);
-      setPurchasePriceInputError(false);
-      setResalePriceInputError(false);
-
-      var val1 = Math.floor(1000 + Math.random() * 9999);
-      var val2 = Math.floor(100000 + Math.random() * 999999);
-      var calculatesBarCode = "789."+val1+'.'+val2;
-      var calculatedTotalPurchasePrice = (pQuantity * purchasePrice)
-
-      if(typedProductName === '' || typedProductName.length <= 2){
-        setNameError(<span style={{color:'red'}}>Preencha o nome do produto!</span>);
-        setNameInputError(true);
-      } else if (pQuantity === '' || pQuantity === 0 || pQuantity < 0){
-        setQtdError(<span style={{color:'red'}}>Preencha a quantidade do produto!</span>);
-        setQtdInputError(true);
-      }else if(purchasePrice === '' || purchasePrice === 0 || purchasePrice < 0){
-        setPurchasePriceError(<span style={{color:'red'}}>Preencha o preço do produto!</span>);
-        setPurchasePriceInputError(true);
-      } else if(resalePrice === '' || resalePrice === 0 || resalePrice < 0){
-        setResalePriceError(<span style={{color:'red'}}>Preencha o preço de revenda do produto!</span>);
-        setResalePriceInputError(true);
-      } else if(balance < (balance - (pQuantity * purchasePrice))){ //saldo menor que o valor da compra
-        setBuyingError(<span style={{color:'red'}}>Você não tem saldo suficiente!</span>);
-      } else if(repeatedProduct === true){
-        setBuyingError(<span style={{color:'red'}}>Já existe um produto com esse nome no estoque, compre dele diretamente da tabela!</span>);
-      } else {
-        const newProduct = {
-          barCode: calculatesBarCode,
-          productName: typedProductName,
-          kgQuantity: pQuantity,
-          kgPurchasePrice: purchasePrice,
-          kgResalePrice: resalePrice,
-          totalKgPurchasePrice: calculatedTotalPurchasePrice
-        };
-      
-        await axios.post('http://localhost:9000/insertProduct', newProduct)
-          .then((response) => {
-            setOpenBuyPopup(false);
-            setSuccessfulClass("ui message");
-            updateTable();
-          }).catch((err) => {
-            setBuyingError(<span style={{color:'red'}}>Ocorreu um erro ao efetuar a compra!</span>);
-          })
-      }
+          setBuyingError(<span style={{color:'red'}}>Ocorreu um erro ao efetuar a compra!</span>);
+        })
     }
+  }
 
-    function handleOpenBuyPopup(){
-      setTypedProductName('');
-      setPquantity('');
-      setPurchasePrice('');
-      setResalePrice('');
-      setBuyingError('');
-      setNameError('');
-      setQtdError('');
-      setPurchasePriceError('');
-      setResalePriceError('');
-      setNameInputError(false);
-      setQtdInputError(false);
-      setPurchasePriceInputError(false);
-      setResalePriceInputError(false);
-      setOpenBuyPopup(true);
-    }
+  async function getFinancials(){
+    fetch('http://localhost:9000/listFinancials').then(res => res.json().then(data =>({data: data}))
+      .then((res) => {
+        console.log(res.data);
+        setBalance(res.data[0].balance);
+        setQtProducts(res.data[0].qtProducts);
+        setTotalPurchases(res.data[0].totalPurchases);
+      }).catch((err) => {
+        console.log("catch");
+      }));
 
-    function handleCloseBuyPopup(){
-      setOpenBuyPopup(false);
-    }
+  }
 
-    const handleProductName = (e) => {
-      setTypedProductName(e);
-    }
+  async function updateFinancials(){
+    var purchaseValue = pQuantity * purchasePrice;
 
-    const handleProductQuantity = (e) => {
-      setPquantity(e);
-    }
+    const doc = {
+      balance: balance - purchaseValue,
+      totalPurchases: totalPurchases + purchaseValue,
+      qtProducts: qtProducts + 1,
+    };
 
-    const handlePurchasePrice = (e) => {
-      setPurchasePrice(e);
-    }
+    console.log(doc);
 
-    const handleResalePrice = (e) => {
-      setResalePrice(e);
-    }
-
-    function updateTable(){
-      passingLoadingTable.current.loadData();
+    await axios.post('http://localhost:9000/updateFinancials', doc)
+    .then((res) => {
+      console.log("ok");
+      console.log(res);
       window.location.reload();
-    }
+    }).catch((err) => {
+      console.log("catch");
+    })
+  }
+
+  function handleOpenBuyPopup(){
+    setTypedProductName('');
+    setPquantity('');
+    setPurchasePrice('');
+    setResalePrice('');
+    setBuyingError('');
+    setNameError('');
+    setQtdError('');
+    setPurchasePriceError('');
+    setResalePriceError('');
+    setNameInputError(false);
+    setQtdInputError(false);
+    setPurchasePriceInputError(false);
+    setResalePriceInputError(false);
+    setOpenBuyPopup(true);
+  }
+
+  function handleCloseBuyPopup(){
+    setOpenBuyPopup(false);
+  }
+
+  const handleProductName = (e) => {
+    setTypedProductName(e);
+  }
+
+  const handleProductQuantity = (e) => {
+    setPquantity(e);
+  }
+
+  const handlePurchasePrice = (e) => {
+    setPurchasePrice(e);
+  }
+
+  const handleResalePrice = (e) => {
+    setResalePrice(e);
+  }
+
+  function updateTable(){
+    passingLoadingTable.current.loadData();
+    window.location.reload();
+  }
 
   return (
     <div>

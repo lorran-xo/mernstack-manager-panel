@@ -77,7 +77,7 @@ $ npm start
 
 # The Frontend server will initialize in the <http://localhost:3000>
 
-# Acess Backend 
+# Access Backend 
 $ cd mernstack-manager-panel\project-v1.0.0\backend
 
 # Install Backend dependencies

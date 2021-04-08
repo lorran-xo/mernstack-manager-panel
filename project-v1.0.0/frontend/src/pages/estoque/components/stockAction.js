@@ -39,12 +39,9 @@ export default function FormDialog(props) {
 
             await axios.post('http://localhost:9000/updateProduct', doc)
             .then((res) => {
-                console.log("thenUPDATE");
                 setOpenEditPopup(false);
                 window.location.reload();
             }).catch((err) => {
-                console.log("ctachUPDATE");
-
                 setEditingError('Ocorreu um erro ao editar o produto!');
             })
         }
@@ -59,13 +56,10 @@ export default function FormDialog(props) {
 
         await axios.post('http://localhost:9000/deleteProduct', doc)
         .then((res) => {
-            console.log("thenDELTE");
-
             setOpenDeleteProductConfirm(false);
             setOpenEditPopup(false);
             window.location.reload();
         }).catch((err) => {
-            console.log("catchDELTE");
             setOpenDeleteProductConfirm(false);
             setEditingError('Ocorreu um erro ao editar o produto!');
         }) 
