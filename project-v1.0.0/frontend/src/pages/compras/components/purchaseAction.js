@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from "react";
+import axios from 'axios';
 import { FaCartArrowDown } from 'react-icons/fa';
 import { Button, Modal, Input, Label, Popup } from 'semantic-ui-react'
 
 export default function FormDialog(props) {
-    const [balance] = useState(1200);
     const [openBuyPopup, setOpenBuyPopup] = useState(false);
     const [productName] = useState(props.productName);
     const [availableQtd] = useState(props.availableQtd);
@@ -14,11 +14,17 @@ export default function FormDialog(props) {
     const [buyingError, setBuyingError] = useState('');
     const [qtdInputError, setQtdInputError] = useState(false);
 
-    useEffect(() => {                
+    const [totalPurchases, setTotalPurchases] = useState(0);
+    const [balance, setBalance] = useState(0);
+
+    useEffect(() => {    
+        getFinancials();
     }, []);
 
     async function handleConfirmBuyPopup(){  
         setBuyingError("");
+        var newQuantity = props.availableQtd + parseInt(typedProductQtd, 10);
+        console.log(newQuantity);
 
         if(typedProductQtd === '' || typedProductQtd === 0 || typedProductQtd < 0){
             setQtdError(<span style={{color:'red'}}>Preencha com a quantidade!</span>);
@@ -26,16 +32,42 @@ export default function FormDialog(props) {
         } else if(balance < (balance - (typedProductQtd * purchasePrice))){
             setBuyingError(<span style={{color:'red'}}>Você não tem saldo suficiente!</span>);
         } else {
-            setOpenBuyPopup(false);
-            window.location.reload();
-            /*await api.post('/')
+            
+            const doc = {
+                _id: props.id,
+                kgQuantity: newQuantity,
+            };
+
+            await axios.post('http://localhost:9000/updateProduct', doc)
             .then((res) => {
-                setOpenSellPopup(false);
+                updateFinancials();
+                setOpenBuyPopup(false);
                 window.location.reload();
             }).catch((err) => {
-    
-            })*/ 
+                setBuyingError('Ocorreu um erro ao editar o produto!');
+            })
         }
+    }
+
+    async function updateFinancials(){
+
+        var newBalance = balance - (typedProductQtd * purchasePrice);
+    
+        const doc = {
+          balance: newBalance,
+          totalPurchases: totalPurchases + purchaseTotal,
+        };
+    
+        console.log(doc);
+    
+        await axios.post('http://localhost:9000/updateFinancials', doc)
+        .then((res) => {
+          console.log("ok");
+          console.log(res);
+          window.location.reload();
+        }).catch((err) => {
+          console.log("catch");
+        })
     }
 
     function handleOpenBuyPopup(){
@@ -57,6 +89,17 @@ export default function FormDialog(props) {
         let total = e * purchasePrice;
         setPurchaseTotal(total);
     }
+
+    async function getFinancials(){
+        fetch('http://localhost:9000/listFinancials').then(res => res.json().then(data =>({data: data}))
+          .then((res) => {
+            console.log(res.data);
+            setBalance(res.data[0].balance);
+            setTotalPurchases(res.data[0].totalPurchases);
+          }).catch((err) => {
+            console.log("catch");
+          }));
+      }
   
     return (
         <div>
