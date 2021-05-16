@@ -163,10 +163,10 @@ function App() {
     setResalePrice(e);
   }
 
-  function updateTable(){
+  /*function updateTable(){
     passingLoadingTable.current.loadData();
     window.location.reload();
-  }
+  }*/
 
   return (
     <div>

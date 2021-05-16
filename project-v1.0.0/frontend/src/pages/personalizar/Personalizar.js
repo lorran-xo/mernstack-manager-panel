@@ -1,8 +1,7 @@
 import './../../App.css';
 import React from 'react';
 import Footer from './../footer/footer.js';
-import LorranPic from './../../images/lorranxo.jpg';
-import { Button, Card, Header, Icon, Image, Container } from 'semantic-ui-react'
+import { Header, Icon, Container } from 'semantic-ui-react'
 import ImageUploader from 'react-images-upload';
 
 function App() {
@@ -10,6 +9,7 @@ function App() {
 
   function onDrop(picture){
     setPictures(picture);
+    console.log(pictures);
   }
 
   return (
