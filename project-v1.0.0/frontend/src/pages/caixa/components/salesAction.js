@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import axios from 'axios';
 import { MdMonetizationOn } from 'react-icons/md';
 import { Button, Modal, Input, Label, Popup } from 'semantic-ui-react'
 
@@ -11,11 +12,20 @@ export default function FormDialog(props) {
     const [saleTotal, setSaleTotal] = useState(0);
     const [qtdError, setQtdError] = useState('');
     const [qtdInputError, setQtdInputError] = useState(false);
+    const [sellingError, setSellingError] = useState('');
 
-    useEffect(() => {                
+    const [totalSales, setTotalSales] = useState(0);
+    const [balance, setBalance] = useState(0);
+
+
+    useEffect(() => {    
+        getFinancials();
     }, []);
 
-    async function handleConfirmSellPopup(){  
+    async function handleConfirmSellPopup(){
+        setSellingError("");
+
+        var newQuantity = props.availableQtd - parseInt(typedProductQtd, 10);
 
         if(typedProductQtd === '' || typedProductQtd === 0 || typedProductQtd < 0){
             setQtdError(<span style={{color:'red'}}>Preencha com a quantidade!</span>);
@@ -23,16 +33,42 @@ export default function FormDialog(props) {
         } else if(typedProductQtd > availableQtd){
             setQtdError(<span style={{color:'red'}}>Não tem {productName} o suficiente no estoque!</span>);
         } else {
-            setOpenSellPopup(false);
-            window.location.reload();
-            /*await api.post('/')
+
+            const doc = {
+                _id: props.id,
+                kgQuantity: newQuantity,
+            };
+
+            console.log(doc);
+
+            await axios.post('http://localhost:9000/updateProduct', doc)
             .then((res) => {
+                updateFinancials();
                 setOpenSellPopup(false);
-                window.location.reload();
+                //window.location.reload()
             }).catch((err) => {
-    
-            })*/ 
+                setSellingError('Ocorreu um erro ao vender o produto!');
+            })
         }
+    }
+
+    async function updateFinancials(){
+
+        var newBalance = balance + saleTotal;
+    
+        const doc = {
+          balance: newBalance,
+          totalSales: totalSales + saleTotal,
+        };
+
+        console.log(doc);
+        
+        await axios.post('http://localhost:9000/updateFinancials', doc)
+        .then((res) => {
+          //window.location.reload();
+        }).catch((err) => {
+          console.log(err);
+        })
     }
 
     function handleOpenSellPopup(){
@@ -53,7 +89,17 @@ export default function FormDialog(props) {
         let total = e * resalePrice;
         setSaleTotal(total);
     }
-  
+
+    async function getFinancials(){
+        fetch('http://localhost:9000/listFinancials').then(res => res.json().then(data =>({data: data}))
+          .then((res) => {
+            setBalance(res.data[0].balance);
+            setTotalSales(res.data[0].totalSales);
+          }).catch((err) => {
+            console.log(err);
+          }));
+    }
+
     return (
         <div>
             <Popup content={'Vender '+ props.productName} trigger={<button style={{border: 'none', background:'none'}}><MdMonetizationOn onClick={handleOpenSellPopup} style={{width:'145%', height:'145%', color:'green', cursor:"pointer"}}/></button>} />
@@ -79,6 +125,7 @@ export default function FormDialog(props) {
                     </Modal.Description>
                 </Modal.Content>
                 <Modal.Actions>
+                    {sellingError}
                     <Button
                         content='Cancelar'
                         negative

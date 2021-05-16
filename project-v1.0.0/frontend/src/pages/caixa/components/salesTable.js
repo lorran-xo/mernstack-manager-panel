@@ -38,7 +38,7 @@ class Table extends React.Component {
 
             if(res.data[i].kgQuantity === 0){
             } else {
-              stockData.push({'actions': <SalesAction productName={res.data[i].productName} availableQtd={res.data[i].kgQuantity} resalePrice={res.data[i].kgResalePrice}/>,
+              stockData.push({'actions': <SalesAction id={res.data[i]._id} productName={res.data[i].productName} availableQtd={res.data[i].kgQuantity} resalePrice={res.data[i].kgResalePrice}/>,
             'cod': a, 'product': b, 'quantity': c, 'purchasePrice': d, 'resalePrice': e});
             }
  

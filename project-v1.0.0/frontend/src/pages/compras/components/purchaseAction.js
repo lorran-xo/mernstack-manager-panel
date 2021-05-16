@@ -43,7 +43,7 @@ export default function FormDialog(props) {
                 setOpenBuyPopup(false);
                 window.location.reload();
             }).catch((err) => {
-                setBuyingError('Ocorreu um erro ao editar o produto!');
+                setBuyingError('Ocorreu um erro ao comprar o produto!');
             })
         }
     }
