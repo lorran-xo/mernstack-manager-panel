@@ -10,7 +10,6 @@ function App() {
 
   function onDrop(picture){
     setPictures(picture);
-    console.log(picture);
   }
 
   return (

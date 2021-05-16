@@ -30,7 +30,7 @@ class AppShell extends Component {
           balance: res.data[0].balance,
         });
       }).catch((err) => {
-        console.log("catch");
+        console.log(err);
       }));
   };
 

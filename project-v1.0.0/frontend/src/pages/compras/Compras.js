@@ -105,7 +105,7 @@ function App() {
         setQtProducts(res.data[0].qtProducts);
         setTotalPurchases(res.data[0].totalPurchases);
       }).catch((err) => {
-        console.log("catch");
+        console.log(err);
       }));
   }
 
@@ -118,15 +118,11 @@ function App() {
       qtProducts: qtProducts + 1,
     };
 
-    console.log(doc);
-
     await axios.post('http://localhost:9000/updateFinancials', doc)
     .then((res) => {
-      console.log("ok");
-      console.log(res);
       window.location.reload();
     }).catch((err) => {
-      console.log("catch");
+      console.log(err);
     })
   }
 

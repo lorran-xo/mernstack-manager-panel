@@ -43,7 +43,7 @@ function App() {
         setTotalSales(res.data[0].totalSales);
         setProfit(res.data[0].totalSales - res.data[0].totalPurchases);
       }).catch((err) => {
-        console.log("catch");
+        console.log(err);
       }));
   }
 

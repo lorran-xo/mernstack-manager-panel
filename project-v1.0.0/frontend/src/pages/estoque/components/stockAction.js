@@ -61,7 +61,7 @@ export default function FormDialog(props) {
             updateFinancials();
             setOpenDeleteProductConfirm(false);
             setOpenEditPopup(false);
-            //window.location.reload();
+            window.location.reload();
         }).catch((err) => {
             setOpenDeleteProductConfirm(false);
             setEditingError('Ocorreu um erro ao editar o produto!');
@@ -71,27 +71,20 @@ export default function FormDialog(props) {
     async function updateFinancials(){
 
         var newQtd = quantity - 1;
-
-        console.log(newQtd);
     
         const doc = {
             qtProducts: newQtd,
         };
-    
-        console.log(doc);
-    
+        
         await axios.post('http://localhost:9000/updateFinancials', doc)
         .then((res) => {
-          console.log("ok");
-          console.log(res);
           window.location.reload();
         }).catch((err) => {
-          console.log("catch");
+          console.log(err);
         })
     }
 
     function handleOpenDeleteProductConfirm(){
-        console.log(props.id);
         setOpenDeleteProductConfirm(true);
     }
 
@@ -100,7 +93,6 @@ export default function FormDialog(props) {
     }
     
     function handleOpenEditPopup(){
-        console.log(quantity);
         setPurchasePriceError('');
         setPurchasePriceInputError(false);
         setResalePriceError('');
@@ -124,10 +116,9 @@ export default function FormDialog(props) {
     async function getFinancials(){
         fetch('http://localhost:9000/listFinancials').then(res => res.json().then(data =>({data: data}))
           .then((res) => {
-            console.log(res.data[0].qtProducts);
             setQuantity(res.data[0].qtProducts);
           }).catch((err) => {
-            console.log("catch");
+            console.log(err);
           }));
     }
 

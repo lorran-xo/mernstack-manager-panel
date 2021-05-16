@@ -24,7 +24,6 @@ export default function FormDialog(props) {
     async function handleConfirmBuyPopup(){  
         setBuyingError("");
         var newQuantity = props.availableQtd + parseInt(typedProductQtd, 10);
-        console.log(newQuantity);
 
         if(typedProductQtd === '' || typedProductQtd === 0 || typedProductQtd < 0){
             setQtdError(<span style={{color:'red'}}>Preencha com a quantidade!</span>);
@@ -57,16 +56,12 @@ export default function FormDialog(props) {
           balance: newBalance,
           totalPurchases: totalPurchases + purchaseTotal,
         };
-    
-        console.log(doc);
-    
+        
         await axios.post('http://localhost:9000/updateFinancials', doc)
         .then((res) => {
-          console.log("ok");
-          console.log(res);
           window.location.reload();
         }).catch((err) => {
-          console.log("catch");
+          console.log(err);
         })
     }
 
@@ -96,7 +91,7 @@ export default function FormDialog(props) {
             setBalance(res.data[0].balance);
             setTotalPurchases(res.data[0].totalPurchases);
           }).catch((err) => {
-            console.log("catch");
+            console.log(err);
           }));
     }
   
