@@ -38,10 +38,11 @@ function App() {
   async function getDashboard(){
     fetch('http://localhost:9000/listFinancials').then(res => res.json().then(data =>({data: data}))
       .then((res) => {
+        let convertProfit = res.data[0].totalSales - res.data[0].totalPurchases;
         setQtProducts(res.data[0].qtProducts);
-        setTotalPurchases(res.data[0].totalPurchases); //.substring(0,5)
-        setTotalSales(res.data[0].totalSales);
-        setProfit(res.data[0].totalSales - res.data[0].totalPurchases);
+        setTotalPurchases(res.data[0].totalPurchases.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})); 
+        setTotalSales(res.data[0].totalSales.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+        setProfit(convertProfit.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
       }).catch((err) => {
         console.log(err);
       }));
@@ -65,13 +66,13 @@ function App() {
                   <Grid.Row container columns={3}>
                     <Grid.Column>
                       <Statistic><br/>
-                        <Statistic.Value><span style={{fontSize:'15px'}}>R$ {totalPurchases}</span></Statistic.Value>
+                        <Statistic.Value><span style={{fontSize:'15px'}}>{totalPurchases}</span></Statistic.Value>
                         <Statistic.Label style={{fontSize:'12px'}}>em compras</Statistic.Label>
                       </Statistic>
                     </Grid.Column>
                     <Grid.Column>
                       <Statistic><br/>
-                        <Statistic.Value><span style={{fontSize:'15px'}}>R$ {totalSales}</span></Statistic.Value>
+                        <Statistic.Value><span style={{fontSize:'15px'}}>{totalSales}</span></Statistic.Value>
                         <Statistic.Label style={{fontSize:'12px'}}>em vendas</Statistic.Label>
                       </Statistic>
                     </Grid.Column>
@@ -85,7 +86,7 @@ function App() {
                 </Grid>
               </Statistic.Group>
             </Card.Content><br/><br/>
-              <center><h3 style={{fontSize:'14px'}}> Balanço de R${profit} em {qtProducts} Produtos</h3><br/><br/>
+              <center><h3 style={{fontSize:'14px'}}> Balanço de {profit} em {qtProducts} Produtos</h3><br/><br/>
               <p style={{fontSize:10}}><b>Status do sistema:</b> {apiResponse} <GrStatusGoodSmall style={{color: statusColor }}/></p></center>
             </Card>
       </Container>
