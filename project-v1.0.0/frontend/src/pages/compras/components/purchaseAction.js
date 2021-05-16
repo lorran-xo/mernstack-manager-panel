@@ -93,13 +93,12 @@ export default function FormDialog(props) {
     async function getFinancials(){
         fetch('http://localhost:9000/listFinancials').then(res => res.json().then(data =>({data: data}))
           .then((res) => {
-            console.log(res.data);
             setBalance(res.data[0].balance);
             setTotalPurchases(res.data[0].totalPurchases);
           }).catch((err) => {
             console.log("catch");
           }));
-      }
+    }
   
     return (
         <div>

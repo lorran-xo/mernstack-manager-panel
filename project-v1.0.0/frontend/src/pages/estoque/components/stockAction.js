@@ -13,8 +13,10 @@ export default function FormDialog(props) {
     const [resalePriceError, setResalePriceError] = useState('');
     const [resalePriceInputError, setResalePriceInputError] = useState(false);
     const [editingError, setEditingError] = useState('');
+    const [quantity, setQuantity] = useState(0);
 
-    useEffect(() => {           
+    useEffect(() => {   
+        getFinancials();        
     }, []);
 
     async function handleConfirmEditPopup(){
@@ -56,13 +58,36 @@ export default function FormDialog(props) {
 
         await axios.post('http://localhost:9000/deleteProduct', doc)
         .then((res) => {
+            updateFinancials();
             setOpenDeleteProductConfirm(false);
             setOpenEditPopup(false);
-            window.location.reload();
+            //window.location.reload();
         }).catch((err) => {
             setOpenDeleteProductConfirm(false);
             setEditingError('Ocorreu um erro ao editar o produto!');
-        }) 
+        })
+    }
+
+    async function updateFinancials(){
+
+        var newQtd = quantity - 1;
+
+        console.log(newQtd);
+    
+        const doc = {
+            qtProducts: newQtd,
+        };
+    
+        console.log(doc);
+    
+        await axios.post('http://localhost:9000/updateFinancials', doc)
+        .then((res) => {
+          console.log("ok");
+          console.log(res);
+          window.location.reload();
+        }).catch((err) => {
+          console.log("catch");
+        })
     }
 
     function handleOpenDeleteProductConfirm(){
@@ -75,6 +100,7 @@ export default function FormDialog(props) {
     }
     
     function handleOpenEditPopup(){
+        console.log(quantity);
         setPurchasePriceError('');
         setPurchasePriceInputError(false);
         setResalePriceError('');
@@ -93,6 +119,16 @@ export default function FormDialog(props) {
   
     const handleResalePrice = (e) => {
         setResalePrice(e);
+    }
+
+    async function getFinancials(){
+        fetch('http://localhost:9000/listFinancials').then(res => res.json().then(data =>({data: data}))
+          .then((res) => {
+            console.log(res.data[0].qtProducts);
+            setQuantity(res.data[0].qtProducts);
+          }).catch((err) => {
+            console.log("catch");
+          }));
     }
 
     return (
@@ -136,7 +172,7 @@ export default function FormDialog(props) {
                         onClick={handleCloseEditPopup}
                     />
                     <Button
-                        content='Editar'
+                        content='Salvar'
                         icon='checkmark'
                         labelPosition='right'
                         positive
