@@ -19,12 +19,13 @@ var deleteProductRoute = require('./routes/deleteProduct')
 var insertFinancialsRoute = require('./routes/insertFinancials')
 var listFinancialsRoute = require('./routes/listFinancials')
 var updateFinancialsRoute = require('./routes/updateFinancials')
+//Config
+var uploadImageRoute = require('./routes/uploadImage')
 //##### 1st ROUTES IMPORTS #####
 
 dotenv.config()
 mongoose.set('useFindAndModify', false);
 mongoose.connect(process.env.DATABASE_ACCESS, () =>console.log("Database connected.")) //Passando acesso banco por arquivo .env
-
 
 // view
 app.set('views', path.join(__dirname, 'views'));
@@ -49,6 +50,8 @@ app.use('/deleteProduct', deleteProductRoute);
 app.use('/listFinancials', listFinancialsRoute);
 app.use('/insertFinancials', insertFinancialsRoute);
 app.use('/updateFinancials', updateFinancialsRoute);
+
+app.use('/uploadImage', uploadImageRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

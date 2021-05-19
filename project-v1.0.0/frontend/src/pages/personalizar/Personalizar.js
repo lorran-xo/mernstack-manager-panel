@@ -13,7 +13,7 @@ function App() {
   }
 
   return (
-    <div>
+    <React.Fragment>
       {/*<header className="App-header">
       </header>*/}
       <Container style={{backgroundColor: "white", width:"90%", padding:'5%'}}><br/>
@@ -24,17 +24,27 @@ function App() {
             Personalize o seu painel de acordo com o seu negócio!
           </Header.Subheader><br/>
         </Header>
-        <ImageUploader
+        <form action="http://localhost:9000/uploadImage" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="image" class="text-white">Upload image</label>
+            <input type="file" name="image" id="image" class="form-control-file text-white"/>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </form>
+
+        {/*<ImageUploader
           withIcon={true}
           buttonText='Selecione a imagem'
           onChange={onDrop}
           imgExtension={['.jpg', '.png']}
           label={"Tamanho máximo: 5mb - Formatos: .jpg e .png"}
           maxFileSize={5242880}
-        />
+        />*/}
       </Container>
       <center style={{marginTop:'-3%'}}><Footer/></center>
-    </div>
+    </React.Fragment>
   );
 }
 
