@@ -48,7 +48,7 @@ class AppShell extends Component {
                 <Link to='/estoque'><Button labelPosition='right' icon>Estoque<Icon name='dolly flatbed'/></Button></Link>
                 <Link to='/caixa'><Button labelPosition='right' icon>Caixa<Icon name='archive'/></Button></Link>
                 <Link to='/compras'><Button labelPosition='right' icon>Compras<Icon name='cart'/></Button></Link>
-                <Link to='/personalizar'><Button labelPosition='right' icon>Personalizar<Icon name='paint brush'/></Button></Link>
+               {/*<Link to='/personalizar'><Button labelPosition='right' icon>Personalizar<Icon name='paint brush'/></Button></Link>*/}
                 <Link to='/sobre'><Button labelPosition='right' icon>Sobre<Icon name='info circle'/></Button></Link>
                 <Label>
                   Saldo
@@ -64,7 +64,7 @@ class AppShell extends Component {
           <Route path='/compras' component={ Compras } />
           <Route path='/caixa' component={ Caixa } />
           <Route path='/estoque' component={ Estoque } />
-          <Route path='/personalizar' component={ Personalizar } />
+          {/*<Route path='/personalizar' component={ Personalizar } />*/}
           <Route path='/sobre' component={ Sobre } />
         </Switch>
       </div>
