@@ -44,7 +44,7 @@ class AppShell extends Component {
             </Grid.Column>
             <Grid.Column>
               <Button.Group horizontal style={{margin:"10%"}}>
-                <Link to='/'><Button labelPosition='right' icon>Início<Icon name='home'/></Button></Link>
+                <Link to='/'><Button labelPosition='right' icon>Dashboard<Icon name='chart line'/></Button></Link>
                 <Link to='/estoque'><Button labelPosition='right' icon>Estoque<Icon name='dolly flatbed'/></Button></Link>
                 <Link to='/caixa'><Button labelPosition='right' icon>Caixa<Icon name='archive'/></Button></Link>
                 <Link to='/compras'><Button labelPosition='right' icon>Compras<Icon name='cart'/></Button></Link>

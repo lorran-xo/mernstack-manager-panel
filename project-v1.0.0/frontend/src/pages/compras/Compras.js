@@ -169,8 +169,8 @@ function App() {
   }*/
 
   return (
-    <div>
-      <Container style={{backgroundColor: "white", width:"90%", padding:'5%'}}><br/>
+    <>
+      <Container className="geral"><br/>
         <div class={successfulClass}>
           <p>A compra foi efetuada com sucesso!</p>
         </div>
@@ -198,7 +198,7 @@ function App() {
                 <Grid columns={3}>
                   <Grid.Row>
                     <Grid.Column>
-                      <Input focus error={nameInputError} label="Produto" type="text" value={typedProductName.replace(/:|  |;|,|<|>|1|2|3|4|5|6|7|8|9|0|/g, '')} onChange={e => handleProductName(e.target.value)} style={{margin:'3%'}}/>
+                      <Input focus error={nameInputError} label="Produto" type="text" value={typedProductName.replace(/:| {2}|;|,|<|>|1|2|3|4|5|6|7|8|9|0|/g, '')} onChange={e => handleProductName(e.target.value)} style={{margin:'3%'}}/>
                       <br/>{nameError}<br/>
                       <Input focus error={qtdInputError} label="Quantidade" type="number" value={pQuantity} onChange={e => handleProductQuantity(e.target.value)} placeholder='(kg)'/><br/>
                       <br/>{qtdError}
@@ -235,7 +235,7 @@ function App() {
           </Modal>
       </Container>
       <center><Footer/></center>
-    </div>
+    </>
   );
 }
 

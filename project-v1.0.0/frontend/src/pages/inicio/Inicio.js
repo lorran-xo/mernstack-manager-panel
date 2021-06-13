@@ -49,11 +49,11 @@ function App() {
   }
 
   return (
-    <div>
-      <Container style={{backgroundColor: "white", width:"90%", padding:'5%'}}><br/>
+    <>
+      <Container className="geral"><br/>
         <Header as='h2' icon style={{marginLeft:'40%'}}>
-          <Icon name='home' />
-            Início
+          <Icon name='chart line'/>
+            Dashboard
           <Header.Subheader style={{fontSize:'15px'}}>
             Visualize as principais informações do seu Sistema
           </Header.Subheader><br/>
@@ -91,8 +91,51 @@ function App() {
             </Card>
       </Container>
       <center><Footer/></center>
-    </div>
+    </>
   );
 }
 
 export default App;
+
+/*
+<Container className="geral"><br/>
+        <Card style={{marginLeft:'35%'}}> 
+          <Card.Content style={{marginLeft:'13%', margin:"5%"}}>
+            <Statistic.Group size='tiny'>
+              <Grid class="ui grid">
+                <Grid.Row container columns={1}>
+                  <Grid.Column>
+                    <Header as='h2' icon>
+                      <Icon name='chart line'/>
+                        Dashboard
+                      <Header.Subheader>
+                        Visualize o resultado de suas transações.
+                      </Header.Subheader><br/>
+                    </Header>
+                  </Grid.Column>
+                </Grid.Row>
+                  <Grid.Row container columns={2}>
+                  <Grid.Column>
+                    <Statistic><br/>
+                      <Statistic.Value>{qtdEntrada}</Statistic.Value>
+                      <Statistic.Label>Transações de Entrada</Statistic.Label>
+                    </Statistic>
+                  </Grid.Column>
+                  <Grid.Column>
+                    <Statistic><br/>
+                      <Statistic.Value>{qtdSaida}</Statistic.Value>
+                      <Statistic.Label>Transações de saída</Statistic.Label>
+                    </Statistic>
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+            </Statistic.Group>
+          </Card.Content><br/><br/>
+            <center><h5> Subtotal de Entradas: {subtotalEntrada.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h5>
+            <h5> Subtotal de Saídas: {subtotalSaida.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h5>
+            <h5> Total da conta: {saldo.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h5><br/></center>
+          </Card>
+      </Container>
+      <center><Footer/></center>
+
+*/

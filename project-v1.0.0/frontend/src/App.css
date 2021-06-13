@@ -13,6 +13,12 @@
   }
 }
 
+.geral{
+  background-color: white;
+  width:90%;
+  padding: 5%;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

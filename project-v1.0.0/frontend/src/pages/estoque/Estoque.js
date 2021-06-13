@@ -6,8 +6,8 @@ import { Header, Icon, Container } from 'semantic-ui-react';
 function App() {
 
   return (
-    <div>
-      <Container style={{backgroundColor: "white", width:"90%", padding:'5%'}}><br/>
+    <>
+      <Container className="geral"><br/>
         <Header as='h2' icon style={{marginLeft:'38%'}}>
           <Icon name='cart' />
            Estoque
@@ -18,7 +18,7 @@ function App() {
         <StockTable/>
       </Container>
       <center><Footer/></center>
-    </div>
+    </>
   );
 }
 

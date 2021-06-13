@@ -7,10 +7,10 @@ import { Button, Card, Header, Icon, Image, Container } from 'semantic-ui-react'
 function App() {
 
   return (
-    <div>
+    <>
       {/*<header className="App-header">
       </header>*/}
-      <Container style={{backgroundColor: "white", width:"90%", padding:'5%'}}><br/>
+      <Container className="geral"><br/>
         <Header as='h2' icon style={{marginLeft:'40%'}}>
           <Icon name='info circle' />
            Sobre
@@ -53,7 +53,7 @@ function App() {
           </Card><br/>
       </Container>
       <center style={{marginTop:'-3%'}}><Footer/></center>
-    </div>
+    </>
   );
 }
 
