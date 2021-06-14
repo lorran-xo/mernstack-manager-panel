@@ -8,7 +8,7 @@ function App() {
   return (
      <>
       <Container className="geral"><br/>
-        <Header as='h2' icon style={{marginLeft:'40%'}}>
+        <Header as='h2' icon style={{marginLeft:'35%'}}>
           <Icon name='archive' />
            Caixa
           <Header.Subheader style={{fontSize:'15px'}}>

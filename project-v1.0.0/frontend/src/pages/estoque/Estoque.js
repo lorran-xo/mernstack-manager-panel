@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <Container className="geral"><br/>
-        <Header as='h2' icon style={{marginLeft:'38%'}}>
+        <Header as='h2' icon style={{marginLeft:'35%'}}>
           <Icon name='cart' />
            Estoque
           <Header.Subheader style={{fontSize:'15px'}}>

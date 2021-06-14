@@ -174,7 +174,7 @@ function App() {
         <div class={successfulClass}>
           <p>A compra foi efetuada com sucesso!</p>
         </div>
-        <Header as='h2' icon style={{marginLeft:'38%'}}>
+        <Header as='h2' icon style={{marginLeft:'33%'}}>
           <Icon name='cart' />
            Compras
           <Header.Subheader style={{fontSize:'15px'}}>

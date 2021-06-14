@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Switch, Route } from 'react-router-dom';
 //abas
-import Inicio  from './pages/inicio/Inicio';
+import Dashboard  from './pages/dashboard/Dashboard';
 import Compras from './pages/compras/Compras';
 import Caixa from './pages/caixa/Caixa';
 import Estoque from './pages/estoque/Estoque';
@@ -60,7 +60,7 @@ class AppShell extends Component {
           </Grid.Row>
         </Grid>
         <Switch>
-          <Route exact path='/' component={ Inicio } />
+          <Route exact path='/' component={ Dashboard } />
           <Route path='/compras' component={ Compras } />
           <Route path='/caixa' component={ Caixa } />
           <Route path='/estoque' component={ Estoque } />
