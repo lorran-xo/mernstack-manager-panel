@@ -79,8 +79,6 @@ export default function FormDialog(props) {
         await axios.post('http://localhost:9000/updateFinancials', doc)
         .then((res) => {
           window.location.reload();
-        }).catch((err) => {
-          console.log(err);
         })
     }
 
@@ -117,8 +115,6 @@ export default function FormDialog(props) {
         fetch('http://localhost:9000/listFinancials').then(res => res.json().then(data =>({data: data}))
           .then((res) => {
             setQuantity(res.data[0].qtProducts);
-          }).catch((err) => {
-            console.log(err);
           }));
     }
 

@@ -27,10 +27,8 @@ class AppShell extends Component {
     fetch('http://localhost:9000/listFinancials').then(res => res.json().then(data =>({data: data}))
       .then((res) => {
         this.setState({
-          balance: res.data[0].balance,
+          balance: res.data[0].balance.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}),
         });
-      }).catch((err) => {
-        console.log(err);
       }));
   };
 
@@ -52,7 +50,7 @@ class AppShell extends Component {
                 <Link to='/sobre'><Button labelPosition='right' icon>Sobre<Icon name='info circle'/></Button></Link>
                 <Label>
                   Saldo
-                  <Label.Detail>R${this.state.balance}</Label.Detail>
+                  <Label.Detail>{this.state.balance}</Label.Detail>
                 </Label>
               </Button.Group>
               {/*<center style={{margin:'1%'}}><Header style={{fontSize:'14px'}}>Saldo: R$ 1200 </Header></center>*/}

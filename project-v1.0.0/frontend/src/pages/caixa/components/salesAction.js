@@ -39,13 +39,11 @@ export default function FormDialog(props) {
                 kgQuantity: newQuantity,
             };
 
-            console.log(doc);
-
             await axios.post('http://localhost:9000/updateProduct', doc)
             .then((res) => {
                 updateFinancials();
                 setOpenSellPopup(false);
-                //window.location.reload()
+                window.location.reload();
             }).catch((err) => {
                 setSellingError('Ocorreu um erro ao vender o produto!');
             })
@@ -60,15 +58,8 @@ export default function FormDialog(props) {
           balance: newBalance,
           totalSales: totalSales + saleTotal,
         };
-
-        console.log(doc);
         
         await axios.post('http://localhost:9000/updateFinancials', doc)
-        .then((res) => {
-          //window.location.reload();
-        }).catch((err) => {
-          console.log(err);
-        })
     }
 
     function handleOpenSellPopup(){
@@ -95,8 +86,6 @@ export default function FormDialog(props) {
           .then((res) => {
             setBalance(res.data[0].balance);
             setTotalSales(res.data[0].totalSales);
-          }).catch((err) => {
-            console.log(err);
           }));
     }
 
@@ -121,7 +110,7 @@ export default function FormDialog(props) {
                         <br/>{qtdError}
                         <br/><br/>
                         <div class="ui divider"/>
-                        <p>Valor da venda: <b>R${saleTotal}</b></p>
+                        <p>Valor da venda: <b>{saleTotal.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</b></p>
                     </Modal.Description>
                 </Modal.Content>
                 <Modal.Actions>

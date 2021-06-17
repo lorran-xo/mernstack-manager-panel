@@ -3,6 +3,8 @@ import axios from 'axios';
 import { FaCartArrowDown } from 'react-icons/fa';
 import { Button, Modal, Input, Label, Popup } from 'semantic-ui-react'
 
+let balanceAfterBuying = 0;
+
 export default function FormDialog(props) {
     const [openBuyPopup, setOpenBuyPopup] = useState(false);
     const [productName] = useState(props.productName);
@@ -25,10 +27,13 @@ export default function FormDialog(props) {
         setBuyingError("");
         var newQuantity = props.availableQtd + parseInt(typedProductQtd, 10);
 
+        console.log(balance);
+        console.log(typedProductQtd * purchasePrice);
+
         if(typedProductQtd === '' || typedProductQtd === 0 || typedProductQtd < 0){
             setQtdError(<span style={{color:'red'}}>Preencha com a quantidade!</span>);
             setQtdInputError(true);
-        } else if(balance < (balance - (typedProductQtd * purchasePrice))){
+        } else if(balance < (typedProductQtd * purchasePrice)){
             setBuyingError(<span style={{color:'red'}}>Você não tem saldo suficiente!</span>);
         } else {
             
@@ -41,7 +46,6 @@ export default function FormDialog(props) {
             .then((res) => {
                 updateFinancials();
                 setOpenBuyPopup(false);
-                window.location.reload();
             }).catch((err) => {
                 setBuyingError('Ocorreu um erro ao comprar o produto!');
             })
@@ -59,9 +63,7 @@ export default function FormDialog(props) {
         
         await axios.post('http://localhost:9000/updateFinancials', doc)
         .then((res) => {
-          window.location.reload();
-        }).catch((err) => {
-          console.log(err);
+          //window.location.reload();
         })
     }
 
@@ -90,11 +92,11 @@ export default function FormDialog(props) {
           .then((res) => {
             setBalance(res.data[0].balance);
             setTotalPurchases(res.data[0].totalPurchases);
-          }).catch((err) => {
-            console.log(err);
           }));
     }
-  
+
+    balanceAfterBuying = balance - (typedProductQtd * purchasePrice);
+
     return (
         <div>
             <Popup content={'Comprar mais '+ props.productName} trigger={<button style={{border: 'none', background:'none'}}><FaCartArrowDown onClick={handleOpenBuyPopup} style={{width:'145%', height:'145%', color:props.cartColor, cursor:"pointer"}}/></button>} />
@@ -116,8 +118,8 @@ export default function FormDialog(props) {
                         <br/>{qtdError}
                         <br/><br/>
                         <div class="ui divider"/>
-                        <p>Valor da compra: <b>R${purchaseTotal}</b></p>
-                        <p>Saldo após a compra: R${balance - (typedProductQtd * purchasePrice)}</p>
+                        <p>Valor da compra: <b>{purchaseTotal.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</b></p>
+                        <p>Saldo após a compra: {balanceAfterBuying.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
                     </Modal.Description>
                 </Modal.Content>
                 <Modal.Actions>

@@ -6,6 +6,8 @@ import axios from 'axios';
 import { Button,
   Header, Modal, Input, Icon, Popup, Container, Grid } from 'semantic-ui-react'
 
+let balanceAfterBuying = 0;
+
 function App() {
   const [openBuyPopup, setOpenBuyPopup] = useState(false);
   const [typedProductName, setTypedProductName] = useState('');
@@ -35,7 +37,8 @@ function App() {
   async function insertNewProduct(){
     let repeatedProduct = false;
 
-    await fetch('http://localhost:9000/listStock').then(res => res.json().then(data =>({data: data})) //Ve se já tem no banco o produto que está sendo adicionado pra nao duplicar
+    //Verifica se já tem no banco o produto que está sendo adicionado pra nao duplicar
+    await fetch('http://localhost:9000/listStock').then(res => res.json().then(data =>({data: data})) 
       .then((res) => {
         for (let i = 0; i < res.data.length; i += 1) {
           if(typedProductName === res.data[i].productName){
@@ -72,7 +75,7 @@ function App() {
     } else if(resalePrice === '' || resalePrice === 0 || resalePrice < 0){
       setResalePriceError(<span style={{color:'red'}}>Preencha o preço de revenda do produto!</span>);
       setResalePriceInputError(true);
-    } else if(balance < (balance - (pQuantity * purchasePrice))){ //saldo menor que o valor da compra
+    } else if(balance < (pQuantity * purchasePrice)){ //saldo menor que o valor da compra
       setBuyingError(<span style={{color:'red'}}>Você não tem saldo suficiente!</span>);
     } else if(repeatedProduct === true){
       setBuyingError(<span style={{color:'red'}}>Já existe um produto com esse nome no estoque, compre dele diretamente da tabela!</span>);
@@ -104,8 +107,6 @@ function App() {
         setBalance(res.data[0].balance);
         setQtProducts(res.data[0].qtProducts);
         setTotalPurchases(res.data[0].totalPurchases);
-      }).catch((err) => {
-        console.log(err);
       }));
   }
 
@@ -121,8 +122,6 @@ function App() {
     await axios.post('http://localhost:9000/updateFinancials', doc)
     .then((res) => {
       window.location.reload();
-    }).catch((err) => {
-      console.log(err);
     })
   }
 
@@ -163,11 +162,7 @@ function App() {
     setResalePrice(e);
   }
 
-  /*function updateTable(){
-    passingLoadingTable.current.loadData();
-    window.location.reload();
-  }*/
-
+  balanceAfterBuying = balance - (pQuantity * purchasePrice);
   return (
     <>
       <Container className="geral"><br/>
@@ -212,9 +207,9 @@ function App() {
                   </Grid.Row>
                 </Grid><br/>
                 <div class="ui divider"/>
-                <p>Saldo: R${balance}</p>
-                <p>Valor dessa compra: <b>R${pQuantity * purchasePrice}</b></p>
-                <p>Saldo após a compra: R${balance - (pQuantity * purchasePrice)}</p>
+                <p>Saldo: {balance.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
+                <p>Valor dessa compra: <b>R$ {pQuantity.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}) * purchasePrice.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</b></p>
+                <p>Saldo após a compra: {balanceAfterBuying.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
               </Modal.Description>
             </Modal.Content>
             <Modal.Actions>

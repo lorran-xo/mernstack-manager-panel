@@ -43,8 +43,6 @@ function App() {
         setTotalPurchases(res.data[0].totalPurchases.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})); 
         setTotalSales(res.data[0].totalSales.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
         setProfit(convertProfit.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
-      }).catch((err) => {
-        console.log(err);
       }));
   }
 
