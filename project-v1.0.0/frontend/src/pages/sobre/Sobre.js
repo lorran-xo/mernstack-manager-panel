@@ -11,10 +11,11 @@ function App() {
       {/*<header className="App-header">
       </header>*/}
       <Container className="geral"><br/>
-        <Header as='h2' icon style={{marginLeft:'40%'}}>
+      <Card style={{marginLeft:'35%'}}>
+        <Header as='h2' icon>
           <Icon name='info circle' />
            Sobre
-          <Header.Subheader style={{fontSize:'15px'}}>
+          <Header.Subheader style={{fontSize:'13px'}}>
             Saiba mais sobre o Painel e todo seu desenvolvimento
           </Header.Subheader><br/>
           <Header.Subheader>
@@ -28,7 +29,6 @@ function App() {
             <span style={{fontSize:'13px'}}>Acesse o repositório do painel clicando <a href="https://github.com/lorran-xo/mernstack-manager-panel" target="_blank" rel="noreferrer">aqui</a>.</span>
           </Header.Subheader><br/>
         </Header>
-          <Card style={{marginLeft:'43%'}}>
             <Card.Content>
               <Image
                 alt="Author picture"
