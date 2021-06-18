@@ -137,9 +137,9 @@ export default function FormDialog(props) {
                         <Grid columns={3}>
                             <Grid.Row>
                                 <Grid.Column>
-                                    <Input focus error={purchasePriceInputError} label="Valor de Compra" type="number" value={purchasePrice}  onChange={e => handlePurchasePrice(e.target.value)} placeholder='(R$/kg)' style={{margin:'3%'}}/>
+                                    <Input focus error={purchasePriceInputError} label="Valor de Compra R$" type="number" value={purchasePrice}  onChange={e => handlePurchasePrice(e.target.value)} placeholder='(R$/kg)' style={{margin:'3%'}}/>
                                     <br/>{purchasePriceError}<br/>
-                                    <Input focus error={resalePriceInputError} label="Valor de Revenda" type="number" value={resalePrice} onChange={e => handleResalePrice(e.target.value)} placeholder='(R$/kg)'/><br/><br/>
+                                    <Input focus error={resalePriceInputError} label="Valor de Revenda R$" type="number" value={resalePrice} onChange={e => handleResalePrice(e.target.value)} placeholder='(R$/kg)'/><br/><br/>
                                     {resalePriceError}
                                 </Grid.Column>
                             </Grid.Row>

@@ -157,7 +157,7 @@ class Table extends React.Component {
             </Grid>
           </div>
           ) : (
-          <div style={{marginLeft:'23%', width:'60%'}}>
+          <div style={{marginLeft:'20%', width:'70%'}}>
             <DataTable
               data={data}
               columns={columns}

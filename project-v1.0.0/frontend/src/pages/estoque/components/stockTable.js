@@ -111,37 +111,6 @@ class Table extends React.Component {
       },
     ];
 
-    /*const data = [
-      {
-        cod: "valor 1",
-        product: "dfgdg",
-        quantity: "jfdhlskgj",
-        purchasePrice: "gsduifg",
-        resalePrice: "hjushrf",
-      },
-      {
-        cod: "valor 2",
-        product: "123",
-        quantity: "455241",
-        purchasePrice: "64431",
-        resalePrice: "123123",
-      },
-    ];
-        toDo: ver se os outros Grids tambem estao assim: 
-            <Grid columns={9}>
-              <Grid.Row>
-                <Grid.Column>
-                  <div class="ui active centered inline loader"/>
-                </Grid.Column>
-              </Grid.Row>
-              <Grid.Row>
-                <Grid.Column>
-                  Carregando produtos...
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-    */
-
     const { data } = this.state;
     return (
       <div style={{margin:'1.5%'}}>
@@ -156,7 +125,7 @@ class Table extends React.Component {
             </Grid>
           </div>
           ) : (
-          <div style={{marginLeft:'23%', width:'60%'}}>
+          <div style={{marginLeft:'20%', width:'70%'}}>
             <DataTable
               data={data}
               columns={columns}
