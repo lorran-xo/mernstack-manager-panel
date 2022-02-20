@@ -1,4 +1,4 @@
-<h1 align="center">Painel Gerenciador de Negócios</h1>
+<h1 align="center">Painel Gerenciador de Negócios - ⛔️ <i> DEPRECATED </i> </h1>
 
 <p align="center">
   <img alt="Github top language" src="https://img.shields.io/github/languages/top/lorran-xo/mernstack-manager-panel?color=56BEB8">
